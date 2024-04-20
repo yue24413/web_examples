@@ -1,0 +1,92 @@
+<IDOCTYPE html>
+<html lang ="en">
+<head>
+<meta charset =" UTF -8">
+<meta name =" viewport "content ="width=device-width,initial-scale=1.0">
+<title>标签的基础学习</title>
+<style>
+ body{
+ background-size :100%;
+}
+</style>
+</head>
+<body background ="02_cream-coloured.png">
+<h1>标签部分基本知识</h1><hr>
+<div>
+<h2>一.语法</h2>
+<p>
+<h3>1.标签成对出现,中间包裹内容。</h3>
+<h3>2.尖括号&lt;&gt;里放英文字母,即标签名。</h3>
+<h3>3.结束标签比开始标签多／。例如:加粗标签 strong,例:&lt;strong&gt;&lt;/strong&gt;</h3>
+<h3>4.文件后缀名是: .html <h3>
+<h3>5.双标签:成对出现的标签;<br>单标签:只在开始出现,无结束。</h3>
+例如单标签:<br>
+换行标签:&lt;br&gt;水平线标签:&lt;hr&gt;<br>
+扩展:<br>
+空格字符:&amp;nbsp;<br>
+转义字符:左&lt;&amp;lt;&nbsp;&nbsp;右&gt;&amp;gt<br>
+</p>
+</div>
+<div>
+<h2>二.htm1的基本骨架</h2>
+<p>
+<h3>1.快捷键:  !（英文）+ Enter/Tab </h3>
+&nbsp;!输入在.htm1文件上之后,再输入Enter/Tab。<br>
+<h3>2.html:整个网页。</h3>
+<h3>3.head:网页头部,存放给浏览器看的代码,如 css。</h3>
+<h3>4.body:网页主体,存放给用户看的代码,例如:图片,文字等。</h3>
+<h3>5.title:网页的标题。</h3>
+<h3>6.具体框架展示:</h3>
+&lt;htm1&gt;<br>
+&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&lt;title&gt;网页标题&lt;/title&gt;<br>
+&nbsp;&lt;/head&gt;<br>
+&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;(网页主体)<br>
+&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;<br>
+</p></div>
+<div>
+<h2>三.标签的关系</h2>
+<p>
+<h3>作用:明确代码的书写位置。</h3>
+<h3>1.父子关系（嵌套）。</h3>
+<h3>2.兄弟关系（平级）。</h3>
+ Tab 和 shift Tab 缩进</p>
+</div>
+<div>
+<h2>五．常见的标签</h2>
+<p>
+<h3>1.标题标签</h3>
+一般用在新闻标题，文章标题... <br>
+<strong>标签名:h1~h6</strong> <br>
+h1标签在一个网页中只能用<strong>一次</strong>,用来放新闻标题或者网页logo。<br>
+<h3>2.段落标签</h3>
+<strong>标签名:p(双标签)</strong> <br>
+显示特点：独占一行(换行)，段落间有空隙。 <br>
+<h3>3.换行与水平标签</h3>
+<strong>(1).换行标签:&lt;br&gt;</strong> <br>
+浏览器不识别Enter键换行,所以文本需要换行必须有标签。(有需要就加) <br>
+<strong>(2).水平线标签:&lt;hr&gt;</strong> <br>
+这两个都是单标签。<br>
+<h3>4.文本格式化标签</h3>
+常见的有:加粗，倾斜，下划线，删除线 <br>
+&lt;strong&gt;&nbsp;/&nbsp;&lt;b&gt;  &nbsp; &nbsp;加粗标签 <br>
+&lt;em&gt;&nbsp;/&nbsp;&lt;i&gt;  &nbsp;&nbsp;倾斜标签 <br>
+&lt;ins&gt;&nbsp;/&nbsp;&lt;u&gt;  &nbsp;&nbsp;下划线标签 <br>
+&lt;del&gt;&nbsp;/&nbsp;&lt;s&gt;  &nbsp;&nbsp;删除标签 <br>
+<strong>尽量用左边的</strong> <br>
+<h3>5.图像标签</h3>
+<strong>&lt;img src = "图片的URL"&gt;</strong> <br>
+src用于指定图像的位置和名称,是&lt;img&gt;的必要属性。<br>
+<strong>图像的标签属性</strong> <br>
+&nbsp;&nbsp; alt&nbsp;&nbsp; 替换文本&nbsp;&nbsp;图片无法显示的时候显示文字 <br>
+&nbsp;&nbsp; title&nbsp;&nbsp; 提示文本&nbsp;&nbsp; 鼠标悬浮停在图片上面的时候显示文字 <br>
+&nbsp;&nbsp;属性名:"属性值" <br>
+&nbsp;&nbsp;属性写在尖括号里面,标签名的后面,标签名和属性之间用空格隔开,不区分先后。<br>
+&nbsp;&nbsp;&lt;img src=" ./cat.jpg"&nbsp;alt="替换文本"&nbsp;title="提示文本"&gt; <br>
+</p>
+</div>
+</body>
+
+</html>
