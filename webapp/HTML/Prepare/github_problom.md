@@ -98,7 +98,11 @@
 2. vscode中，view视图->终端,也可以进行相应的git操作。
 3. 直接在git push中也可以推(我目前还是没解决右键点开无法打开的情况)。
 4. 推的时候注意分支。
+5. 多看报错。
 
 - - - -
 ### 三.  .md文件的编写
-[Markdown /.md学习链接](https://www.bilibili.com/read/cv9109010/?spm_id_from=333.999.0.0)
+[Markdown /.md学习链接](https://blog.csdn.net/carcarrot/article/details/119769300)
+
+### 四.  GitHub学习
+[GitHub学习链接](https://www.bilibili.com/read/cv9109010/?spm_id_from=333.999.0.0v)
