@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git常用的一些命令</title>
+</head>
+<body>
+    <div>
+    <h2>自己的本地仓库和远程仓库之间的基本操作</h2>
+    <h3>创建</h3>
+    <ol>
+       <li>`git init` 在当前文件夹下创建一个本地仓库,这个仓库的工作区即这个文件夹和子文件</li><br> 
+        <li>`git add *` 将工作区的文件添加到暂存区</li> <br>
+        <li>`git commit -m"修改信息"`</li><br>
+        <li>`git status` 仓库当前状态</li><br>
+        <img src="./status.png" alt="当前仓库状态" title="当前仓库状态"><br><br>
+    </ol> 
+    <h3>远程仓库连接</h3> 
+    <ol>
+        <li>`git remote add origin url` 关联远程仓库。这里面的origin是后面urld的别名,而url是远程库地址</li><br>
+        <li>`git remote -v` 查看远程库信息</li>
+        <li>`git push -u origin master` 第一次推送master分支所有内容,并把本地的master分支和远程的master分支关联起来。</li>
+        <li>`git push origin master` </li>
+        <li>`git remote rm origin` 删除关联的(origin)远程仓库 </li>
+    </ol>  
+    <h3>查看</h3>
+    <ol>
+        <li>`git remote -v` 查看远程库信息</li>
+        <li>`git diff` 查看修改</li>
+        <li>`git log` 显示从最近到最开始commit日志</li>
+    </ol>
+    <h3>删除、丢弃和恢复</h3>
+    <ol>
+        <li>`git checkout --file`  丢弃工作区的修改</li>
+        <li>`git reset HEAD <file>` 把暂存区的修改撤销掉。</li>
+    </ol>
+    </div>
+    <br>
+    <div>
+     <h2>克隆别人的远程仓库操作</h2>
+        <h3>克隆</h3>
+        <ol>
+            <li>在GitHub上fork目标项目,GitHub上会有一个副本库。</li>
+            <li>在本地创建一个要克隆项目的文件夹，`git clone url`,其中url是自己的副本库地址
+            <li>`git branch` 查看分支</li>
+            <li>`git branch name` 创建分支</li>
+            <li>`git checkout name` 切换到名为name的分支上</li>
+            <li>`git checkout -b name `创建名为name的分支并且切换到name分支</li>
+            <li>`git merge` 合并当前分支到主分支</li>
+            <li>`git branch -d name` 删除名为name的分支 </li>
+            <li>git push origin master`</li>
+            </ol>
+    </div>
+<br>
+    <div>
+        <h2>冲突的操作</h2>       
+        <ol>
+            <li>`git status` 查看合并冲突文件</li>
+            <li>手动修改文件，解决冲突</li>
+            <li>再次提交</li>
+            <li>`git log --graph` 查看分支合并情况</li>      
+            </ol>
+    </div>
+<br>
+    <div>
+        <h2>bug修复</h2>       
+        <ol>
+            <li>`git stash` 储存当前分支现场</li>
+            <li>`git stash list` 查看储存修改列表</li>
+            <li>`git stash apply` 恢复指定的列表的某个</li>
+            <li>`git stash drop` 删除指定的列表的某个</li>      
+            <li>`git stash pop` 恢复现场并且删除储存</li>      
+            <li>`git cherry-pick commit` 在主分支上修改的bug,合并到当前分支上,commit是标识符
+
+            </li>
+        
+        </ol>
+    </div>
+    <br>
+    <div>
+        <h2>多人协作</h2>       
+        <ol>
+            <li>`git remote -v` </li>
+            <li>`git push origin master` </li>
+            <li>`git push origin branch-name` branch-name是本地要推给远程的分支名</li>
+            <li>`git checkout -b branch-name origin/branch-name` 在本地创建远程的某分支</li>      
+            <li>`git pull` 从远程最新版本抓取分支</li>      
+            <li>`git branch -set-upstream branch-name origin/branch-name` 建立本地分支和远程分支的关联 </li> 
+
+            </li>
+        
+        </ol>
+    </div>
+
+</body>
+</html>
