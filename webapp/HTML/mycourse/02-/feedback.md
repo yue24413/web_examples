@@ -20,7 +20,7 @@
 - `git add *` 将工作区的文件添加到暂存区。
 - `git commit -m"修改信息"`
 - `git status` 仓库当前状态。
-- `git remote add origin url` 关联远程仓库。这里面的origin是后面urld的别名,而url是远程库地址
+- `git remote add origin url` 关联远程仓库。这里面的origin是后面url的别名,而url是远程库地址
 - `git remote -v` 查看远程库信息。
 - `git push -u origin master` 第一次推送master分支所有内容,并把本地的master分支和远程的master分支关联起来。
 - `git push origin master`
@@ -49,7 +49,7 @@
 14. 此时，master branch; origin/master; upstream/master，同步
 15. del branch，删除完成使命的 docs branch
 
-首先。先解释每个序号的内容： <br>
+首先，先解释每个序号的内容： <br>
 1. fork 拉取他人的代码，在自己的库中会形成一个完全一样的副本库。
 2. clone 此过程可以通过vscode实现，也可以通过本地的git命令，创建一个只处理这个项目的文件夹，从文件夹处打开git push,`git clone url`,其中url是自己副本库的地址。默认情况下会自动创建一个与远程仓库默认分支相对应的本地分支。
 3. branch 创建一个自己的次分支，原因是不同的开发者有不同的任务，在自己的分支中工作，互不影响，即使出现问题也不会直接影响到稳定的主分支，降低了风险。自己分支的工作完毕再合并到主分支。`git branch name`,这个仅仅是创建了这个分支，`git branch -b name` ,创见并切换。
@@ -63,7 +63,7 @@
 11. **未弄清，没权限**
 12. 最后就可以在本地的master分支里面push到远程仓库了，注意：此处push的是origin副本仓库。`git push origin master`,推送本地master分支到远程仓库的master分支。
 13. **11未解决**，同步到个人副本仓库同12。
-14. 此时本地master主分支，个人副本仓库主分支master1，源仓库主分支master同步。
+14. 此时本地master主分支，个人副本仓库主分支master，源仓库主分支master同步。
 15. 删除当时在本地的工作分支，完成使命。`git branch -b dev-branch`,dev-branch为工作分支。
 16. 拓展： <br>`git branch -set-upstream branch-name origin/branch-name` 建立本地分支origin/branch-name和远程分支branch-name的关联。
     
@@ -113,7 +113,7 @@ push; pull; marge
 3. p 块级元素，独占一行，每个 <p> 段落之间默认会有空白行分隔。块级元素可以设置宽度、高度和其他一些盒模型属性，并且能够容纳其他内联或块级元素。p 标签具有明确的语义，代表一个段落，用于将逻辑相关的文本内容组合在一起，形成文档结构的一部分。p 标签通常用于分割文章内容，构成页面上的多个段落，可以通过CSS来调整其样式，但因为它是块级元素，所以更适合整体性的样式控制和布局。
 4. div 与 span 的主要区别体现在它们的布局特性和内容承载能力上，div 更倾向于布局和块级内容的封装，而 span 更适用于行内文本的样式化和微调。p标签与span标签，从语义角度讲，p 标签内可以嵌套span标签，但是根据HTML规范，p 标签不能直接嵌套在span标签内，也不应该在另一个p标签内部直接嵌套（即一个段落内不能包含另一个段落）。
 ### 三.emmet语法
->  >; +; ^; (); *; $; lorem;
+>   +;>; ^; (); *; $; lorem;
 #### HTML
 1. 类选择器：标签名.类名
 2. id选择器 ：标签名#id名
@@ -121,11 +121,11 @@ push; pull; marge
 4. 父子标签：标签名1>标签名2
 5. 多个相同标签：标签名*n
 6. 有内容的标签：标签名{内容}，例：div{这是div标签}
-7. 第一，一个缩写中需要插入父元素ID的一部分作为子元素ID时，可以使用#或@id。例如，#parent>div#child# 缩写展开后，如果#parent存在，则子元素的ID将会是childparent。第二，$ 来引用数值索引。在循环生成元素时，item$*3 将生成三个元素，分别命名为 item1、item2 和 item3。
+7. 第一，$ 来引用数值索引。在循环生成元素时，item$*3 将生成三个元素，分别命名为 item1、item2 和 item3。第二，结合 $@ 表示从某个特定数字开始递增或递减。
 8. lorem 是一个用于快速生成假文的简写指令。“lorem”并跟上一个数值，表示你想要生成的单词数量。若生成特定数量的段落，可以使用乘法操作符，如 lorem2*3 将生成两个单词的Lorem Ipsum文本共三段。
 
 #### CSS
-大多数间歇方式为属性单词的首字母 <br>
+大多数简写方式为属性单词的首字母 <br>
 1. w  width  w500  width:500px
 2. h  hight
 3. bgc  background-color
