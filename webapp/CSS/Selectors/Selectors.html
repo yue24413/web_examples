@@ -19,6 +19,10 @@
   div>div{
     background-color: #dbdada;color: #4a4848;line-height: 30px; 
   }
+
+  a:hover{
+    color:red;
+  }
 </style>
 </head>
 <body>
@@ -30,14 +34,14 @@
         <h3>1.内部样式表</h3>
         在head里的title双标签下开一处style双标签，里面用来书写内部样式。
     </span> <br>
-        <img src="./title-style.png" alt="内部样式表图例" style="height: 150px;
+        <img src="./title-style.png" alt="内部样式表图例" style="height: 180px;
         width: 650px;padding-left: 2em;">  
     <span>
         <h3>2.外部样式表</h3>
        <p> CSS代码写在单独的.CSS文件中，在HTML中用link标签引入。</p> 
         <p>例如：&lt;link rel="style sheet" herf'"./my.css"&gt;</p>
-        <img src="html-css1.png" alt=".css文件图例" style="height: 100px;width:600px;padding-left: 2em;">
-        <img src="html-css2.png" alt=".css文件图例" style="height: 100px;width:600px;padding-left: 2em;">
+        <img src="html-css1.png" alt=".css文件图例" style="height: 130px;width:600px;padding-left: 2em;">
+        <img src="html-css2.png" alt=".css文件图例" style="height: 130px;width:600px;padding-left: 2em;">
     </span>
     <span>
         <h3>3.行内样式</h3>
@@ -50,8 +54,8 @@
 <div>
 <h2>二.标签选择器</h2>
 <p>使用标签名作为选择器，选中的标签设置相同的样式，在内部样式表中用。</p>
-<img src="./tag.png" alt="标签选择器图例" style="width: 450px;
-height: 130px;padding-left: 2em;">
+<img src="./tag.png" alt="标签选择器图例" style="width: 430px;
+height: 150px;padding-left: 2em;">
 </div>
 <div>
 <h2>三.类选择器</h2>
@@ -101,6 +105,55 @@ height: 90px;"> <br>
 </span>
 </div>
 
+<div>
+    <h2>六.复合选择器</h2>
+    
+<p>定义：由两个或多个基础选择器，通过不同的方式组合而成。</p>
+<div>
+<h3>(1)后代选择器</h3>
+<div style="padding-left: 4em;">
+    写法：父选择器[空格]子选择器{CSS属性} <br>
+    此方式可以找到父选择器包裹的所有这个类型的子选择器。<br>    
+</div>
+
+<h3>(2)子代选择器</h3>
+<div style="padding-left: 4em;">
+    写法：父选择器>子选择器{CSS属性} <br>
+    此方式可以找到父选择器包裹的下一级这个类型的子选择器，不会找子子代代。<br>    
+</div>
+<h3>(3)并集选择器</h3>
+<div style="padding-left: 4em;">
+    写法：选择器1,选择器2,...{CSS属性} <br>
+    选中多组标签设置的相同样式。<br>    
+</div>
+<h3>(4)交集选择器</h3>
+<div style="padding-left: 4em;">
+    写法：选择器1选择器2...{CSS属性} ,(选择器之间没有空格)<br>
+    1.选中同时满足多个条件的元素。<br>    
+    2.标签选择器写在前面。<br>
+</div>
+<h3>(5)伪类选择器</h3>
+<div style="padding-left: 4em;">
+    写法:选择器1:hover {CSS属性} <br>
+    1.表示状态，选中元素的某个状态设置样式。<br>
+    2.鼠标悬停状态。<br>
+    3.例如：写一个超链接： <br>
+    <img src="./a-hover4.png" alt="写的跳转到yue的GitHub超链接代码" style="width: 700px;"> <br>
+    在网页中鼠标悬停前(左)和鼠标悬停后(右)： <br>
+    <img src="./a-hover2.png" alt="鼠标悬停前图例"><img src="./a-hover3.png" alt="鼠标悬停后图例"> <br>
+    为什么鼠标悬停前和悬停后的颜色不一样呢？因为我写了超链接的鼠标悬停样式，如下： <br>
+    <img src="./a-hover.png" alt="鼠标悬停的内部样式" style="width: 220px;
+    height: 80px;">
+    4.拓展： <br>
+    超链接有四个状态： <br>
+    :link{CSS属性} (访问前) <br>
+    :visited{}   (访问后) <br>
+    :hover{}  (悬停时) <br>
+    :active{}  (点击时) <br>
+提示：如果要给超链接设置以上四个状态,要按照LVHA顺序书写。
+</div>
+</div>
+</div>
 </div>
 </body>
 </html>
