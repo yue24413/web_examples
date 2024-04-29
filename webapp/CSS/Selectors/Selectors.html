@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectors</title>
+    <link rel="stylesheet" href="./Selectors.css">
+<style>
+    h2{
+        color: rgb(77, 73, 72);padding-left: 1em;
+    }
+  h3{
+    padding-left: 3em;
+  } 
+  p{
+    padding-left: 4em;
+  }
+
+  div>div{
+    background-color: #dbdada;color: #4a4848;line-height: 30px; 
+  }
+</style>
+</head>
+<body>
+   <h1>四种基本选择器</h1> 
+<div>
+<div> 
+    <h2>一.CSS三种引入方式</h2>
+    <span>
+        <h3>1.内部样式表</h3>
+        在head里的title双标签下开一处style双标签，里面用来书写内部样式。
+    </span> <br>
+        <img src="./title-style.png" alt="内部样式表图例" style="height: 150px;
+        width: 650px;padding-left: 2em;">  
+    <span>
+        <h3>2.外部样式表</h3>
+       <p> CSS代码写在单独的.CSS文件中，在HTML中用link标签引入。</p> 
+        <p>例如：&lt;link rel="style sheet" herf'"./my.css"&gt;</p>
+        <img src="html-css1.png" alt=".css文件图例" style="height: 100px;width:600px;padding-left: 2em;">
+        <img src="html-css2.png" alt=".css文件图例" style="height: 100px;width:600px;padding-left: 2em;">
+    </span>
+    <span>
+        <h3>3.行内样式</h3>
+        <p>直接在标签里加style。例如： </p>
+       <p> &lt;div style="color:red;font_size:30px;"&lt;这是div标签&lt;/div&gt;</p>
+       <img src="./inline.png" alt="行内样式图例" style="width: 400px;
+       height: 100px;padding-left: 2em;">
+    </span>
+</div>
+<div>
+<h2>二.标签选择器</h2>
+<p>使用标签名作为选择器，选中的标签设置相同的样式，在内部样式表中用。</p>
+<img src="./tag.png" alt="标签选择器图例" style="width: 450px;
+height: 130px;padding-left: 2em;">
+</div>
+<div>
+<h2>三.类选择器</h2>
+<div style="padding-left: 4em;">
+<span>  
+1.定义：<br>
+&lt;style&gt; 
+.red{ <br>
+    color:red; <br>
+} <br>
+&lt;/style&gt; <br><br>
+2.使用： <br>
+&lt;p class=".red"&gt;我是红色的&lt;/p&gt;
+<br>
+</span>
+<img src="./class.png" alt="标签选择器图例" style="width: 300px;
+height: 90px;"> <br>
+*.一个标签可以加多个类名，.类名有空格隔开。 <br>
+*.要选有标志性的类名。<br>
+</div></div>
+<div>
+<h2>四.id选择器</h2>
+<div  style="padding-left: 4em;">
+
+
+<span>  
+定义：<strong>#id名</strong> <br>
+使用：<strong>标签 id="id名"</strong> <br>
+规则：同一个id选择器在一个页面中只能用一次。 <br>
+例如： <br>
+&lt;style&gt; <br>
+#red{ <br>
+    color:red; <br>
+} <br>
+&nbsp;&lt;/style&gt; <br>
+&lt;/head&gt; <br>
+&lt;body&gt; <br>
+&lt;div id="red"&gt;div标签&lt;/div&gt; <br>
+&lt;/body&gt; <br>
+ </span>
+</div></div>
+<div>
+    <h2>五.通配符选择器</h2>
+<span>
+<p>1.作用：查找页面上所有标签，设置相同的样式。</p>
+<p>2.通配符选择器：<strong>*</strong>，不需要调用选择器，浏览器会自动查找页面中所有标签，设置相同的样式。</p>
+</span>
+</div>
+
+</div>
+</body>
+</html>
