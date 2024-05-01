@@ -16,3 +16,11 @@ color: rgb(74, 74, 75);background-color: #d6d6d6;padding-left: 1em;;
     height: 200px;
     padding: 20px;
   }
+  .link-with-icon::before{
+    content: url('./github-mark.png');
+    display: inline-table;
+    width: 6px; /* 图片宽度 */
+    height: 6px; /* 图片高度 */
+    margin-right: 5px; /* 图片与链接文本之间的间距 */
+    vertical-align:middle; /* 使图片与文本垂直居中对齐 */
+  }

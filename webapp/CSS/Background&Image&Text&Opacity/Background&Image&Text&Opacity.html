@@ -53,7 +53,7 @@
                 <th style="color: #be7575;">背景属性</th>
                
                 <th>背景图缩放</th>
-                <th>背景图固定</th>
+                <th>背景图固定</th> 
                 <th>背景图复合属性</th>   
             </tr>
             <tr>
@@ -121,10 +121,13 @@ round 参数是border-image-repeat的简写形式，它指示当图像不能完�
         3. <strong>content (配合伪元素):</strong> <br>
            - 可以在某些伪元素（如`:before`和`:after`）中插入图像作为内容的一部分。<br>
            content: url('icon.png'); <br>
-
+           <div style="width: 500px;
+           height: 200px;">
+            <a class="link-with-icon" href="https://github.com/yue24413/" target="_blank" >yue的主页这里有</a>
+           </div>
+           <br>
            <br>
 
-        
         4. <strong>cursor: </strong><br>
            - 设置鼠标指针悬停在元素上时所显示的光标图像。<br>
            cursor: url('pointer.cur'), auto;<br><br>
@@ -132,7 +135,7 @@ round 参数是border-image-repeat的简写形式，它指示当图像不能完�
         5.  <strong>list-style-image:</strong>
            - 用于设置有序列表（`ol`）或无序列表（`ul`）项目标记为一个图像。<br>
            list-style-image: url('bullet.png');<br><br>     
-        此外，还有一些高级的CSS图像功能：
+        此外，还有一些高级的CSS图像功能:
         
         6. <strong>image()、image-set():</strong> <br>
           - `image()` 是一个提议的功能，旨在引入更复杂的图像源和切换逻辑。<br>
