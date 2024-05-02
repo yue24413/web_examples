@@ -132,21 +132,53 @@ round 参数是border-image-repeat的简写形式，它指示当图像不能完�
            - 设置鼠标指针悬停在元素上时所显示的光标图像。<br>
            cursor: url('pointer.cur'), auto;<br><br>
         
-        5.  <strong>list-style-image:</strong>
+        5.  <strong>list-style-image:</strong> <br>
            - 用于设置有序列表（`ol`）或无序列表（`ul`）项目标记为一个图像。<br>
-           list-style-image: url('bullet.png');<br><br>     
-        此外，还有一些高级的CSS图像功能:
+           list-style-image: url('bullet.png');<br>
+           将一个图像设置为HTML有序列表（&lt;ol>）或无序列表（&lt;ul>）中每个列表项（&lt;li>）的标记符号，而不是默认的数字、字母或实心点等样式。通过使用 url() 函数，您可以指定图像文件的位置，例如：
+            <br>
+            ul { <br>
+              list-style-image: url('bullet.png'); <br>
+            } <br>
+            在上面的代码中，bullet.png 是一个图像文件的路径，该图像将会被用作无序列表中每个列表项前的标记。如果图像加载失败或者出于某种原因不可见，建议同时设置 list-style-type 作为备选方案：<br>
+            
+            ul { <br>
+              list-style-image: url('bullet.png'); <br>
+              list-style-type: disc; /* 或者 square, circle 等 */ <br>
+            } <br>
+            图像位置：图像相对于列表项内容的垂直对齐方式可以通过 list-style-position 属性进行控制，它可以是 inside（图像位于内容内边距内）或 outside（图像位于内容区域之外）。
+    <br>浏览器兼容性：所有主流浏览器都支持 list-style-image 属性，但可能在较老版本的 Internet Explorer 中存在一些限制，比如不支持 inherit 值。
+<br>继承性：这个属性是可以继承的，这意味着如果在父元素上设置了 list-style-image，子元素会继承这个样式，除非它们自己指定了不同的值。
+
+           
+           
+           <br>  <br>   <br>
+
+        此外，还有一些高级的CSS图像功能: <br>
         
         6. <strong>image()、image-set():</strong> <br>
           - `image()` 是一个提议的功能，旨在引入更复杂的图像源和切换逻辑。<br>
           - `image-set()` 用于指定不同分辨率下的图像资源，帮助浏览器根据设备条件选择最佳图像。<br><br>
-          
+          <div>
+
+          </div>
         - <strong>cross-fade():</strong> <br>
-          - 用于制作图像的淡入淡出过渡效果，常与`background-image`结合使用，实现平滑的图像融合。<br>
-      
-        - <strong>mask-image:</strong> <br>
-          - 定义一个图像作为遮罩层，决定元素的透明区域。<br><br>
-        
+          - 用于制作图像的淡入淡出过渡效果，常与`background-image`结合使用，实现平滑的图像融合。
+          cross-fade() 函数是CSS中一个用于实现背景图像淡入淡出过渡效果的特性，特别是在多背景图像的情况下，可以用来创建两个或多个背景图像之间的半透明混合效果。<br>
+          <p>background-image: cross-fade(&lt;'image'>, &lt;'image'>, &lt;percentage>);</p>
+        <br>
+        &lt;'image'>：第一个和第二个参数分别代表两个要混合的背景图像的URL。
+        &lt;percentage>：第三个参数是一个百分比值，它决定了第二个图像的透明度。0%意味着只显示第一个图像而不显示第二个图像，而100%则意味着只显示第二个图像，中间的百分比值会让两个图像按照指定的透明度相互叠加。
+        <br><br>
+          - <strong>mask-image:</strong> <br>
+          - 定义一个图像作为遮罩层，决定元素的透明区域。<br>
+          element { <br>
+            mask-image: url('mask.png'); <br>
+          } <br>
+          mask.png 图像将作为遮罩应用于元素，其中图像的透明部分会使元素内容相应地透明。
+      <br>此外，mask-image 还支持其他类型的值，如渐变（linear-gradient、radial-gradient（径向））、
+      图案（pattern）等，并且可以和其他遮罩相关的属性（如 mask-mode, mask-repeat, mask-position, mask-size, mask-origin, mask-composite 等）配合使用，以达到更精细的控制效果。
+          <br> <br>
         -  <strong>element():</strong> <br>
           - 作为一个CSS函数，它可以引用文档中的另一个元素作为背景图像或其他图像相关属性的来源。<br>
         
