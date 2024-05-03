@@ -188,14 +188,47 @@ round 参数是border-image-repeat的简写形式，它指示当图像不能完�
 
     </div>
     </div>
-    <h2>3.Text</h2>
-    <div>
 
+    <div style="background-color:#e4e4e4 ;">
+    <h2 >3.Text </h2>
+     <div class="h2-">
+      font-size 单位：数字px <br>
+      font-weight 文本粗细：正常400 加粗 700 或 正常normal 加粗 bold<br>
+      font-style 正常normal 倾斜italic <br>
+      line-height 设置多行文本间距 行高=上间距+下间距+文本高度 
+      <p style="padding-left: 2em;">属性值：数字px/数字(当前字体大小的倍数) </p>
+      <p  style="padding-left: 2em;">垂直居中效果：height属性值与line-height相同</p>
+      font-family 字体名 <br>
+      font 按顺序有：是否倾斜 是否加粗 字号/行高 字体  <br>
+      text-indent 文本缩进 属性值：数字px/数字em lem为当前标签的字号大小 <br>
+      text-align 文本对齐方式 属性值：left center right <br>
+      text-decoration 修饰线 属性值：none/underline <br>
+      color 文本颜色 属性值：rgb/rgba/十六进制表示法#RRGGBB <br>
+
+     </div>
     </div>
+    <div style="background-color: #e4e4e4;">
     <h2>4.Opacity</h2>
-    <div>
-
+    <div class="h2-">
+     <p class="Opacity" style="margin-left: -2em; text-indent: 2em;">此处已经设置了不透明度为0.5</p> 
+      <img src="./Opacity-css.png" alt="不透明度示例代码" style="width: 300px;
+      height: 150px;"> <br>
+      <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/opacity" target="_blank" style="font-size: 20px;">跳转参考链接</a>
+      <p>Opacity是一个全局属性，一旦应用作用于整个元素及其所有子元素，包括文本、背景颜色、边框、阴影等等。</p>
     </div>
-</div>
+  </div>
+  <div style="background-color: #e4e4e4;">
+  <h2>5.补充</h2>
+  <div class="h2-">
+  <p>1.content (配合伪元素)中，图像大小未控制成功。</p>
+  <p>2.Opacity中，要达到背景透明而内容不透明的效果，通常可以使用RGBA颜色模式来设置背景色，而不是使用opacity属性：</p> 
+   <span>
+    element { <br>
+      background-color: rgba(0, 0, 0, 0.5); /* 这里背景颜色为黑色，透明度50% */ <br>
+      color: white; /* 文本颜色保持不透明 */ <br>
+    } <br>
+    通过这种方式，背景颜色会有透明度，而文本颜色不会受到影响，从而保持了文本的清晰可读性。<br>
+   </span> .
+</div></div></div>
 </body>
 </html>
