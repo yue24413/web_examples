@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+body>div{
+    padding: 2em;
+    padding: 2em;
+    background-color: #cccccc;
+    color: #353535;
+    font-size: 18px;
+    line-height: 1.5;
+}
+body>div>div>div{
+background-color: #dcdbdb;
+}
+body>div>div>div>p{
+    text-indent: 1em;
+    }
