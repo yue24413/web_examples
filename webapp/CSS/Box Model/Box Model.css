@@ -1,0 +1,37 @@
+@charset "UTF-8";
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+   background-color: #eeeeee; 
+   padding: 2em;
+   color: #3c3c3c;
+}
+h1{
+    background-color: #dddddd;
+    color: #383838;
+    text-indent: 1em;  
+}
+h2{
+    padding-bottom: 0em;
+    margin-bottom: -10px;
+}
+body>div{
+    background-color: #dddddd;
+    padding: 1em;
+    margin: 1em;  
+}
+div .content{ 
+    padding: 1em;
+    padding-bottom: 0em;
+    line-height: 2em;
+}
+div .content li{
+    display: block;
+}
+.content p span{
+    color: red;
+}
+
