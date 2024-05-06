@@ -17,16 +17,19 @@ h1{
 h2{
     padding-bottom: 0em;
     margin-bottom: -10px;
+    font-size: 20px;
+    text-indent: 1em;
 }
 body>div{
     background-color: #dddddd;
-    padding: 1em;
+    padding: 2em;
     margin: 1em;  
 }
 div .content{ 
     padding: 1em;
     padding-bottom: 0em;
     line-height: 2em;
+    font-size: 17px;
 }
 div .content li{
     display: block;

@@ -9,42 +9,113 @@
 <body>
     <h1>盒子模型</h1>
     <div>
-        <h2>一.内容区域</h2>
+        <h2>一.内容区域、内边距、边框线、外边距</h2>
         <div class="content">           
-        <p>width and height</p>
+        <p>1.内容区域：width and height</p>
+        <p>2.内边距:padding</p>
+        <p>3.边框线：border；属性值：边框线的粗细，线条样式(solid / dashed)，颜色(无顺序)</p>
+        <p>4.外边距：margin;不会撑大盒子</p>
+        注：<div style="padding-left: 1em;">都有方位名词：top / right / bottom / left <br>
+       多值写法：(巧记：顺时针) <br>
+            top->right->bottom->left <br>
+            top->right/left->bottom <br>
+            top/bottom->right/left</div>
+        </div>
         </div>
     </div>
     <div>
-        <h2>二.内边距</h2>
+        <h2>二.尺寸计算</h2>
         <div class="content">
-        <ul>
-            <li>padding-left</li>
-            <li>padding-top</li>
-            <li>padding-right</li>
-            <li>padding-bottom</li>
-        </ul>  
+        <p>1.盒子的尺寸=内容尺寸+边框线(border)尺寸+内边距(padding)尺寸</p>
+        <p>2.给盒子加border/padding会撑大盒子</p>
+        <p>解决方式：手动减去/内减模式(box-sizing: border-box;)</p>
         </div>
     </div>
     <div>
-        <h2>三.边框线</h2>
+        <h2>三.版心居中</h2>
         <div class="content">
-        <p>1.<span>border</span> 属性值：边框线的粗细，线条样式，颜色(无顺序)</p>
-        <p>2.边框线粗细：solid / dashed</p>
-        <p>3.border方位名词：top / right / bottom / left </p>
-        <div>4.多值写法：(巧记：顺时针) <br>
-        top->right->bottom->left <br>
-        top->right/left->bottom <br>
-        top/bottom->right/left
-    </div>
+        <p>1.margin: 0 auto;</p>
+        <p>2.要求：盒子必须有宽度(或者继承了父级的宽度)，否则无法做减法</p>
+        </div>
     </div>
     <div>
-        <h2>四.外边距</h2>
+        <h2>四.清除默认模式</h2>
         <div class="content">
-        <p>1.<span>margin</span> 方位名词与边框线同理</p> 
-        <p>2.不会撑大盒子</p>
-           
+        <div>1.解决方式： <br>
+            *{ <br>
+                margin:0; <br>
+                padding:0; <br>
+                /*box-sizing: border-box;*/ <br>
+             }
         </div>
+          <p>2.去除无序列表前的小黑点符号：list-style:none;</p> 
+          <p>3.在设置默认方式时，顺便把内减模式(box-sizing: border-box;)加上更好</p>
         </div>
+    </div>
+    </div>
+
+    <div>
+        <h2>五.元素溢出</h2>
+        <div class="content">
+       <p>1.属性名:overflow </p>
+       <p>2.属性值:hidden / scroll / auto</p>
+       <p>hidden:元素隐藏</p>
+       <p>scroll:溢出滚动(无论是否溢出，下方和右方都有滚动条位置)</p>
+       <p>auto:溢出滚动</p>        
+        </div>
+    </div>
+
+    <div>
+        <h2>六.外边距合并现象</h2>
+        <div class="content">
+       <p>1. 场景：<strong>垂直排列</strong>的兄弟关系，上下margin会合并</p>
+       <p>2.现象：两个较大值生效</p>       
+        </div>
+    </div>
+
+    <div>
+        <h2>七.外边距塌陷问题</h2>
+        <div class="content">
+       <p>1. 场景:父子级标签,子级添加上外边距margin会产生塌陷问题</p>
+       <p>2.现象：导致父级一起向下运动</p>   
+       <div>3.解决方式：<br>
+        (1).取消父级的margin,父级加padding <br>
+        (2).父级设置overflow:hidden; 溢出隐藏，识别出父级正确的边缘，边缘外溢出隐藏<br>
+        (3).父级设置border:top; 与(2)同理，识别出正确的父级边缘<br>
+       </div>    
+        </div>
+    </div>
+
+    <div>
+        <h2>八.行内元素内外边距问题</h2>
+        <div class="content">
+       <p>1. 场景:行内元素添加margin / padding,不生效垂直方向，只生效水平方向</p>
+       <p>2.解决方式:line-height来增加内部间距</p>   
+       
+        </div>
+    </div>
+
+    <div>
+        <h2>九.圆角</h2>
+        <div class="content">
+       <p>1.属性名:border-radius </p>
+       <p>2.属性值：数字px / 百分比 (数字为圆角半径)</p>
+       <p>3.值可以写多值，方位名词与边距同理</p>  
+       <div>4.常用类型： <br>
+            (1).正圆(头像等):盒子本身就是正方形,宽高的一半 / 50% (超过50%还是正圆) <br>
+            (2).胶囊(按钮、搜索框等):盒子本身就是长方形,高的一半 <br>  
+        </div>        
+        </div>
+    </div>
+
+    <div>
+        <h2>十.盒子的阴影</h2>
+        <div class="content">
+       <p>1.属性名:border-shadow </p>
+       <p>2.属性值:x轴偏移量 y轴偏移量 模糊半径 扩散半径 颜色 内/外阴影</p>
+       <p>3.x和y的偏移量必须要有,内/外阴影中默认是外阴影(内阴影用inset,不常用)</p>  
+       <p>例: box-shodow: 2px 5px 10px 1px rgba(0,0,0,0.5)</p>
+    </div>
     </div>
 </body>
 </html>
