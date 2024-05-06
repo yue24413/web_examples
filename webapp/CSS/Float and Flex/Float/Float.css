@@ -1,0 +1,26 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 1em;
+    background-color: #eeeeee;
+
+}
+.content{
+    padding: 2em;
+    background-color: #dddddd;
+    font-size: 18px;
+    line-height: 2.5em;
+    color: #2c2b2b;
+}
+h1{
+    text-align: center;
+    background-color: #dddddd;
+    margin-bottom: 15px;
+}
+p span{
+    color: red;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Float</title>
+    <link rel="stylesheet" href="./Float.css">
+</head>
+<body>
+    <h1>Float 浮动</h1>
+    <div class="content">
+    <p>1.块级标签在一行显示</p> 
+    <p>2.属性名: <span>float</span></p>
+    <p>3.属性值: left / right</p>
+    <p>4.具有顶对齐属性,具备line-bloak 属性</p>
+    <div>5.清除浮动问题: <br>
+        <p>(1).场景：浮动元素会脱标，若父级为设置高度，子级无法撑开父级的高度(页面可能存在错乱)</p>
+        <p>(2).解决：清除浮动</p>
+        <div>
+            (3).解决方式: <br>
+            <p>- <span>额外标签法:</span>在父元素内容最后添加一个块级元素,设置css属性: clear:both;</p>
+            - <span style="color: red;"> 单伪元素法：</span> <br>
+                <div style="padding-left: 1em;">
+                .clearbox::after{ <br>
+                content:""; <br>
+                display:bloak; <br>
+                clear:both; <br>
+                }
+            </div>
+
+            - <span style="color: red;"> 双伪元素法：</span>  <br>
+            <div style="padding-left: 1em;">
+            .clearbox::before,.clearbox::after{ &nbsp;&nbsp;&nbsp;/* before为了防止外边界塌陷*/<br>
+            content:""; <br>
+            display:table; <br>
+            } <br>
+            .clearbox::after{ <br>
+                clear:both; <br>
+            }
+        </div>
+        - <span style="color: red;">overflow:</span>
+         <p>父元素添加css属性 overflow: hidden; </p>
+         <p>同理，检查父元素边界范围</p>
+         <p>会让浏览器检查元素边界，使浮动的子级可以撑开父级</p>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    </div>
+</body>
+</html>
