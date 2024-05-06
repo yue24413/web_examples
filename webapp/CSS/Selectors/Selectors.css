@@ -1,4 +1,31 @@
 @charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    padding: 2em;
+    line-height:40px;
+    background-color: #eeeeee;
+}
+body>div{
+    padding: 2em;
+    background-color: #dddddd;
+    color: #4a4848;
+    font-size: 17px;
+}
+body>div>div{
+    padding: 1em;  
+}
 h1{
-    background-color: #d5d3d3;text-align: center;
+    background-color: #d5d3d3;
+    text-align: center;
+}
+h2{
+    color: rgb(77, 73, 72);
+}
+
+a:hover{
+color:red;
 }
