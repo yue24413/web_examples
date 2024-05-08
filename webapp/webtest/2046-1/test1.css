@@ -140,6 +140,11 @@ padding-right: 28px;
     color: #000;
     text-decoration: none;    
 }
+
+
+
+
+
 .link_hover {
     position: relative; /* 使a成为一个相对定位的容器 */
     text-decoration: none; /* 移除默认的下划线 */
