@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+/*清除默认样式 通配符*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*版心剧中*/
+.wrapper{
+    width: 982px;   
+    margin: 0 auto;
+}
+
+/*header区域 包括logo 导航 搜索功能等*/
+.header{
+ /*从设计图可以看出header区域有导航和logout
+ wigth=982,hight=58+13*2=84*/ 
+/*内边距统一算13px*/
+ width: 982px;
+ height: 84px;
+ background-color:#ffee99;
+padding: 13px;
+display: flex;
+border-style:solid;
+border-width: 1px;
+border-color:#efbb49;
+border-radius: 8px;
+}
+/*导航*/
+.header .Navigation{
+width: 863px;
+background-color: #343135;
+padding-left: 58px;
+}
+.header  a{
+    padding-right: 30px;/*每个超链接相距30px*/
+    line-height: 58px;/*与高保持一致，字居中*/
+    text-decoration: none; /*取消下划线*/
+    font-size: 20px;
+    color: #ffffff;
+}
+.header  a:hover{
+    color: #0c59b0;
+    text-decoration:underline;
+}
+/*logout*/
+.header .logout{
+background-color: #343135;
+justify-content: flex-end;
+padding-right: 28px;
+}
+
+/*内容区域*/
+/*w:982  h:510*/
+.content{
+ width: 982px;
+ height: 510px;
+ padding: 13px;
+ background-color:#ffee99; 
+ display:flex;
+ border-style:solid;
+ border-width: 1px;
+ border-color:#efbb49;
+ border-radius: 8px;  
+}
+/*侧边栏*/
+.content .sidebar{
+    width: 234px;
+    height: 485px;
+    padding: 13px;  
+    color: #4e4e4b;
+    border-style:solid;
+ border-width: 1px;
+ border-color:#efbb49;
+ border-radius: 8px;  
+}
+.content .sidebar ul li{
+    height: 51px;
+    line-height: 60px;
+     background-color:#f1f1f1;
+     padding-left: 24px;
+    list-style: none; 
+}
+.content .sidebar ul :hover{
+    background-color: #3184bf;
+    font-size: 30px;
+    color: #fffeff;
+}
+.content .sidebar ul li a{
+    text-decoration: none; /*取消下划线*/ 
+    font-size: 18px; 
+    color: #4e4e4b;
+}
+
+/*文本区域*/
+.content .text{
+    width: 720px;
+    height: 337px;  
+    border-radius: 8px;
+    color: #000;
+    padding-top: 20px;
+    padding-left: 18px;
+    border-style:solid;
+    border-width: 1px;
+    border-color:#efbb49;
+    border-radius: 8px;   
+}
+.content .text h3{
+    font-size: 36px;
+    font-weight: 700;
+}
+.content .text h4{
+    font-size: 20px;
+    font-weight: 700;
+}
+.content .text p{
+    font-size: 18px;
+    font-weight: 400;
+}
+
+/*底部*/
+.bottom{
+    width: 982px;
+    height: 72px;
+    background-color:#ffee99;
+    font-size: 18px; 
+    display: flex; 
+    flex-direction:column; /*主轴方向换为竖直*/
+    justify-content: center; /*竖直方向垂直*/
+    align-items: center;/*水平方向垂直*/
+    border-style:solid;
+    border-width: 1px;
+    border-color:#efbb49;
+    border-radius: 8px; 
+
+}
+.bottom a{  
+    color: #000;
+    text-decoration: none;    
+}
+.link_hover {
+    position: relative; /* 使a成为一个相对定位的容器 */
+    text-decoration: none; /* 移除默认的下划线 */
+}
+.ahover{
+    display: none; /* 默认隐藏文字 */
+    position: absolute; /* 设置为绝对定位 */
+    top: 100%; /* 将文字定位在链接下方，可以根据需要调整 */
+    left: 0;
+    background-color: #ffffff; 
+    color: #413f3f; 
+    padding: 5px 10px; /* 内边距 */
+    white-space: nowrap; /* 防止换行 */
+}
+
+.link_hover:hover .ahover {
+    display: block; /* 鼠标悬停时显示 */
+    opacity: 1; /* 变为完全不透明 */
+}
