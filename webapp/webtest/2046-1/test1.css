@@ -12,7 +12,11 @@
     width: 982px;   
     margin: 0 auto;
 }
-
+.test1{
+    width: 982px;
+    height: 670px;
+    padding-top: 30px;
+}
 /*header区域 包括logo 导航 搜索功能等*/
 .header{
  /*从设计图可以看出header区域有导航和logout
@@ -72,27 +76,57 @@ padding-right: 28px;
     padding: 13px;  
     color: #4e4e4b;
     border-style:solid;
- border-width: 1px;
- border-color:#efbb49;
- border-radius: 8px;  
+    border-width: 1px;
+    border-color:#efbb49;
+    border-radius: 8px;
 }
-.content .sidebar ul li{
+#manage{
+    display: none;
+}
+label{
+    display: block;
     height: 51px;
     line-height: 60px;
      background-color:#f1f1f1;
      padding-left: 24px;
-    list-style: none; 
+     font-size: 18px;
+     cursor: pointer;
 }
-.content .sidebar ul :hover{
+label:hover{
     background-color: #3184bf;
     font-size: 30px;
+    color: #fffeff; 
+}
+#manage:checked ~ ul{
+   left: 276px;
+}
+
+.content .sidebar ul{
+    position: fixed;
+    left: -200px;
+    display: block;
+
+}
+.content .sidebar ul li{
+    height: 51px;
+    width: 208px;
+    line-height: 60px;
+    font-size: 18px; 
+     background-color:#f1f1f1;
+     padding-left: 24px;
+    list-style: none; 
+
+}
+.content .sidebar ul li:hover{
+    background-color: #3184bf;
     color: #fffeff;
 }
 .content .sidebar ul li a{
-    text-decoration: none; /*取消下划线*/ 
-    font-size: 18px; 
+    text-decoration: none; /*取消下划线*/    
     color: #4e4e4b;
 }
+
+
 
 /*文本区域*/
 .content .text{
@@ -160,7 +194,7 @@ padding-right: 28px;
     white-space: nowrap; /* 防止换行 */
 }
 
-.link_hover:hover .ahover {
+.link_hover:hover .ahover{
     display: block; /* 鼠标悬停时显示 */
     opacity: 1; /* 变为完全不透明 */
 }

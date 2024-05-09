@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="./test1.css">
 </head>
 <body>
+    <div class="test1 wrapper">
     <!-- Header -->
-    <div class="wrapper header">
+    <div class=" header">
     <div class="Navigation">
         <a href="#">Home</a>
         <a href="#">News</a>
@@ -20,19 +21,31 @@
    
     </div>
     </div>
-    <div class="content wrapper">
+    <div class="content">
+
         <div class="sidebar">
-            <ul>
-                <li><a href="#">云技术管理</a></li>
+            <!-- 侧边栏做成抽屉式 -->
+            <div class="yun">
+            <input type="checkbox" id="manage">
+            <label for="manage">云技术管理</label>
+            
+            <ul > 
+                <!-- <li><a href="#">云技术管理</a></li> -->
                 <li><a href="#">云服务器</a></li>
                 <li><a href="#">云数据库</a></li>
                 <li><a href="#">负载均衡</a></li>
-                <li><a href="#">安全管理</a></li>
+            </ul>
+            </div>
+            <!-- <div class="an">
+            <input type="checkbox" id="manage">
+            <label for="manage">安全管理</label>
+            <ul>
                 <li><a href="#">云盾控制台</a></li>
                 <li><a href="#">DDoS高仿IP</a></li>
                 <li><a href="#">Web应用防火墙</a></li>
                 <li><a href="#">CA证书服务</a></li>
             </ul>
+        </div> -->
         </div>
         <div class="text">
           <h3>设计内容</h3> 
@@ -48,7 +61,7 @@
     </div>
 
     <!-- 底部 -->
-    <div class="bottom wrapper">
+    <div class="bottom">
         <a href="https://ccec.nefu.edu.cn/x_zy_b/rjgc.htm" target="_blank" class="link_hover">
             东北林业大学 
             <div class="ahover">
@@ -62,7 +75,7 @@
             </div>
         </a>
     </div>
-
+</div>
 
 </body>
 </html>

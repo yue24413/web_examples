@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+/*清除默认样式 通配符*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*版心剧中*/
+.wrapper{
+    width: 982px;   
+    margin: 0 auto;
+}
