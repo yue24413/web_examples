@@ -1,14 +1,29 @@
-@charset "UTF-8";
-
-/*清除默认样式 通配符*/
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-/*版心剧中*/
-.wrapper{
-    width: 982px;   
-    margin: 0 auto;
-}
+.container {
+    display: flex; /* 使用Flex布局 */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 100vh; /* 占满全屏高度，可根据需要调整 */
+    position: relative; /* 为绝对定位的抽屉提供参照 */
+  }
+  
+  .drawer {
+    width: 300px; /* 抽屉宽度 */
+    height: 100%; /* 高度与容器相同 */
+    position: absolute; /* 使用绝对定位使抽屉位于容器的一侧 */
+    right: -300px; /* 初始时抽屉移出屏幕 */
+    background-color: #f0f0f0; /* 抽屉背景颜色 */
+    transition: right 0.5s ease; /* 平滑过渡效果 */
+  }
+  
+  .drawer.open {
+    right: 0; /* 点击按钮后抽屉滑入 */
+  }
+  
+  .drawer-content {
+    /* 可根据需要调整抽屉内部样式 */
+  }
+  
+  .main-content {
+    /* 主内容区域样式 */
+    margin-right: 300px; /* 为主内容区预留抽屉空间，避免重叠 */
+  }
