@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>HTML Input</h1>
+<h3>Input Type Text</h3>
+<form>
+    First name:<br>
+    <input type="text" placeholder="请输入你的名" ><br>
+    <input type="hidden" name="id" value="123456">  <!-- 这个字段在网页上对用户是不可见 -->
+    Last name:<br>
+    <input type="text" placeholder="请输入你的姓">
+</form>
+<hr>
+<h3>Input Type Button</h3>
+<form>
+    <!-- <input type="button" onclick="alert('Hello World!')" value="Click Me!"> -->
+    <button onclick="alert('Hello World!')">Click Me!</button>
+</form>
+<hr>
+<h3>Input Type Password</h3>
+<form>
+    User name:<br> 
+    <input type="text"><br> 
+    User
+    password:<br> 
+    <input type="password">
+</form>
+<hr>
+<h3>Input Type Checkbox</h3>
+<form>
+    <input type="checkbox"> I have a bike <br>
+    <input type="checkbox"> I have a car <br>
+    <input type="checkbox" checked> I have a boat<br>
+</form>
+<hr>
+<h3>Input Type Radio</h3>
+<form>
+    <input type="radio" name="gender">Male<br>
+    <input type="radio" name="gender">Female<br>
+    <br>
+    <input type="radio" name="course" checked>Web Technologies <br>
+    <input type="radio" name="course">Software Project Management<br>
+</form>
+<hr>
+<h3>Input Type File</h3>
+<form enctype="multipart/form-data" method="post">
+    <!-- 告诉浏览器在提交表单时应该如何编码表单数据。
+    当表单需要上传文件时，必须使用此编码类型，因为它支持二进制数据的传输，如图片、文档等文件内容。 -->
+    <!-- 表示表单数据将通过HTTP POST方法发送到服务器。
+    POST方法适合用于提交大量数据或包含文件上传的情况，因为它没有数据量限制，并且数据不会在URL中显示。 -->
+    <input type="file" accept=".xlsx, .xls">
+</form>
+<hr>
+<h3>Input Type Hidden</h3>
+<form>
+    First name: <input type="text"><br>
+    <input type="hidden" name="id" value="123456">
+    <!-- 这个字段在网页上对用户是不可见;默认发送123456 -->
+</form>
+<hr>
+<h3>Input Type Date</h3>
+<form>
+    Enter a date before 2017-09-01:<br>
+    <input type="date" max="2017-09-01"><br>
+    Enter a date after 2017-09-01:<br>
+    <input type="date" min="2017-09-01"><br>
+</form>
+<hr>
+<h3>Input Type Datetime-local</h3>
+<form>
+    Birthday (date and time): <br>
+    <input type="datetime-local">
+    <!-- 为什么这处会默认显示当时的时间信息？ -->
+</form>
+<hr>
+<h3>Input Type Number</h3>
+<form>
+    Quantity (between 1 and 10, setp 2): <br>
+    <input type="number" min="1" max="10" step="2">
+</form>
+<hr>
+<form>
+    <button type="reset">reset</button>
+    <button type="submit" onclick="alert('Submit successfully!')">Submit</button>
+</form>
+</body>
+</html>
