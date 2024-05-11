@@ -14,13 +14,13 @@
     <div>
     <span>
         <h3>1.内部样式表</h3>
-        在head里的title双标签下开一处style双标签，里面用来书写内部样式。
+        在head里的title双标签下开一处style双标签,里面用来书写内部样式。
     </span> <br>
         <img src="./title-style.png" alt="内部样式表图例" style="height: 200px;
         width: 650px;padding-left: 2em;">  
     <span>
         <h3>2.外部样式表</h3>
-       <p> CSS代码写在单独的.CSS文件中，在HTML中用link标签引入。</p> 
+       <p> CSS代码写在单独的.CSS文件中,在HTML中用link标签引入。</p> 
         <p>例如：&lt;link rel="style sheet" herf'"./my.css"&gt;</p>
         <img src="html-css1.png" alt=".css文件图例" style="height: 150px;width:600px;">
         <img src="html-css2.png" alt=".css文件图例" style="height: 150px;width:600px;">
@@ -36,7 +36,7 @@
 
 <h2>二.标签选择器</h2>
 <div>
-<p>使用标签名作为选择器，选中的标签设置相同的样式，在内部样式表中用。</p>
+<p>使用标签名作为选择器,选中的标签设置相同的样式,在内部样式表中用。</p>
 <img src="./tag.png" alt="标签选择器图例" style="width: 430px;
 height: 180px;">
 </div>
@@ -56,7 +56,7 @@ height: 180px;">
 </span>
 <img src="./class.png" alt="标签选择器图例" style="width: 300px;
 height: 90px;"> <br>
-*.一个标签可以加多个类名，.类名有空格隔开。 <br>
+*.一个标签可以加多个类名,.类名有空格隔开。 <br>
 *.要选有标志性的类名。<br>
 </div>
 
@@ -82,14 +82,14 @@ height: 90px;"> <br>
     <h2>五.通配符选择器</h2>
 <div>
 <span>
-<p>1.作用：查找页面上所有标签，设置相同的样式。</p>
-<p>2.通配符选择器：<strong>*</strong>，不需要调用选择器，浏览器会自动查找页面中所有标签，设置相同的样式。</p>
+<p>1.作用：查找页面上所有标签,设置相同的样式。</p>
+<p>2.通配符选择器：<strong>*</strong>,不需要调用选择器,浏览器会自动查找页面中所有标签,设置相同的样式。</p>
 </span>
 </div>
 
     <h2>六.复合选择器</h2>
 <div>   
-<p>定义：由两个或多个基础选择器，通过不同的方式组合而成。</p>
+<p>定义：由两个或多个基础选择器,通过不同的方式组合而成。</p>
 <h3>(1)后代选择器</h3>
 <div>
     写法：父选择器[空格]子选择器{CSS属性} <br>
@@ -99,7 +99,7 @@ height: 90px;"> <br>
 <h3>(2)子代选择器</h3>
 <div>
     写法：父选择器>子选择器{CSS属性} <br>
-    此方式可以找到父选择器包裹的下一级这个类型的子选择器，不会找子子代代。<br>    
+    此方式可以找到父选择器包裹的下一级这个类型的子选择器,不会找子子代代。<br>    
 </div>
 <h3>(3)并集选择器</h3>
 <div>
@@ -115,13 +115,13 @@ height: 90px;"> <br>
 <h3>(5)伪类选择器</h3>
 <div>
     <strong>写法:选择器1:hover {CSS属性}</strong> <br>
-    1.表示状态，选中元素的某个状态设置样式。<br>
+    1.表示状态,选中元素的某个状态设置样式。<br>
     2.鼠标悬停状态。<br>
     3.例如：写一个超链接： <br>
     <img src="./a-hover4.png" alt="写的跳转到yue的GitHub超链接代码" style="width: 700px;"> <br>
     在网页中鼠标悬停前(左)和鼠标悬停后(右)： <br>
     <img src="./a-hover2.png" alt="鼠标悬停前图例"><img src="./a-hover3.png" alt="鼠标悬停后图例"> <br>
-    为什么鼠标悬停前和悬停后的颜色不一样呢？因为我写了超链接的鼠标悬停样式，如下： <br>
+    为什么鼠标悬停前和悬停后的颜色不一样呢？因为我写了超链接的鼠标悬停样式,如下： <br>
     <img src="./a-hover.png" alt="鼠标悬停的内部样式" style="width: 220px;
     height: 80px;">
     4.拓展： <br>
@@ -151,14 +151,14 @@ height: 90px;"> <br>
 </div>
 <h3>(一).伪元素选择器</h3>
 <div>
- <p>1.作用：创建虚拟元素(伪元素)，用来摆放装饰性元素</p>
+ <p>1.作用：创建虚拟元素(伪元素),用来摆放装饰性元素</p>
 <div>
 2.有: <br>
 E:before <br>
 E:after <br>   
 </div>
 <div>3.注： <br>
-<p>(1).必须有 <strong> content :"";</strong>属性，用来设置伪元素的内容,无内容引号内留白</p>
+<p>(1).必须有 <strong> content :"";</strong>属性,用来设置伪元素的内容,无内容引号内留白</p>
  <p>(2).伪元素默认是行内显示模式 </p>
 <p>(3).权重和标签选择器相同 </p>
 </div>

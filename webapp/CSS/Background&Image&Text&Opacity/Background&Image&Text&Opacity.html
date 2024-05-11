@@ -40,7 +40,7 @@
                 <td> </td>
                 <td>url</td>
                 <td>no-repeat/repeat/repeat-x/repeat-y &nbsp;&nbsp;</td>
-                <td>&nbsp;&nbsp;left/right/center/top/bottom/数字px(正右下，负左上)/混用</td>
+                <td>&nbsp;&nbsp;left/right/center/top/bottom/数字px(正右下,负左上)/混用</td>
                
             </tr>
         </table>
@@ -75,7 +75,7 @@
                
                 <td>cover完全覆盖/contain完全装入/百分比/数字</td>
                 <td>fixed</td>
-                <td>&nbsp;color img repeat pos/size att,空格隔开，位置和缩放用'/'</td>
+                <td>&nbsp;color img repeat pos/size att,空格隔开,位置和缩放用'/'</td>
             </tr>
         </table>
 
@@ -88,28 +88,28 @@
            - 用于设置元素的背景图像。<br>
            background-image: url('image.jpg');<br><br>
         2. <strong>border-image:</strong> <br>
-           - 用于创建复杂样式边框，通过指定图像并控制如何将其切割和重复填充到元素的边框区域。<br>
+           - 用于创建复杂样式边框,通过指定图像并控制如何将其切割和重复填充到元素的边框区域。<br>
           - <strong> border-image: url('border.png') 30 30 round;</strong> <br>
 <div style="background-color: #e4e4e4;color: #3e3d3d;">
-假设你有一个图像文件border.png，它设计成可以被分割为九个部分，用于创建元素的边框样式。以下是详细的步骤和解释： <br>
+假设你有一个图像文件border.png,它设计成可以被分割为九个部分,用于创建元素的边框样式。以下是详细的步骤和解释： <br>
 /* 声明border-image属性 */ <br>
 .example-element { <br>
   border-image: url('border.png') 30 30 round; <br>
 } <br>
 在这个例子中： <br>
 url('border.png') 指定了用来作为边框图像的资源地址。 <br>
-30 30 表示的是border-image-slice值，它定义了如何从图像中裁剪出边框图像的各个部分。这里两个30代表了上右下左四个边的裁剪宽度，如果只有一个数值，那么四个边会采用相同的裁剪宽度；如果有两个数值，第一个值对应上和下边，第二个值对应右边和左边；如果有四个值，则分别对应上、右、下、左边。
-round 参数是border-image-repeat的简写形式，它指示当图像不能完美地填充到边框的所有部分时，应该如何处理图像边缘。round意味着如果需要拉伸或者收缩图像来适应边框尺寸，那么会尽量保持图像的比例，并对图像进行圆整（比如，可能增加或减少一个小像素点），使得图像能够尽可能无缝地填充边框。<br>
-完整的语法通常包括所有六个子属性，如下所示： <br>
+30 30 表示的是border-image-slice值,它定义了如何从图像中裁剪出边框图像的各个部分。这里两个30代表了上右下左四个边的裁剪宽度,如果只有一个数值,那么四个边会采用相同的裁剪宽度；如果有两个数值,第一个值对应上和下边,第二个值对应右边和左边；如果有四个值,则分别对应上、右、下、左边。
+round 参数是border-image-repeat的简写形式,它指示当图像不能完美地填充到边框的所有部分时,应该如何处理图像边缘。round意味着如果需要拉伸或者收缩图像来适应边框尺寸,那么会尽量保持图像的比例,并对图像进行圆整（比如,可能增加或减少一个小像素点）,使得图像能够尽可能无缝地填充边框。<br>
+完整的语法通常包括所有六个子属性,如下所示： <br>
 .example-element { <br>
   border-image:  <br>
     url('border.png') /* border-image-source */ <br>
     30 30 &nbsp;  &nbsp; &nbsp;     /* border-image-slice */ <br>
     round  &nbsp; &nbsp;&nbsp;       /* border-image-repeat */ <br>
-    fill   &nbsp;&nbsp;&nbsp;        /* border-image-width （默认是auto，这里fill表示让图像填满边框宽度，也可以设置具体像素值） */ <br>
-    stretch   &nbsp;&nbsp;&nbsp;     /* border-image-outset （一般默认是0，表示图像不超出边框之外，stretch在此处意义不大，因为前面用了round） */; <br>
+    fill   &nbsp;&nbsp;&nbsp;        /* border-image-width （默认是auto,这里fill表示让图像填满边框宽度,也可以设置具体像素值） */ <br>
+    stretch   &nbsp;&nbsp;&nbsp;     /* border-image-outset （一般默认是0,表示图像不超出边框之外,stretch在此处意义不大,因为前面用了round） */; <br>
 } <br>
-举个实际的例子，假设border.png是一张设计好的9-slice图像（即中心部分可拉伸，边缘不可拉伸的部分包含边框的实际样式），那么当你应用以上样式时，浏览器就会根据给定的参数，巧妙地将这张图像应用到元素的边框上，形成一个带有复杂样式的自定义边框。 <br>
+举个实际的例子,假设border.png是一张设计好的9-slice图像（即中心部分可拉伸,边缘不可拉伸的部分包含边框的实际样式）,那么当你应用以上样式时,浏览器就会根据给定的参数,巧妙地将这张图像应用到元素的边框上,形成一个带有复杂样式的自定义边框。 <br>
 </div>  
 
     <img src="./border1.png" alt=".css中border的代码" style="width: 460px;
@@ -135,55 +135,55 @@ round 参数是border-image-repeat的简写形式，它指示当图像不能完�
         5.  <strong>list-style-image:</strong> <br>
            - 用于设置有序列表（`ol`）或无序列表（`ul`）项目标记为一个图像。<br>
            list-style-image: url('bullet.png');<br>
-           将一个图像设置为HTML有序列表（&lt;ol>）或无序列表（&lt;ul>）中每个列表项（&lt;li>）的标记符号，而不是默认的数字、字母或实心点等样式。通过使用 url() 函数，您可以指定图像文件的位置，例如：
+           将一个图像设置为HTML有序列表（&lt;ol>）或无序列表（&lt;ul>）中每个列表项（&lt;li>）的标记符号,而不是默认的数字、字母或实心点等样式。通过使用 url() 函数,您可以指定图像文件的位置,例如：
             <br>
             ul { <br>
               list-style-image: url('bullet.png'); <br>
             } <br>
-            在上面的代码中，bullet.png 是一个图像文件的路径，该图像将会被用作无序列表中每个列表项前的标记。如果图像加载失败或者出于某种原因不可见，建议同时设置 list-style-type 作为备选方案：<br>
+            在上面的代码中,bullet.png 是一个图像文件的路径,该图像将会被用作无序列表中每个列表项前的标记。如果图像加载失败或者出于某种原因不可见,建议同时设置 list-style-type 作为备选方案：<br>
             
             ul { <br>
               list-style-image: url('bullet.png'); <br>
               list-style-type: disc; /* 或者 square, circle 等 */ <br>
             } <br>
-            图像位置：图像相对于列表项内容的垂直对齐方式可以通过 list-style-position 属性进行控制，它可以是 inside（图像位于内容内边距内）或 outside（图像位于内容区域之外）。
-    <br>浏览器兼容性：所有主流浏览器都支持 list-style-image 属性，但可能在较老版本的 Internet Explorer 中存在一些限制，比如不支持 inherit 值。
-<br>继承性：这个属性是可以继承的，这意味着如果在父元素上设置了 list-style-image，子元素会继承这个样式，除非它们自己指定了不同的值。
+            图像位置：图像相对于列表项内容的垂直对齐方式可以通过 list-style-position 属性进行控制,它可以是 inside（图像位于内容内边距内）或 outside（图像位于内容区域之外）。
+    <br>浏览器兼容性：所有主流浏览器都支持 list-style-image 属性,但可能在较老版本的 Internet Explorer 中存在一些限制,比如不支持 inherit 值。
+<br>继承性：这个属性是可以继承的,这意味着如果在父元素上设置了 list-style-image,子元素会继承这个样式,除非它们自己指定了不同的值。
 
            
            
            <br>  <br>   <br>
 
-        此外，还有一些高级的CSS图像功能: <br>
+        此外,还有一些高级的CSS图像功能: <br>
         
         6. <strong>image()、image-set():</strong> <br>
-          - `image()` 是一个提议的功能，旨在引入更复杂的图像源和切换逻辑。<br>
-          - `image-set()` 用于指定不同分辨率下的图像资源，帮助浏览器根据设备条件选择最佳图像。<br><br>
+          - `image()` 是一个提议的功能,旨在引入更复杂的图像源和切换逻辑。<br>
+          - `image-set()` 用于指定不同分辨率下的图像资源,帮助浏览器根据设备条件选择最佳图像。<br><br>
           <div>
 
           </div>
         - <strong>cross-fade():</strong> <br>
-          - 用于制作图像的淡入淡出过渡效果，常与`background-image`结合使用，实现平滑的图像融合。
-          cross-fade() 函数是CSS中一个用于实现背景图像淡入淡出过渡效果的特性，特别是在多背景图像的情况下，可以用来创建两个或多个背景图像之间的半透明混合效果。<br>
+          - 用于制作图像的淡入淡出过渡效果,常与`background-image`结合使用,实现平滑的图像融合。
+          cross-fade() 函数是CSS中一个用于实现背景图像淡入淡出过渡效果的特性,特别是在多背景图像的情况下,可以用来创建两个或多个背景图像之间的半透明混合效果。<br>
           <p>background-image: cross-fade(&lt;'image'>, &lt;'image'>, &lt;percentage>);</p>
         <br>
         &lt;'image'>：第一个和第二个参数分别代表两个要混合的背景图像的URL。
-        &lt;percentage>：第三个参数是一个百分比值，它决定了第二个图像的透明度。0%意味着只显示第一个图像而不显示第二个图像，而100%则意味着只显示第二个图像，中间的百分比值会让两个图像按照指定的透明度相互叠加。
+        &lt;percentage>：第三个参数是一个百分比值,它决定了第二个图像的透明度。0%意味着只显示第一个图像而不显示第二个图像,而100%则意味着只显示第二个图像,中间的百分比值会让两个图像按照指定的透明度相互叠加。
         <br><br>
           - <strong>mask-image:</strong> <br>
-          - 定义一个图像作为遮罩层，决定元素的透明区域。<br>
+          - 定义一个图像作为遮罩层,决定元素的透明区域。<br>
           element { <br>
             mask-image: url('mask.png'); <br>
           } <br>
-          mask.png 图像将作为遮罩应用于元素，其中图像的透明部分会使元素内容相应地透明。
-      <br>此外，mask-image 还支持其他类型的值，如渐变（linear-gradient、radial-gradient（径向））、
-      图案（pattern）等，并且可以和其他遮罩相关的属性（如 mask-mode, mask-repeat, mask-position, mask-size, mask-origin, mask-composite 等）配合使用，以达到更精细的控制效果。
+          mask.png 图像将作为遮罩应用于元素,其中图像的透明部分会使元素内容相应地透明。
+      <br>此外,mask-image 还支持其他类型的值,如渐变（linear-gradient、radial-gradient（径向））、
+      图案（pattern）等,并且可以和其他遮罩相关的属性（如 mask-mode, mask-repeat, mask-position, mask-size, mask-origin, mask-composite 等）配合使用,以达到更精细的控制效果。
           <br> <br>
         -  <strong>element():</strong> <br>
-          - 作为一个CSS函数，它可以引用文档中的另一个元素作为背景图像或其他图像相关属性的来源。<br>
+          - 作为一个CSS函数,它可以引用文档中的另一个元素作为背景图像或其他图像相关属性的来源。<br>
         
         -  <strong>image-rendering:</strong> <br>
-          - 控制浏览器如何优化或渲染图像，特别是在缩放时，以改善图像质量或性能。尽管它不是直接操作图像本身，但在图像展示方面具有重要影响。<br><br>
+          - 控制浏览器如何优化或渲染图像,特别是在缩放时,以改善图像质量或性能。尽管它不是直接操作图像本身,但在图像展示方面具有重要影响。<br><br>
 
 
     </div>
@@ -214,21 +214,21 @@ round 参数是border-image-repeat的简写形式，它指示当图像不能完�
       <img src="./Opacity-css.png" alt="不透明度示例代码" style="width: 300px;
       height: 150px;"> <br>
       <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/opacity" target="_blank" style="font-size: 20px;">跳转参考链接</a>
-      <p>Opacity是一个全局属性，一旦应用作用于整个元素及其所有子元素，包括文本、背景颜色、边框、阴影等等。</p>
+      <p>Opacity是一个全局属性,一旦应用作用于整个元素及其所有子元素,包括文本、背景颜色、边框、阴影等等。</p>
     </div>
   </div>
   
   <div style="background-color: #e4e4e4;">
     <h2>5.补充</h2>
   <div class="h2-">
-  <p>1..link-with-icon::before中，图像大小未控制成功。</p>
-  <p>2.Opacity中，要达到背景透明而内容不透明的效果，通常可以使用RGBA颜色模式来设置背景色，而不是使用opacity属性：</p> 
+  <p>1..link-with-icon::before中,图像大小未控制成功。</p>
+  <p>2.Opacity中,要达到背景透明而内容不透明的效果,通常可以使用RGBA颜色模式来设置背景色,而不是使用opacity属性：</p> 
    <span>
     element { <br>
-      background-color: rgba(0, 0, 0, 0.5); /* 这里背景颜色为黑色，透明度50% */ <br>
+      background-color: rgba(0, 0, 0, 0.5); /* 这里背景颜色为黑色,透明度50% */ <br>
       color: white; /* 文本颜色保持不透明 */ <br>
     } <br>
-    通过这种方式，背景颜色会有透明度，而文本颜色不会受到影响，从而保持了文本的清晰可读性。<br>
+    通过这种方式,背景颜色会有透明度,而文本颜色不会受到影响,从而保持了文本的清晰可读性。<br>
    </span> .
 </div></div></div>
 </body>

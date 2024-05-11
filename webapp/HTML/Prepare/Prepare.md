@@ -2,7 +2,7 @@
 
 ### Introductions
 
-在开始学习之前做的准备工作，包括逐渐熟悉GitHub以及了解vscode的功能。
+在开始学习之前做的准备工作,包括逐渐熟悉GitHub以及了解vscode的功能。
 
 ### Development Environments    
 

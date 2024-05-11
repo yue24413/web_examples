@@ -25,38 +25,37 @@
     <div class="content">
 
         <div class="sidebar">
-            <!-- 侧边栏做成抽屉式 -->
+            <!-- 侧边栏做成手风车式 -->
             <div class="yun-manage">
-            <input type="checkbox" id="yun-manage">
-            <label for="yun-manage">云技术管理</label>
-            <ul> 
-                <!-- <li><a href="#">云技术管理</a></li> -->
-                <li><a href="#">云服务器</a></li>
-                <li><a href="#">云数据库</a></li>
-                <li><a href="#">负载均衡</a></li>
-            </ul>
+                <input type="checkbox" id="yun-manage">
+                <label for="yun-manage">云技术管理</label>
+                <ul>                 
+                    <li><a href="#">云服务器</a></li>
+                    <li><a href="#">云数据库</a></li>
+                    <li><a href="#">负载均衡</a></li>
+                </ul>
             </div>
             <div class="an-manage">
-            <input type="checkbox" id="an-manage">
-            <label for="an-manage">安全管理</label>
-            <ul>
-                <li><a href="#">云盾控制台</a></li>
-                <li><a href="#">DDoS高仿IP</a></li>
-                <li><a href="#">Web应用防火墙</a></li>
-                <li><a href="#">CA证书服务</a></li>
-            </ul>
-        </div>
+                <input type="checkbox" id="an-manage">
+                <label for="an-manage">安全管理</label>
+                <ul>
+                    <li><a href="#">云盾控制台</a></li>
+                    <li><a href="#">DDoS高仿IP</a></li>
+                    <li><a href="#">Web应用防火墙</a></li>
+                    <li><a href="#">CA证书服务</a></li>
+                </ul>
+            </div>
         </div>
         <div class="text">
           <h3>设计内容</h3> 
-          <p>为各部分区域设计统一样式；全局取消元素内外编剧，按box尺寸计算</p> 
+          <p>为各部分区域设计统一样式；全局取消元素内外编剧,按box尺寸计算</p> 
             <h4>需求0</h4>
-            <p>基于当前HTML代码，弹性栅格布局页面，header/fooder占一行；main中sidebar最小宽度200px;
-                article占剩余全部。行中间空间不足元素不换行，由响应式布局决定小尺寸显示效果</p>
+            <p>基于当前HTML代码,弹性栅格布局页面,header/fooder占一行；main中sidebar最小宽度200px;
+                article占剩余全部。行中间空间不足元素不换行,由响应式布局决定小尺寸显示效果</p>
             <h4>上导航+1</h4>
-            <p>基于弹性布局，为header中的上导航添加背景色/悬浮字体等样式，且将logout推至最右侧</p>
+            <p>基于弹性布局,为header中的上导航添加背景色/悬浮字体等样式,且将logout推至最右侧</p>
             <h4>左侧边栏+1</h4>
-            <p>为左侧边栏添加样式，添加背景色字体色/悬浮等等样式</p>   
+            <p>为左侧边栏添加样式,添加背景色字体色/悬浮等等样式</p>   
         </div>
     </div>
 
@@ -70,6 +69,13 @@
         </a>
     </div>
 </div>
+
+<!-- proplem:
+1.导航处,.header a:hover,无法直接让li里面的a鼠标悬停变色；.header .Navigation a:hover 可以。
+2.侧边栏处,做不出手风车式,无法把第二个管理推下去。而且必须将第一个label收起才能让第二个显示。
+3.侧边栏和内容区域是否为同级大盒子？(此时我将它们弄为一个大盒子是因为,侧边栏在点击某选项,内容区域会弹出选项对应的内容)
+4.栅格的响应式布局？bootstrap？还是说用flex来分配盒子的占比？ -->
+
 
 </body>
 </html>

@@ -82,6 +82,7 @@ padding-left: 58px;
  padding: 13px;
  background-color:#ffee99; 
  display:flex;
+ position: relative;
  border-style:solid;
  border-width: 1px;
  border-color:#efbb49;
@@ -93,6 +94,7 @@ padding-left: 58px;
     height: 485px;
     padding: 13px;  
     color: #4e4e4b;
+    position: relative;
     border-style:solid;
     border-width: 1px;
     border-color:#efbb49;
@@ -107,21 +109,22 @@ label{
      background-color:#f1f1f1;
      padding-left: 24px;
      font-size: 18px;
-     cursor: pointer;
+     cursor: pointer; /*光标为一只手*/
 }
 label:hover{
     background-color: #3184bf;
     font-size: 30px;
     color: #fffeff; 
 }
-label:hover::after{
-    background-color: #3184bf;
-    font-size: 30px;
-    color: #fffeff; 
-}
+
 #yun-manage{
     display: none;
 }
+/*在CSS中,给一个ID选择器加上 display: none; 属性意味着指定该ID所对应的HTML元素不应该在页面上显示,
+并且这个元素将会从文档流中移除。这意味着该元素不仅本身变得不可见,而且它原本占用的空间也会被释放,
+就好像它根本不存在于页面布局中一样。其他元素会无视这个元素的存在而重新排列,就像它被删除了一样。此外,被 display: none; 
+隐藏的元素也不会被屏幕阅读器等辅助技术读取,因此这对于完全隐藏某些内容非常有用,同时不影响网站的可访问性。*/
+
 #yun-manage:checked ~ ul{
    left: 276px;
 }
@@ -217,7 +220,7 @@ label:hover::after{
 .ahover{
     display: none; /* 默认隐藏文字 */
     position: absolute; /* 设置为绝对定位 */
-    top: 100%; /* 将文字定位在链接下方，可以根据需要调整 */
+    top: 100%; /* 将文字定位在链接下方,可以根据需要调整 */
     left: 0;
     background-color: #ffffff; 
     color: #413f3f; 
