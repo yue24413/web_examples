@@ -11,12 +11,11 @@
 .wrapper{
     width: 982px;   
     margin: 0 auto;
+    padding-top: 10px;
+    background: #000;
+    height: 100vh;
 }
-.test1{
-    width: 982px;
-    height: 670px;
-    padding-top: 30px;
-}
+
 /*header区域 包括logo 导航 搜索功能等*/
 .header{
  /*从设计图可以看出header区域有导航和logout
