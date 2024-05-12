@@ -14,10 +14,10 @@
 
 /*整体版心剧中*/
 .wrapper{
-    width: 982px;   
+    max-width: 982px;   
     margin: 0 auto;
     padding-top: 10px;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 /*header区域 包括logo 导航 搜索功能等*/
@@ -55,7 +55,7 @@
     /* padding-right: 30px; */
     line-height: 58px;/*与高保持一致->字居中*/
     text-decoration: none; /*取消下划线*/
-    font-size: 20px;
+    font-size: 1.5vw;
     color: #ffffff;
 }
 
@@ -107,7 +107,6 @@
 隐藏的元素也不会被屏幕阅读器等辅助技术读取,因此这对于完全隐藏某些内容非常有用,同时不影响网站的可访问性。*/
 
 .content .sidebar ul{
-    position: fixed;
     display: block;
     width: 20.5%;
     position: absolute;
@@ -116,15 +115,14 @@
 .content .sidebar ul li{
     height: 51px; 
     line-height: 60px;
-    font-size: 20px; 
+    font-size: 1.5vw; /*30px*/
      background-color:#f1f1f1;
      display: block;
-     width: 100%;
      padding-left: 24px;
     list-style: none; 
 } 
 .content .sidebar ul .manage{
-    font-size: 30px;
+    font-size: 2vw;/*30px*/
     background-color: #3184bf;
    color: #ffffff; 
 }
@@ -150,7 +148,7 @@
 
 /*文本区域*/
 .content .text{
-    width: 720px;
+    width: 76.18%;
     height: 337px;  
     border-radius: 8px;
     color: #000;
@@ -162,24 +160,24 @@
     border-radius: 8px;   
 }
 .content .text h3{
-    font-size: 36px;
+    font-size: 2.2vw;/*36px*/
     font-weight: 700;
 }
 .content .text h4{
-    font-size: 20px;
+    font-size: 1.5vw;/*20px*/
     font-weight: 700;
 }
 .content .text p{
-    font-size: 18px;
+    font-size: 1.3vw;/*18px*/
     font-weight: 400;
 }
 
 /*底部*/
 .bottom{
-    width: 982px;
+    width: 100%;
     height: 72px;
     background-color:#ffee99;
-    font-size: 18px; 
+    font-size: 1.3vw;/*18px*/
     display: flex; 
     flex-direction:column; /*主轴方向换为竖直*/
     justify-content: center; /*竖直方向垂直*/
