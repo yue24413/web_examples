@@ -29,6 +29,7 @@
     height: 84px;
     text-align: center;
     background-color:#ffee99;
+    font-size: 1.2rem;
     padding: 13px;
     border-style:solid;
     border-width: 1px;
@@ -55,7 +56,6 @@
     /* padding-right: 30px; */
     line-height: 58px;/*与高保持一致->字居中*/
     text-decoration: none; /*取消下划线*/
-    font-size: 1.5vw;
     color: #ffffff;
 }
 
@@ -115,19 +115,19 @@
 .content .sidebar ul li{
     height: 51px; 
     line-height: 60px;
-    font-size: 1.5vw; /*30px*/
      background-color:#f1f1f1;
+     font-size: 1.2rem;
      display: block;
      padding-left: 24px;
     list-style: none; 
 } 
 .content .sidebar ul .manage{
-    font-size: 2vw;/*30px*/
     background-color: #3184bf;
    color: #ffffff; 
 }
 .content .sidebar ul .manage a{
-    color: #ffffff;   
+    color: #ffffff;
+    font-size: 1.1rem;
 }
 
 .content .sidebar ul li a{
@@ -153,23 +153,14 @@
     border-radius: 8px;
     color: #000;
     padding-top: 20px;
-    padding-left: 18px;
+    padding: 18px;
     border-style:solid;
     border-width: 1px;
     border-color:#efbb49;
     border-radius: 8px;   
 }
-.content .text h3{
-    font-size: 2.2vw;/*36px*/
-    font-weight: 700;
-}
-.content .text h4{
-    font-size: 1.5vw;/*20px*/
-    font-weight: 700;
-}
 .content .text p{
-    font-size: 1.3vw;/*18px*/
-    font-weight: 400;
+    font-size: 1.2rem;
 }
 
 /*底部*/
@@ -177,7 +168,6 @@
     width: 100%;
     height: 72px;
     background-color:#ffee99;
-    font-size: 1.3vw;/*18px*/
     display: flex; 
     flex-direction:column; /*主轴方向换为竖直*/
     justify-content: center; /*竖直方向垂直*/
@@ -190,31 +180,7 @@
 }
 .bottom a{  
     color: #000;
-    text-decoration: none;    
-}
-
-
-
-
-
-.link_hover {
-    position: relative; /* 使a成为一个相对定位的容器 */
-    text-decoration: none; /* 移除默认的下划线 */
-}
-.ahover{
-    display: none; /* 默认隐藏文字 */
-    position: absolute; /* 设置为绝对定位 */
-    top: 100%; /* 将文字定位在链接下方,可以根据需要调整 */
-    left: 0;
-    background-color: #ffffff; 
-    color: #413f3f; 
-    padding: 5px 10px; /* 内边距 */
-    white-space: nowrap; /* 防止换行 */
-}
-
-.link_hover:hover .ahover{
-    display: block; /* 鼠标悬停时显示 */
-    opacity: 1; /* 变为完全不透明 */
+    text-decoration: none;  
 }
     </style>  
 </head>
@@ -242,7 +208,7 @@
             <!-- 侧边栏做成手风车式 --> 
             <div class="yun-manage">            
                 <ul >
-                    <li class="manage"><a href="#">云技术管理</a></li>                
+                    <li class="manage"><a href="#"><h2>云技术管理</h2></a></li>                
                     <li><a href="#">云服务器</a></li>
                     <li><a href="#">云数据库</a></li>
                     <li><a href="#">负载均衡</a></li>
@@ -250,7 +216,7 @@
              </div>
              <div class="an-manage">
                 <ul>  
-                    <li  class="manage"><a href="#">安全管理</a></li>
+                    <li  class="manage"><a href="#"><h2>安全管理</h2></a></li>
                     <li><a href="#">云盾控制台</a></li>
                     <li><a href="#">DDoS高仿IP</a></li>
                     <li><a href="#">Web应用防火墙</a></li>
@@ -259,14 +225,14 @@
             </div>
         </div>
         <div class="text">
-          <h3>设计内容</h3> 
+          <h1>设计内容</h1> 
           <p>为各部分区域设计统一样式；全局取消元素内外编剧,按box尺寸计算</p> 
-            <h4>需求0</h4>
+            <h3>需求0</h3>
             <p>基于当前HTML代码,弹性栅格布局页面,header/fooder占一行；main中sidebar最小宽度200px;
-                article占剩余全部。行中间空间不足元素不换行,由响应式布局决定小尺寸显示效果</p>
-            <h4>上导航+1</h4>
-            <p>基于弹性布局,为header中的上导航添加背景色/悬浮字体等样式,且将logout推至最右侧</p>
-            <h4>左侧边栏+1</h4>
+                article占剩余全部。行中间空间不足元素不换行，由响应式布局决定小尺寸显示效果</p>
+            <h3>上导航+1</h3>
+            <p>基于弹性布局，为header中的上导航添加背景色/悬浮字体等样式，且将logout推至最右侧</p>
+            <h3>左侧边栏+1</h3>
             <p>为左侧边栏添加样式,添加背景色字体色/悬浮等等样式</p>   
         </div>
     </div>
