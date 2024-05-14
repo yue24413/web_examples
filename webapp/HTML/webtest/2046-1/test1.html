@@ -19,22 +19,29 @@
     padding-top: 10px;
     min-height: 100vh;
 }
-
+.header,.content,.foot,.sidebar,.text{    
+    background-color:#ffee99;
+    width: 100%;
+    border-style:solid;
+    border-width: 1px;
+    border-color:#efbb49;
+    border-radius: 8px; 
+}
+a{
+    text-decoration: none; /*取消下划线*/ 
+    display: block;
+    width: 100%;
+    height: 100%; 
+}
 /*header区域 包括logo 导航 搜索功能等*/
 .header{
  /*从设计图可以看出header区域有导航和logout
  wigth=982,hight=58+13*2=84*/ 
 /*内边距统一算13px*/
-    width: 100%;
     height: 84px;
     text-align: center;
-    background-color:#ffee99;
     font-size: 1.2rem;
     padding: 13px;
-    border-style:solid;
-    border-width: 1px;
-    border-color:#efbb49;
-    border-radius: 8px;
 }
 /*导航*/
 .header .Navigation{
@@ -46,7 +53,6 @@
     height: 58px;
     line-height: 58px;
 }
-
 .header .Navigation ul li{
     list-style: none;
     display: inline-block;
@@ -55,10 +61,8 @@
 .header .Navigation ul li a{
     /* padding-right: 30px; */
     line-height: 58px;/*与高保持一致->字居中*/
-    text-decoration: none; /*取消下划线*/
     color: #ffffff;
 }
-
 .header .Navigation a:hover{
     color: #0c59b0;
     text-decoration:underline;
@@ -67,16 +71,13 @@
 /*侧边栏及其内容区域*/
 /*w:982  h:510*/
 .content{
- width: 100%;
  height: 510px;
  padding: 13px;
  background-color:#ffee99; 
  display:flex;
  position: relative;
  border-style:solid;
- border-width: 1px;
- border-color:#efbb49;
- border-radius: 8px;  
+ border-width: 1px; 
 }
 /*侧边栏*/
 .content .sidebar{
@@ -84,104 +85,74 @@
     height: 485px;
     padding: 13px;  
     color: #4e4e4b;
-    border-style:solid;
-    border-width: 1px;
-    border-color:#efbb49;
-    border-radius: 8px;
-    display: flex;
-    flex-direction:column; /*主轴方向换为竖直*/
-
-
-}
-.content .sidebar .yun-manage{
-    width: 100%;
-    height: 44.6%;
-}
-.content .sidebar .yan-manage{
-    width: 100%;
-    height: 55%;
 }
 /*在CSS中,给一个ID选择器加上 display: none; 属性意味着指定该ID所对应的HTML元素不应该在页面上显示,
 并且这个元素将会从文档流中移除。这意味着该元素不仅本身变得不可见,而且它原本占用的空间也会被释放,
 就好像它根本不存在于页面布局中一样。其他元素会无视这个元素的存在而重新排列,就像它被删除了一样。此外,被 display: none; 
 隐藏的元素也不会被屏幕阅读器等辅助技术读取,因此这对于完全隐藏某些内容非常有用,同时不影响网站的可访问性。*/
 
-.content .sidebar ul{
-    display: block;
-    width: 20.5%;
-    position: absolute;
-
+.content .sidebar .manage{
+    width: 100%;
+    height: 100%;
+    background-color:#f1f1f1;
 }
-.content .sidebar ul li{
-    height: 51px; 
-    line-height: 60px;
-     background-color:#f1f1f1;
-     font-size: 1.2rem;
-     display: block;
-     padding-left: 24px;
-    list-style: none; 
+.content .sidebar .manage h2 a{
+ color: #ffffff;
+ background-color: #3184bf;
+ padding: 10px 20px;
+}
+.content .sidebar .manage ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction:column; /*主轴方向换为竖直*/
+}
+.content .sidebar .manage ul li{
+    font-size: 1.2rem;
+    list-style: none;
 } 
-.content .sidebar ul .manage{
-    background-color: #3184bf;
-   color: #ffffff; 
-}
-.content .sidebar ul .manage a{
-    color: #ffffff;
-    font-size: 1.1rem;
-}
 
-.content .sidebar ul li a{
-    text-decoration: none; /*取消下划线*/    
+.content .sidebar .manage ul li a{   
+
     color: #4e4e4b;
+    padding: 12.5px 20px;
     transition: transform 0.4s;
 }
-.content .sidebar ul li:hover{
+.content .sidebar .manage ul li a:hover{
     background-color: #3184bf;
     transform: scale(1.05);
     border-radius: 3px;
 }
-.content .sidebar ul .manage:hover{
-    transform: scale(1.0);
-    border-radius: 0px;
-}
+
 
 
 /*文本区域*/
 .content .text{
     width: 76.18%;
     height: 337px;  
-    border-radius: 8px;
     color: #000;
-    padding-top: 20px;
-    padding: 18px;
-    border-style:solid;
-    border-width: 1px;
-    border-color:#efbb49;
-    border-radius: 8px;   
+    padding: 0.5rem 1.2rem;  
+}
+.content .text h1{
+    padding-bottom: 0.5rem;
 }
 .content .text p{
     font-size: 1.2rem;
+    padding-bottom: 0.2rem;
 }
 
 /*底部*/
-.bottom{
-    width: 100%;
+.foot{
     height: 72px;
-    background-color:#ffee99;
-    display: flex; 
-    flex-direction:column; /*主轴方向换为竖直*/
-    justify-content: center; /*竖直方向垂直*/
-    align-items: center;/*水平方向垂直*/
-    border-style:solid;
-    border-width: 1px;
-    border-color:#efbb49;
-    border-radius: 8px; 
-
+    text-align: center;
+    padding-top: 0.8rem;
 }
-.bottom a{  
+.foot a{ 
+    display: inline;
     color: #000;
     text-decoration: none;  
 }
+
     </style>  
 </head>
 <body>
@@ -206,17 +177,15 @@
     <div class="content">
         <div class="sidebar">
             <!-- 侧边栏做成手风车式 --> 
-            <div class="yun-manage">            
-                <ul >
-                    <li class="manage"><a href="#"><h2>云技术管理</h2></a></li>                
+            <div class="manage">  
+                <h2><a href="#">云技术管理</a></h2>        
+                <ul>               
                     <li><a href="#">云服务器</a></li>
                     <li><a href="#">云数据库</a></li>
                     <li><a href="#">负载均衡</a></li>
                 </ul>
-             </div>
-             <div class="an-manage">
+                <h2><a href="#">安全管理</a></h2>
                 <ul>  
-                    <li  class="manage"><a href="#"><h2>安全管理</h2></a></li>
                     <li><a href="#">云盾控制台</a></li>
                     <li><a href="#">DDoS高仿IP</a></li>
                     <li><a href="#">Web应用防火墙</a></li>
@@ -238,10 +207,10 @@
     </div>
 
     <!-- 底部 -->
-    <div class="bottom">
+    <div class="foot">
         <a href="https://ccec.nefu.edu.cn/x_zy_b/rjgc.htm" target="_blank" class="link_hover" title="跳转到东北林业大学软件工程专业">
             东北林业大学 
-        </a>
+        </a> <br>      
         <a href="https://ccec.nefu.edu.cn/x_zy_b/rjgc.htm" target="_blank" class="link_hover" title="跳转到东北林业大学软件工程专业">
             软件工程专业2046 <img src="./bottom1.png" alt="  ">
         </a>
