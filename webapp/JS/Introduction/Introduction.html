@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>introduce</title>
+</head>
+<style>
+    .example1,.example2{
+        margin: 50px;
+        font-size: 1.5rem;
+        line-height: 3rem;
+        background-color: #eeeeee;
+    }
+</style>
+<body>
+    <div class="example1">
+    <h2>JavaScript in Body</h2>
+    <p id="demo">A Paragraph.</p>
+    <button type="button" onclick="myFunction()">Try it</button>
+</div> 
+<div class="example2">
+    1.组成：ECMAScript + Web APIS(DOM+BOM);JS语言基础+页面文档对象类型+浏览器对象类型 <br>
+    2.书写位置：<br>
+    内部，写在body最底部；<br>
+    外部，body最底部用script引入；&lt;script urc='my.js'>&lt;/script> <br>
+    内联，与CSS行内相似，&lt;button onlick="alert ('aaa')">click me!&lt;/button> <br>
+
+    
+</div> 
+    <script>
+        function myFunction(){
+            document.getElementById("demo").innerHTML="Paragraph changed" /*.innerHTML用来改变找到的元素内部的HTML内容*/
+        }
+    </script>
+</body>
+</html>
