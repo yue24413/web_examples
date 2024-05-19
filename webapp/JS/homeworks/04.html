@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- 布局
+声明根容器
+声明弹性行容器
+声明左导航，右侧主区域
+导航项中，声明可点击的超链接，超链接内容为分别声明的图标与span文本容器
+右主区域
+
+样式
+引入Google Material Icon
+全局/container/row
+左导航容器，声明最小宽度180px
+项的超链接撑开，确定颜色等基本属性
+超链接内的图标/文本，通过vertical-align居中对齐
+悬浮时改变背景色
+当小于600px时，更改导航区最小宽度为60px，将超链接中的文本取消显式，即仅显示图标 -->
+    <style>
+
+*{
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.container{
+    max-width:1200px ;
+    background-color: skyblue;
+
+}
+.row{
+background-color: pink;
+display: flex;
+vertical-align:middle;
+
+}
+.nav-left{
+background-color: gray;
+min-width: 180px;
+
+}
+.nav-left a{
+    padding: 1rem;
+}
+.nav-left-badges{
+color: black;
+    background-color:white;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-size: 32px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction:ltr;
+}
+i{
+    font-style: normal;
+
+}
+.nav-text{
+background-color: violet;
+
+}
+
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="nav-left">
+                <a href="" class="nav-left-badges nav-text">
+                    <i>home</i>
+                </a>
+                <a href="" class="nav-left-badges nav-text">
+                    <i>phone_iphone</i>
+                </a>
+                <a href="" class="nav-left-badges nav-text">
+                    <i>watch</i>
+                </a>
+                <a href="" class="nav-left-badges nav-text">
+                    <i>laptop</i>
+                </a>
+                <a href="" class="nav-left-badges nav-text">
+                    <i>tv</i>
+                </a>
+            </div>
+            <div class="main-right">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

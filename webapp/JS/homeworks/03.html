@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badges布局</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <!-- 
+布局
+badge整体容器，包含：badge-content容器，badge-wrapper容器
+badge-content容器，内容为图标
+badge-wrapper容器，内容为数字
+样式
+引入Google Material Icon
+badge-content容器中图标，声明合适颜色尺寸等
+badge-wrapper容器，定位在badge整体容器右上角；背景色/字体色/字体尺寸
+badge-wrapper容器如何变成圆形？数字叠加在图标上，有一圈白色空间？ -->   
+    <style>
+*{
+    width: 100%;
+    margin: 0 auto;
+}
+.badge{
+    width: 800px;
+
+    background-color: skyblue;
+    display: flex;
+    position: relative;
+}
+
+.badge-content{
+    color: #6bdffe;
+    background-color:white;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 60px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction:rtl;
+
+}
+i{
+    font-style: normal;
+}
+.badge-wrapper{
+    color: white;
+   background-color:red; 
+   border: 6px solid white;
+   height: 24px;
+   line-height: 24px;
+   text-align: center;
+   width: 24px;
+   border-radius: 50%;
+   position: absolute;
+   right: 0;
+}
+
+    </style>
+</head>
+<body>
+
+
+<div class="badge">
+    <div class="badge-content">
+        <!--一个bug_report图标，大小为36px，在深色背景下使用-->  
+        <i>bug_report</i>
+    </div>
+    <div class="badge-wrapper">
+        12
+    </div>
+</div>
+    
+</body>
+</html>

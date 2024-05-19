@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form表单布局</title>
+<style>
+*{
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+form{
+    margin: 1rem;
+}
+.form-group{  
+    display: flex;
+    padding-bottom: 1rem;
+}
+.form-label{
+    display: block;
+    flex: 20%; 
+    text-align: right;
+    padding: 0.5rem 0;
+}  
+.form-input{
+    flex: 80%;
+}
+.text .form-input{
+    height: 2.5rem;
+    border-top:3px solid #8c8c8c;
+    border-left: 3px solid #8c8c8c;
+    border-bottom:2px solid #dddddd;
+    border-right: 2px solid #dddddd;
+    border-radius: 5px;
+ }
+ .radio .form-input{
+padding: 0.5rem;
+ }
+
+
+</style>
+</head>
+<body>
+    <form>
+    <div class="text">
+    <div class="form-group">       
+        <label class="form-label" for="username">用户名 &nbsp;</label>
+        <input type="text" class="form-input" id="username" required>      
+    </div> 
+    <div class="form-group">        
+        <label class="form-label" for="passwordcode">密码 &nbsp; </label>
+        <input type="password" class="form-input" id="passwordcode" required>
+    </div> 
+    </div>  
+    <div class="radio"> 
+    <div class="form-group">
+        <span class="form-label">性别 &nbsp;</span>
+        <div class="form-input">
+            <label><input type="radio" name="gender" >男</label>
+            <label><input type="radio" name="gender" >女</label>
+        </div>
+    </div>        
+    </div>
+ </form>       
+</body>
+</html>
