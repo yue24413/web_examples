@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>选择课程后，传递ID值，从JS数组中过滤出对象，显示在下面</p>
+        <select name="course" onchange="loopFilter(this.value)">
+        <option></option>
+        <option value="1">Java</option>
+        <option value="2">Web</option>
+        <option value="3">Python</option>
+       </select> 
+      <br>
+    <span id="teacherName"></span>   
+    </div>
+<br><br>
+    <div>
+        <form>
+            <input type="text" id="inputBox" onkeyup="upperCase(this)">
+        </form>
+    </div>
+
+
+    <script>
+    let loopFilter=(id)=>{
+    let courses=
+[
+  { id: 1, courseName: "Java", teacherName: "BO" },
+  { id: 2, courseName: "Web", teacherName: "SUN" },
+  { id: 3, courseName: "Python", teacherName: "ZHANG" }
+]
+let course=courses.find(c => c.id==id)
+document.getElementById("teacherName").innerHTML=
+    course !=null? `teachername:${course.teacherName}`:"";
+
+}
+
+let timer;
+let upperCase =(input)=>{   
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+        const inputBox =document.getElementById('inputBox');
+        inputBox.value=inputBox.value.toUpperCase();
+    },2000)
+}
+    </script>
+</body>
+</html>
