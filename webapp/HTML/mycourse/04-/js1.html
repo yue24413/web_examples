@@ -20,19 +20,19 @@
 <br><br>
     <div>
         <form>
-            <input type="text" id="inputBox" onkeyup="upperCase(this)">
+            <input type="text"  onkeyup="upperCase(this)" onkeydown="upperCase(this)"   style="width: 100%;">
         </form>
     </div>
 
 
     <script>
-    let loopFilter=(id)=>{
-    let courses=
+let courses=
 [
   { id: 1, courseName: "Java", teacherName: "BO" },
   { id: 2, courseName: "Web", teacherName: "SUN" },
   { id: 3, courseName: "Python", teacherName: "ZHANG" }
 ]
+let loopFilter=(id)=>{
 let course=courses.find(c => c.id==id)
 document.getElementById("teacherName").innerHTML=
     course !=null? `teachername:${course.teacherName}`:"";
@@ -43,8 +43,7 @@ let timer;
 let upperCase =(input)=>{   
     clearTimeout(timer);
     timer = setTimeout(function(){
-        const inputBox =document.getElementById('inputBox');
-        inputBox.value=inputBox.value.toUpperCase();
+        input.value=input.value.toUpperCase();
     },2000)
 }
     </script>
