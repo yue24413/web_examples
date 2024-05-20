@@ -48,7 +48,7 @@
     <h2>模板字符串</h2>
     <div class="example">     
          let age = 18 <br>
-         document.write('我今年${age}岁了') <br>         
+         document.write(`我今年${age}岁了`) <br>         
     </div>
     <h2>类型转换</h2>
     <div class="example">
@@ -65,5 +65,84 @@
             <li></li>
         </ul>
     </div>
+<hr>
+<br>
+    <div id="arrays">
+        hahahah
+    </div>
+    <div>
+        <button type="button" onclick="changebox()">
+        text改checkbox</button> <br>
+        输入框：<input type="text" name="username">   
+    </div>
+    <hr>
+<br>
+    <div>
+        <form id="register">
+            <label>
+                <input type="checkbox" onchange="checkAgree(this)">
+                已阅读条款</label> <br>
+                <button type="submit" disabled>提交</button>
+        </form>
+    </div>
+    <hr>
+    <br>
+    <div class="nav">
+        <button type="button" onclick="changeColor()">
+        点击随机颜色</button>
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    </div>
+    <hr>
+    <br>
+    <div>
+        <p>选择课程后，传递ID值，从JS数组中过滤出对象，显示在下面</p>
+        <select name="course" onchange="loopFilter(this.value)">
+        <option></option>
+        <option value="1">Java</option>
+        <option value="2">C++</option>
+       </select> 
+      <br>
+    <span id="teacherName"></span>   
+    </div>
+ <hr>
+    <script>
+        let num=""
+        for (let index = 0; index < 5; index++) {
+            num+=`The number is ${index} <br>`       
+        }
+        document.getElementById("arrays").innerHTML=num
+
+let changebox= () => {
+  let input=document.querySelector("input[name=username]")
+        input.type = input.type === "text"? "checkbox":"text"  
+}
+let checkAgree=(c)=>{
+    let submitButton = document.querySelector("#register button[type=submit]");
+    submitButton.disabled = !c.checked;
+}
+
+let changeColor =()=>{
+    let ps=document.querySelectorAll("div.nav>p")
+    let r=Math.round(Math.random() *255)
+    let g=Math.round(Math.random() *255)
+    let b=Math.round(Math.random() *255)
+    ps.forEach(p =>{
+        p.style.color=`rgb(${r}, ${g}, ${b})`
+    })
+}
+  
+let loopFilter=(id)=>{
+let courses=[
+   { id:1, name:"Java",teacher:"Bo"},
+   { id:2, name:"C++",teacher:"Sun"}
+]
+let course=courses.find(c => c.id==id)
+document.getElementById("teacherName").innerHTML=
+    course !=null? `teachername:${course.teacher}`:"";
+
+}
+    </script>
+
 </body>
 </html>
