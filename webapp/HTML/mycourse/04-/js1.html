@@ -26,13 +26,13 @@
 
 
     <script>
-let courses=
+const courses=
 [
   { id: 1, courseName: "Java", teacherName: "BO" },
   { id: 2, courseName: "Web", teacherName: "SUN" },
   { id: 3, courseName: "Python", teacherName: "ZHANG" }
 ]
-let loopFilter=(id)=>{
+const loopFilter=(id)=>{
 let course=courses.find(c => c.id==id)
 document.getElementById("teacherName").innerHTML=
     course !=null? `teachername:${course.teacherName}`:"";
@@ -40,7 +40,7 @@ document.getElementById("teacherName").innerHTML=
 }
 
 let timer;
-let upperCase =(input)=>{   
+const upperCase =(input)=>{   
     clearTimeout(timer);
     timer = setTimeout(function(){
         input.value=input.value.toUpperCase();
