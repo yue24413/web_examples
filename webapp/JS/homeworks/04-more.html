@@ -21,7 +21,6 @@
 悬浮时改变背景色
 当小于600px时，更改导航区最小宽度为60px，将超链接中的文本取消显式，即仅显示图标 -->
     <style>
-
 *{
     padding:0;
     margin: 0;
@@ -36,13 +35,12 @@ display: flex;
 }
 .nav-left{
 min-width: 180px;
-transition: width 0.5s ease;
 }
-
 .nav-left>ul>li>a:hover .nav-left-badges{
     color: red;
 }
 .nav-left>ul{
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -50,7 +48,6 @@ transition: width 0.5s ease;
 }
 .nav-left>ul li{
     list-style: none;
-    display: inline;
 }
 
 .nav-left ul a{
@@ -83,15 +80,18 @@ i{
     .nav-left{
         min-width: 60px;
         position: relative;
-        transition: all 0.5s ease;
     } 
-    .nav-left>ul{
+    .nav-left ul{
+        min-width: 60px;
+        position: absolute;
         background-color: orange;
+        transition: all 0.5s ease;
     }
     .nav-left>ul li a>span {
        position: absolute;
        visibility: hidden;
     } 
+    /*一开始transition没有实现原因：ul初始width没有设置*/
     .nav-left:hover ul{
         width:120px;
         position: absolute;
