@@ -19,7 +19,7 @@
     </div><br><br>
     <div>
         <form>
-            <input type="text"  id="input2sCase" onkeydown="startTimer()" onkeyup="startTimer()" style="width: 100%;">
+            <input type="text"  id="input2sCase" onkeydown="startTimer()" onkeyup="input2s()" style="width: 100%;">
         </form>
     </div>
     <script>
@@ -35,19 +35,17 @@ let course=courses.find(c => c.id==id)
 teacherNameE.innerHTML=course != null? `teachername:${course.teacherName}`:"";
 }
 ///////
+let timer;
 const myInput = document.getElementById('input2sCase');
-const input2s=(input)=>{
-//转为大写的方法,开始时间重置操作方法,keydown/keyup 触发定时器清除操作和开始计时   
-    let timer;
-    const toUpper=()=>{
-        input.value=input.value.toUpperCase();
-    }
-    const startTimer=()=>{
+const startTimer=()=>{
         clearTimeout(timer);
-        timer=setTimeout(toUpper,2000)
     }
+const input2s=()=>{
+    timer=setTimeout(()=>{
+        const myInput = document.getElementById('input2sCase');
+        myInput.value=myInput.value.toUpperCase();
+    },2000)
 }
-input2s(myInput);
     </script>
 </body>
 </html>
