@@ -19,7 +19,7 @@
     </div><br><br>
     <div>
         <form>
-            <input type="text"  id="input2sCase" style="width: 100%;">
+            <input type="text"  id="input2sCase" onkeydown="startTimer()" onkeyup="startTimer()" style="width: 100%;">
         </form>
     </div>
     <script>
@@ -46,8 +46,6 @@ const input2s=(input)=>{
         clearTimeout(timer);
         timer=setTimeout(toUpper,2000)
     }
-    input.addEventListener('keydown', startTimer);
-    input.addEventListener('keyup', startTimer);
 }
 input2s(myInput);
     </script>

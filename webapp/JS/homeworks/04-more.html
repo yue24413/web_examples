@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>04</title>
+    <title>04-more</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!-- 布局
 声明根容器
@@ -36,8 +36,9 @@ display: flex;
 }
 .nav-left{
 min-width: 180px;
-
+transition: width 0.5s ease;
 }
+
 .nav-left>ul>li>a:hover .nav-left-badges{
     color: red;
 }
@@ -51,19 +52,20 @@ min-width: 180px;
     list-style: none;
     display: inline;
 }
+
 .nav-left ul a{
     display:block;
-    padding:0.5rem 0;
+    padding:0.6rem 0;
     text-decoration: none;
     color: black;
-    vertical-align:middle;
+
 }
 .nav-left-badges{
     color: black;
     font-family: 'Material Icons';
     font-weight: normal;
     padding: 0rem 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     letter-spacing: normal;
     text-transform: none;
     white-space: nowrap;
@@ -74,18 +76,34 @@ i{
     font-style: normal;
 }
 .nav-left>ul li>a>span{
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 /* 当小于600px时，更改导航区最小宽度为60px，将超链接中的文本取消显式，即仅显示图标 */
 @media screen and (max-width: 599px) {
-    .nav-left {
+    .nav-left{
         min-width: 60px;
+        position: relative;
+        transition: all 0.5s ease;
+    } 
+    .nav-left>ul{
+        background-color: orange;
     }
-    .nav-left>ul li a span {
-        /* 隐藏span标签内容，可以使用display:none;或者visibility:hidden; */
-        display: none;
+    .nav-left>ul li a>span {
+       position: absolute;
+       visibility: hidden;
+    } 
+    .nav-left:hover ul{
+        width:120px;
+        position: absolute;
     }
+    .nav-left ul li:hover {
+        background-color: white;
+    }
+    .nav-left>ul:hover li a>span{
+        visibility: visible; /* 显示span标签内容 */
+    }   
 }
+
 
     </style>
 
@@ -104,13 +122,13 @@ i{
                 <li>
                     <a href="">
                         <i class="nav-left-badges">phone_iphone</i>
-                        <span></span>
+                        <span>phone</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
                         <i  class="nav-left-badges">watch</i>
-                        <span></span>
+                        <span>watch</span>
                     </a>
                 </li>
                 <li>
