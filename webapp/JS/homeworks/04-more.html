@@ -43,47 +43,27 @@ min-width: 180px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-
-}
-.nav-left>ul li{
     list-style: none;
 }
-
 .nav-left ul a{
     display:block;
     padding:0.6rem 0;
     text-decoration: none;
     color: black;
-
+    font-size: 1.2rem;
 }
 .nav-left-badges{
-    color: black;
     font-family: 'Material Icons';
-    font-weight: normal;
     padding: 0rem 1rem;
-    font-size: 1.2rem;
-    letter-spacing: normal;
-    text-transform: none;
-    white-space: nowrap;
     word-wrap: normal;
-    direction:ltr;
-}
-i{
     font-style: normal;
 }
-.nav-left>ul li>a>span{
-    font-size: 1.2rem;
-}
-/* 当小于600px时，更改导航区最小宽度为60px，将超链接中的文本取消显式，即仅显示图标 */
 @media screen and (max-width: 599px) {
     .nav-left{
         min-width: 60px;
         position: relative;
     } 
     .nav-left ul{
-        min-width: 60px;
-        position: absolute;
         background-color: orange;
         transition: all 0.5s ease;
     }
@@ -91,10 +71,8 @@ i{
        position: absolute;
        visibility: hidden;
     } 
-    /*一开始transition没有实现原因：ul初始width没有设置*/
     .nav-left:hover ul{
         width:120px;
-        position: absolute;
     }
     .nav-left ul li:hover {
         background-color: white;
@@ -103,10 +81,7 @@ i{
         visibility: visible; /* 显示span标签内容 */
     }   
 }
-
-
     </style>
-
 </head>
 <body>
     <div class="container">
