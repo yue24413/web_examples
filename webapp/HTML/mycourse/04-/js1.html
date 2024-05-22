@@ -19,7 +19,7 @@
     </div><br><br>
     <div>
         <form>
-            <input type="text"  id="input2sCase" onkeydown="startTimer()" onkeyup="input2s()" style="width: 100%;">
+            <input type="text"  id="timeReference" onkeydown="keyDownResetTimer()" onkeyup="keyupAfterTime()" style="width: 100%;">
         </form>
     </div>
     <script>
@@ -36,13 +36,13 @@ teacherNameE.innerHTML=course != null? `teachername:${course.teacherName}`:"";
 }
 ///////
 let timer;
-const myInput = document.getElementById('input2sCase');
-const startTimer=()=>{
+const myInput = document.getElementById('timeReference');
+const keyDownResetTimer=()=>{
         clearTimeout(timer);
     }
-const input2s=()=>{
+const keyupAfterTime=()=>{
     timer=setTimeout(()=>{
-        const myInput = document.getElementById('input2sCase');
+        const myInput = document.getElementById('timeReference');
         myInput.value=myInput.value.toUpperCase();
     },2000)
 }

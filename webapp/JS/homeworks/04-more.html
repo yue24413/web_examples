@@ -5,21 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>04-more</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<!-- 布局
-声明根容器
-声明弹性行容器
-声明左导航，右侧主区域
-导航项中，声明可点击的超链接，超链接内容为分别声明的图标与span文本容器
-右主区域
-
-样式
-引入Google Material Icon
-全局/container/row
-左导航容器，声明最小宽度180px
-项的超链接撑开，确定颜色等基本属性
-超链接内的图标/文本，通过vertical-align居中对齐
-悬浮时改变背景色
-当小于600px时，更改导航区最小宽度为60px，将超链接中的文本取消显式，即仅显示图标 -->
     <style>
 *{
     padding:0;
@@ -35,6 +20,8 @@ display: flex;
 }
 .nav-left{
 min-width: 180px;
+transition:all 1s ease;
+position: relative;
 }
 .nav-left>ul>li>a:hover .nav-left-badges{
     color: red;
@@ -52,23 +39,24 @@ min-width: 180px;
     color: black;
     font-size: 1.2rem;
 }
+.nav-left>ul span{
+    position: absolute;
+}
 .nav-left-badges{
     font-family: 'Material Icons';
     padding: 0rem 1rem;
-    word-wrap: normal;
     font-style: normal;
 }
 @media screen and (max-width: 599px) {
     .nav-left{
         min-width: 60px;
-        position: relative;
+        transition:all 1s ease;
     } 
     .nav-left ul{
         background-color: orange;
         transition: all 0.5s ease;
     }
     .nav-left>ul li a>span {
-       position: absolute;
        visibility: hidden;
     } 
     .nav-left:hover ul{
@@ -78,7 +66,7 @@ min-width: 180px;
         background-color: white;
     }
     .nav-left>ul:hover li a>span{
-        visibility: visible; /* 显示span标签内容 */
+        visibility: visible;
     }   
 }
     </style>

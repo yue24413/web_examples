@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02</title>
+    <title>02-more</title>
 </head>
 <style>
 *{
@@ -21,7 +21,6 @@
 flex: 1;
 flex-direction: column;
 margin: 0.5rem;
-position: relative;
 display: flex;
 }
 .card-header{
@@ -40,13 +39,11 @@ border-radius: 50%;
     text-align:justify;
     transform: translateY(-50%);
 } 
-
-
 .card-footer{
 position: relative;
 top: -32%;
-display: flex;
 flex: 1;
+display: flex;
 order: 2;
 }
 .card-footer>a{
@@ -68,26 +65,20 @@ order: 2;
 }
 .card-header,.card-footer{
     opacity: 0.5;
+    transition:all 1s ease;
 }
 .card:hover .card-header,
 .card:hover .card-content,
-.card:hover .card-footer {
+.card:hover .card-footer{
     opacity:1;
     transition:all 1s ease;
 }
-.card:hover .card-header{
+.card:hover .card-header,.card:hover .card-footer{
    top: 0%;
-
 }
 .card:hover .card-content{
     transform: translateY(0%);
 }
-.card:hover .card-footer{
-    top: 0%;
-}
-
-
-
 </style>
 <body>
     <div class="container">

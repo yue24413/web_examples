@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .text1>a{
+background-color: red;
+    }
+    .text2{
+display: none;
+    }
+    .text1:hover .text2{
+        display: block;
+        width: 100%;
+        background-color: blue;
+        opacity: 1;
+        transition: opaacity 0.5s ease;
+    }
+</style>
+<body>
+    <div class="text1"><a href="">11111</a></div>
+    <div class="text2">22222</div>
+</body>
+</html>
