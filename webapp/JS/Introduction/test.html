@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    
+<p id="pChange">lorem</p>
+
+
+
+
+    <script>
+        var x=myFuction(4,3);
+        function myFuction(a,b){
+            return a*b;
+        }
+        function toCelsius(fahrenheit){
+            return (5/9)*(fahrenheit-32);
+        }
+        //等效
+        // const toCelsius=(fahrenheit)=>{
+        //     return (5/9)*(fahrenheit-32)
+        // }
+        document.getElementById("pChange").innerHTML=x;
+        document.getElementById("pChange").innerHTML=toCelsius(77);
+        
+        
+        function fetchData(callback) {
+            setTimeout(function() {
+            let data = { message: "Data fetched successfully" };
+            callback(null, data); // 第一个参数通常是错误对象，这里null表示没有错误
+         }, 100);
+        }
+
+        fetchData(function(error, data) {
+        if (error) {
+         console.error('Error:', error);
+        } else {
+        console.log('Result:', data.message);
+         }
+        });
+    
+        function doSomethingAsync(task, callback) {
+    setTimeout(function() {
+        console.log('Task:', task, 'completed');
+        callback(); // 任务完成后调用回调
+    }, 1000);
+}
+
+doSomethingAsync('Download Data', function() {
+    console.log('Callback triggered: Data processing can start now.');
+});
+  
+
+    </script>
+</body>
+</html>
