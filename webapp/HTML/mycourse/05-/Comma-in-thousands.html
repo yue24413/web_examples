@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comma in thousands</title>
+</head>
+<body>
+    
+aaa
+
+
+<script>
+function CommaInThousands1(num) {
+    //法一 ：我将传入的int转成一个字符串，然后按千位前和千位后，分别push到另一个数组变量中，最后用join聚合
+    const str = num.toString();
+    //console.log(str)
+    //console.log(str.length)
+    let arr = [];
+    if(str.length>3)
+    {
+        arr.push(str.substring(str[-1],str[str.length-4]));
+        arr.push(",");
+        arr.push(str.substring(str[str.length-4],str[str.length]));
+    }
+    else
+    {
+        arr.push(str);
+    }
+    return arr.join('');
+}
+
+function CommaInThousands2(num){
+    //法2：传入的如果是int，先转成字符串，再split分割成数组，
+    //用splice(index,num,i1,i2...) ，返回的是被删除元素的新数组，所以要用被修改的原数组，不能再splice方法后.join
+    //最后join回字符串
+    const str = num.toString().split('')
+    str.splice(str.length-3,0,',')
+    return str.join('')
+
+}
+console.log(CommaInThousands1(123456789)); 
+console.log(CommaInThousands2(123456789));
+
+</script>
+</body>
+</html>
