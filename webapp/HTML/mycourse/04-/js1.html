@@ -35,17 +35,20 @@ let course=courses.find(c => c.id==id)
 teacherNameE.innerHTML=course != null? `teachername:${course.teacherName}`:"";
 }
 ///////
-let timer;
-const myInput = document.getElementById('timeReference');
-const keyDownResetTimer=()=>{
-        clearTimeout(timer);
-    }
-const keyupAfterTime=()=>{
-    timer=setTimeout(()=>{
-        const myInput = document.getElementById('timeReference');
-        myInput.value=myInput.value.toUpperCase();
-    },2000)
+const todo =() =>{
+    let timer;
+    const myInput = document.getElementById('timeReference');
+    const keyDownResetTimer=()=>{
+            clearTimeout(timer);
+        }
+    const keyupAfterTime=()=>{
+        timer=setTimeout(()=>{
+            const myInput = document.getElementById('timeReference');
+            myInput.value=myInput.value.toUpperCase();
+        },2000)
+    }    
 }
+
     </script>
 </body>
 </html>

@@ -221,7 +221,7 @@ a{
         </a>
     </div>
 </div>
-<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 // const sideTheme=document.getElementsByClassName("manage");
 // for (index = 0; index < sideTheme.length; index++) {
@@ -230,16 +230,18 @@ a{
 //     })
 // }
 $(function() {
-    $(".manage>h2.yun").click(()=>{    
-    $(".manage ul.an").hide("show"); 
-    $(".manage ul.yun").toggle("show"); 
+    $('.sidebar .manage h2').click(function() {
+    $('.manage ul').slideUp();
+    let $currentUl = $(this).next('ul');
+    // 显示当前点击的 ul
+    if ($currentUl.is(':hidden')) {
+            $currentUl.slideDown();
+        } else {
+            $currentUl.slideUp();
+        }
+    });
+});
 
-});
-    $(".manage>h2.an").click(()=>{
-    $(".manage ul.yun").hide("show"); 
-    $(".manage ul.an").toggle("show"); 
-});
-})
 
     
 </script>

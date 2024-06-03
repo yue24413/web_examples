@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove the same attribute</title>
+</head>
+<body>
+    <script>
+        const objs = [{ id: 9 }, { id: 8 }, { id: 7 }, { id: 7 }, { id: 7 }, { id: 6 }]
+        const uniqueObjs = objs.filter((obj, index) => {
+  return objs.findIndex(o => o.id === obj.id) === index;
+});
+console.log(uniqueObjs);
+    </script>
+</body>
+</html>
