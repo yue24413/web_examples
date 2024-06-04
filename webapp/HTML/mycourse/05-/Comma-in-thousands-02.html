@@ -6,15 +6,21 @@
     <title>Comma in thousands</title>
 </head>
 <body>
-    <p id="pId">88888888</p> 
+    <p id="pId">1234567891</p> 
     <button onclick="CommaInThousandsP()">点击->千位加","</button>
 
 <script>
     const CommaInThousandsP = () => {
-        let pNumber = document.getElementById('pId').innerText.toString().split('')
-        if(pNumber.length > 3  && pNumber[pNumber.length-4] !== ',')
-            pNumber.splice(pNumber.length-3,0,',') 
-        document.getElementById('pId').innerText=pNumber.join('')
+        let pNumber = document.getElementById('pId').innerText.toString().split('').reverse()
+        console.log(pNumber);
+        if(pNumber.length >3)
+        {
+            for(let i=3;i<pNumber.length;i+=4)
+            {
+                pNumber.splice(i,0,',')
+            }
+        }
+        document.getElementById('pId').innerText=pNumber.reverse().join('')
     }
 </script>
 </body>
