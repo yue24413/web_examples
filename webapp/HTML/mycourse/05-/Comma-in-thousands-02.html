@@ -17,7 +17,8 @@
         {
             for(let i=3;i<pNumber.length;i+=4)
             {
-                pNumber.splice(i,0,',')
+                if(pNumber[i] != ',')
+                    pNumber.splice(i,0,',')
             }
         }
         document.getElementById('pId').innerText=pNumber.reverse().join('')
