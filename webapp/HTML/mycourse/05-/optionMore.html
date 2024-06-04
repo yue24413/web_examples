@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>option more</title>
+</head>
+<body>
+    <p>请选择你想打的菜(最多打3个)：</p> 
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">鱼香肉丝<br>
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">锅包肉<br>
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">酸菜鱼<br>
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">地三鲜<br>
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">蚂蚁爬树<br>
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">手撕包菜<br>
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">带把肘子<br>
+    <input type="checkbox" name="cuisine" onclick="x.checkboxCuisine(this)">凉拌豆芽<br>
+
+    <p>选择你想吃的主食(最多打1个)：</p>
+    <input type="checkbox" name="food" onclick="x.checkboxFood(this)">米饭<br>
+    <input type="checkbox" name="food" onclick="x.checkboxFood(this)">油泼面<br>
+    <input type="checkbox" name="food" onclick="x.checkboxFood(this)">花卷<br>
+    <input type="checkbox" name="food" onclick="x.checkboxFood(this)">肉夹馍<br>
+
+    <script>
+        const limitSelction = () =>{
+            const cuisineName = document.getElementsByName('cuisine')
+            const foodName = document.getElementsByName('food')
+        function checkboxCuisine(checkbox){
+            let cCount=0;
+            for(let i=0;i<cuisineName.length;i++)
+            {
+                if(cuisineName[i].checked)
+                    cCount++;
+            }
+            if(cCount>3)
+            {
+                checkbox.checked = false;
+            }
+        } 
+        function checkboxFood(checkbox){
+            let fCount=0;
+            for(let i=0;i<foodName.length;i++)
+            {
+                if(foodName[i].checked)
+                    fCount++;
+            }
+            if(fCount>1)
+            {
+                checkbox.checked = false;
+            }
+        } 
+        return {checkboxCuisine,checkboxFood}
+        }
+        const x = limitSelction();
+    </script>
+</body>
+</html>
