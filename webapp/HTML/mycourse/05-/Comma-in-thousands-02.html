@@ -6,22 +6,21 @@
     <title>Comma in thousands</title>
 </head>
 <body>
-    <p id="pId">1234567891</p> 
-    <button onclick="CommaInThousandsP()">点击->千位加","</button>
+    <input type="text" id="inputId" placeholder="请输入你的年薪" onblur="CommaInThousandsP()">
+    <p id="pId"></p> 
 
 <script>
     const CommaInThousandsP = () => {
-        let pNumber = document.getElementById('pId').innerText.toString().split('').reverse()
-        console.log(pNumber);
+        let pNumber = document.getElementById('inputId').value.toString().split('').reverse()
         if(pNumber.length >3)
         {
             for(let i=3;i<pNumber.length;i+=4)
             {
                 if(pNumber[i] != ',')
-                    pNumber.splice(i,0,',')
+                  {pNumber.splice(i,0,',')}
             }
         }
-        document.getElementById('pId').innerText=pNumber.reverse().join('')
+        document.getElementById('pId').innerHTML='(提示)你的年薪为：' + pNumber.reverse().join('')
     }
 </script>
 </body>

@@ -30,13 +30,13 @@
     const cuisineName = $('input[name="cuisine"]');
         cuisineName.change(function(){
             if($('input[name="cuisine"]:checked').length > 3 )
-            this.checked = false;
+                {this.checked = false;}
         })
-        const foodName = $('input[name="food"]');
+    const foodName = $('input[name="food"]');
         foodName.change(function(){
             if($('input[name="food"]:checked').length > 1 )
-            this.checked = false;
-        })
+               {this.checked = false;} 
+    })
     })
 </script>
 </body>

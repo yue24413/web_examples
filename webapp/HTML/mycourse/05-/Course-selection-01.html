@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course selection</title>
+</head>
+<body>
+    
+
+
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function(){
+    const courses = [
+        {
+            id : 'C001',
+            name : 'Java',
+            time : [
+                {day:'Monday',start:'08:00',end:'9:35'},
+                {day:'Wednesday',start:'13:40',end:'13:15'},
+                {day:'Friday',start:'08:00',end:'9:35'},                
+            ]
+        },
+        {
+            id : 'C002',
+            name : '数据库原理',
+            time : [
+                {day:'Monday',start:'09:55',end:'12:30'},
+                {day:'Wednesday',start:'09:55',end:'12:30'},
+                {day:'Friday',start:'09:55',end:'12:30'},               
+            ]
+        },
+        {
+            id : 'C003',
+            name : '羽毛球',
+            time : [
+                {day:'Thursday',start:'15:35',end:'17:10'}            
+            ]
+        },
+        {
+            id : 'C004',
+            name : '软件工程导论',
+            time : [
+                {day:'Tuesday',start:'13:40',end:'15:15'}            
+            ]
+        },
+        {
+            id : 'C005',
+            name : '算法设计与分析',
+            time : [
+            {day:'Tuesday',start:'10:05',end:'11:40'},          
+            {day:'Thursday',start:'15:35',end:'17:10'}              
+            ]
+        }
+    ]
+    let selectedCourse = [];
+    const addCourse = (courseId) =>{
+        const preCourse = courses.find(c => c.id === courses.id)
+        if(checkC(selectedCourse,preCourse))
+           {alert('课程冲突')}
+        else{
+            selectedCourse.push();
+            alert('选课成功')
+        }
+    }    
+    const checkC = (selectC,preC) => {
+        
+    }
+
+
+
+
+
+})
+</script>
+</body>
+</html>

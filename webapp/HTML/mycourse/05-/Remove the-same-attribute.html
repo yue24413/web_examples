@@ -7,13 +7,15 @@
 </head>
 <body>
     <script>
-        const objs = [{ id: 9 }, { id: 8 }, { id: 7 }, { id: 7 }, { id: 7 }, { id: 6 }]
-        const uniqueObjs = objs.filter((object, index) => {
-            return objs.findIndex(o => o.id === object.id) === index; 
-        });
-            //Array.prototype.findIndex() 用于查找第一个符合提供的测试函数的数组元素的索引。                
-           //返回的是filter后的新数组
-        console.log(uniqueObjs);
+        const objs = [{ id: 9 }, { id: 8 }, { id: 7 }, { id: 7 }, { id: 7 }, { id: 6 }]      
+        const uniqueFuntion = (objects,attribute) => {
+            const uniqueObjs = objects.filter((obj, index) => {
+                return objects.findIndex(o => o[attribute] === obj[attribute]) === index  
+        })   //Array.prototype.findIndex() 用于查找第一个符合提供的测试函数的数组元素的索引。
+        return uniqueObjs;  //返回的是filter后的新数组
+        }
+        const x = uniqueFuntion(objs,"id")        
+        console.log(x)
     </script>
 </body>
 </html>

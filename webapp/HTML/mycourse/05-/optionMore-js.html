@@ -23,36 +23,32 @@
     <input type="checkbox" name="food" onclick="x.checkboxFood(this)">肉夹馍<br>
 
     <script>
-        const limitSelction = () =>{
-            const cuisineName = document.getElementsByName('cuisine')
-            const foodName = document.getElementsByName('food')
+    const limitSelction = () =>{
+        const cuisineName = document.getElementsByName('cuisine')
+        const foodName = document.getElementsByName('food')
         function checkboxCuisine(checkbox){
             let cCount=0;
             for(let i=0;i<cuisineName.length;i++)
             {
                 if(cuisineName[i].checked)
-                    cCount++;
+                    {cCount++;}
             }
             if(cCount>3)
-            {
-                checkbox.checked = false;
-            }
+            {checkbox.checked = false;}
         } 
         function checkboxFood(checkbox){
             let fCount=0;
             for(let i=0;i<foodName.length;i++)
             {
                 if(foodName[i].checked)
-                    fCount++;
+                   {fCount++;} 
             }
             if(fCount>1)
-            {
-                checkbox.checked = false;
-            }
+            { checkbox.checked = false;}
         } 
         return {checkboxCuisine,checkboxFood}
-        }
-        const x = limitSelction();
+    }
+    const x = limitSelction();
     </script>
 </body>
 </html>

@@ -38,7 +38,7 @@ const CommaInThousands = () => {
 const CommaInThousands2 = (inputId) => {
     const str = inputId.value.split('')
      if(str.length>3  && str[str.length-4] !== ',')
-        str.splice(str.length-3,0,',')
+        {str.splice(str.length-3,0,',')}
     inputId.value =  str.join('')
 }
 CommaInThousands2(input1Id)
