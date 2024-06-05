@@ -4,11 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course selection</title>
+<style>
+    *{
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    }
+body{
+    width: 80%;
+    text-align: center;
+}
+h1{
+    font-size: 2rem;
+    margin: 1.5rem 0;
+    }
+table{
+    width: 100%;
+    border: none;
+    margin: 2rem 0;
+    border-collapse: collapse;
+    }
+thead{
+    height: 3rem;
+    background-color: skyblue;
+}
+tbody{
+    background-color: #bbbbbb;
+}
+tr{
+    height: 3rem;
+}
+td{
+
+}
+tbody tr:hover{
+    background-color: #cccccc;
+
+}
+</style>
+
+
+
 </head>
 <body>
-    
-
-
+    <table>
+    <thead>
+        <tr>
+            <th>课程代码(id)</th>
+            <th>课程名(name)</th>
+            <th>授课时间(time)</th>
+            <th>是否选课</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>C001</td>
+            <td>Java</td>
+            <td>
+                Monday:08:00 - 9:35 | 
+                Wednesday:13:40 - 13:15 | 
+                Friday:08:00 - 09:35 
+            </td>
+            <td><button>选课</button><button>退选</button></td>
+        </tr>
+    </tbody>
+    <tbody>  
+        <tr>
+            <td>C002</td>
+            <td>数据库原理</td>
+            <td>
+                Monday:09:55 - 12:30 | 
+                Wednesday:09:55 - 12:30 | 
+                Friday:09:55 - 12:30
+            </td>
+            <td><button>选课</button><button>退选</button></td>
+        </tr>
+        <tr>
+            <td>C003</td>
+            <td>羽毛球</td>
+            <td>
+                Thursday:15:35 - 17:10
+            </td>
+            <td><button>选课</button><button>退选</button></td>
+        </tr>
+        <tr>
+            <td>C004</td>
+            <td>软件工程导论</td>
+            <td>
+                Tuesday:13:40 - 15:15
+            </td>
+            <td><button>选课</button><button>退选</button></td>
+        </tr>
+        <tr>
+            <td>C005</td>
+            <td>算法设计与分析</td>
+            <td>
+                Tuesday:10:05 - 11:40 |       
+                Thursday:15:35 - 17:10
+            </td>
+            <td><button>选课</button><button>退选</button></td>
+        </tr>
+        <tr>
+            <td>C006</td>
+            <td>Web</td>
+            <td>
+                Wednesday:08:00 - 09:35 |        
+                Thursday:08:00 - 09:35
+            </td>
+            <td><button>选课</button><button>退选</button></td>
+        </tr>
+    </tbody>
+    </table>
 
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
@@ -53,15 +159,23 @@ $(function(){
             {day:'Tuesday',start:'10:05',end:'11:40'},          
             {day:'Thursday',start:'15:35',end:'17:10'}              
             ]
+        },
+        {
+            id : 'C006',
+            name : 'Web',
+            time : [
+            {day:'Wednesday',start:'08:00',end:'09:35'},          
+            {day:'Thursday',start:'08:00',end:'09:35'}              
+            ]
         }
     ]
-    let selectedCourse = [];
-    const addCourse = (courseId) =>{
+    let selectedCourse = [];//已选课程array
+    const addCourse = (courseId) =>{  //准备添加array元素
         const preCourse = courses.find(c => c.id === courses.id)
-        if(checkC(selectedCourse,preCourse))
+        if(checkC(selectedCourse,preCourse))//检查函数
            {alert('课程冲突')}
         else{
-            selectedCourse.push();
+            selectedCourse.push();//pushselectedCourse放到最后
             alert('选课成功')
         }
     }    
