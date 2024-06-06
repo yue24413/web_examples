@@ -27,17 +27,24 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
     $(function(){
-    const cuisineName = $('input[name="cuisine"]');
-        cuisineName.change(function(){
-            if($('input[name="cuisine"]:checked').length > 3 )
-                {this.checked = false;}
-        })
-    const foodName = $('input[name="food"]');
-        foodName.change(function(){
-            if($('input[name="food"]:checked').length > 1 )
-               {this.checked = false;} 
+    const cuisineName = $('input[name="cuisine"]')
+    cuisineName.click(()=>{
+        let dis1 = cuisineName.filter(":checked").length >= 3  //boolean
+        cuisineName.not(":checked").prop("disabled",dis1)//根据 dis 的值来设置或取消;设置 disabled 属性为 true
+    })//注意禁用disabled 和 this.checked = false不可选的区别
+    
+    const foodName = $('input[name="food"]')
+    foodName.click(()=>{
+        let dis2 = foodName.filter(":checked").length >= 1
+        foodName.not(":checked").prop("disabled",dis2)
+    })   
     })
-    })
+    //.attr() 方法主要用于获取或设置HTML元素的属性值。这些属性通常是标准的HTML属性，
+    //例如 class, id, src, href, data-* 等。当使用 .attr() 设置属性值时，它会在元素的DOM节点上直接添加或修改该属性
+    
+    //.prop() 方法主要用于处理那些在JavaScript DOM对象中表现为属性的HTML属性，特别是那些具有特殊行为的布尔属性，
+    //如 checked, selected, disabled 等。这些属性在JavaScript中通常表现为布尔值或数值，而不是字符串。
+    //当使用 .prop() 来设置属性时，它会根据传入的值来调整元素的状态。
 </script>
 </body>
 </html>
