@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+        padding: 0;
+        margin: 0 auto;
+        box-sizing: border-box;
+        }
+    body{
+        width: 80%;
+        text-align: center;
+    }
+    h1{
+        font-size: 2rem;
+        margin: 1.5rem 0;
+        }
+    table{
+        width: 100%;
+        border: none;
+        margin: 2rem 0;
+        border-collapse: collapse;
+        }
+    thead{
+        height: 3rem;
+        background-color: green;
+    }
+    tbody{
+
+    }
+    tr{
+        height: 3rem;
+        transition:all 0.5s ease;
+    }
+    td{
+    
+    }
+    button{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    tbody tr:hover{
+        background-color: #cccccc;
+        transition:all 0.3s ease;
+    }
+    </style>
+    </head>
+    <body>
+        <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>名称</th>               
+                <th>学分</th>
+                <th>起始周</th>
+                <th>时间</th>
+                <th>教师</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+    $(function(){
+        const courses = [
+        {
+            id : '1',
+            name : '数据库原理',
+            credit:3,
+            startWeek:1,
+            endWeek:10,
+            day:1,
+            section:[1,2],
+            teacher:'刘丹'
+        },
+        {
+            id : '2',
+            name : 'Web开发技术',
+            credit:2.5,
+            startWeek:1,
+            endWeek:8,
+            day:1,
+            section:[3,4],
+            teacher:'王波'
+        },
+        {
+            id : '3',
+            name : '托福阅读',
+            credit:2,
+            startWeek:1,
+            endWeek:5,
+            day:1,
+            section:[1,2],
+            teacher:'李景阳'
+        },
+        {
+            id : '4',
+            name : '高级英语试听',
+            credit:2,
+            startWeek:3,
+            endWeek:10,
+            day:1,
+            section:[3,4],
+            teacher:'龙超越'
+        },
+        {
+            id : '5',
+            name : 'Web系统框架',
+            credit:2.5,
+            startWeek:10,
+            endWeek:17,
+            day:1,
+            section:[1,2],         
+            teacher:'王子阳'
+        },
+        {
+            id : '6',
+            name : '算法设计与分析',
+            credit:2,
+            startWeek:6,
+            endWeek:10,
+            day:1,
+            section:[1,2],         
+            teacher:'谷志新'
+        }
+    ]
+    $('table tbody').empty() 
+    //将数组写入HTML中      
+    courses.forEach(course => {
+        const row = $('<tr>')
+        row.append(`<td>${course.id}</td>`)
+        row.append(`<td>${course.name}</td>`)
+        row.append(`<td>${course.credit}</td>`)
+        row.append(`<td>${course.startWeek} - ${course.endWeek}</td>`)
+        row.append(`<td>周${course.day} / ${course.section[0]}${course.section[1]}</td>`)
+        row.append(`<td>${course.teacher}</td>`)       
+        row.append(`<td><input type="checkbox" class="conflict-checkbox" name="courses" value="${courses.id}"></td>`)
+        $('table tbody').append(row)
+    })
+    $('.conflict-checkbox').on('change', function() {//click也可以
+        checkConflicts();//检查函数
+    });
+    const checkConflicts = () => {
+        const selectedCourses = [];
+        $('.conflict-checkbox:checked').each(function() {
+            const courseIndex = $(this).closest('tr').index();
+            //在 jQuery 中，closest() 方法用于从当前元素开始向上查找直到文档根元素，寻找第一个匹配给定的选择器的祖先元素。
+            selectedCourses.push(courses[courseIndex]);
+        });//把已选的先放在一个数组里
+
+    $('.conflict-checkbox').prop('disabled', false)// 首先全部启用可选
+    
+    courses.forEach((course, index) => {
+        const currentCheckbox = $('.conflict-checkbox').eq(index)
+        //是否存在冲突，这段也检查了已选择的课程之间是否存在时间冲突，
+        //避免两个互不影响的课程，有同一个冲突课程，其中一个取消，但是冲突课程也取消的情况(代替了计数器)
+        if (selectedCourses.some(selectedCourse => { //callback返回一个布尔值
+            return (//对于任何元素返回 true，some 方法就会立即停止遍历
+                (course.day === selectedCourse.day) &&//同一天
+                ((course.startWeek <= selectedCourse.endWeek) && (course.endWeek >= selectedCourse.startWeek) ||//周数有重合或者包含
+                (course.startWeek <= selectedCourse.startWeek) && (course.endWeek >= selectedCourse.endWeek)||
+                (course.startWeek >= selectedCourse.startWeek)&&(course.endWeek <= selectedCourse.endWeek)) &&
+                ((course.section[0] >= selectedCourse.section[0] && course.section[0] <= selectedCourse.section[1]) ||//准备选的课上课在第几节是不是在已选的之间
+                (course.section[1] >= selectedCourse.section[0] && course.section[1] <= selectedCourse.section[1])) &&
+                 selectedCourses.indexOf(course) === -1);// 如果课程已经被选中，则不视为冲突,为了可以取消已选的课程
+            })) 
+            {currentCheckbox.prop('disabled', true)} //if(true)，即冲突时执行
+        
+    });
+}
+})
+
+   
+</script>
+</body>
+</html>
