@@ -6,22 +6,96 @@
     <title>Comma in thousands</title>
 </head>
 <body>
-    <input type="text" id="inputId" placeholder="请输入你的年薪" onblur="CommaInThousandsP()">
+    <input type="text" id="inputId1" placeholder="请输入你的年薪" onblur="x.CommaInThousands1()">
+    <input type="text" id="inputId2" placeholder="请输入你的年薪" onblur="x.CommaInThousands2()">
+    <input type="text" id="inputId3" placeholder="请输入你的年薪" onblur="x.CommaInThousands3()"> <br>  
     <p id="pId"></p> 
 
 <script>
     const CommaInThousandsP = () => {
-        let pNumber = document.getElementById('inputId').value.toString().split('').reverse()
-        if(pNumber.length >3)
-        {
-            for(let i=3;i<pNumber.length;i+=4)
+         const numberMatch = (number) =>{
+          return number.match(/^-?\d*(\.\d+)?$/) ? true : alert("请输入正确的数字！");
+        } 
+
+        // toLocaleString法
+        //默认只显示了三位小数,可能是因为默认的格式化规则是基于当前的浏览器和地区设置的
+        //可以给toLocaleString()加参数
+        const CommaInThousands1 = () => {
+            const pNumber = document.getElementById('inputId1').value.toString()
+            if (numberMatch(pNumber)) {
+            let pNumberStr = Number(pNumber)
+            if (isNaN(pNumberStr)) {
+                console.error('Invalid input')
+                return;
+            }
+            pNumberStr = pNumberStr.toLocaleString()
+            document.getElementById('pId').innerHTML = '(提示)你的年薪为：' + pNumberStr
+        } }
+
+        // 循环法(会在不需要的地方添加逗号,小数点后)
+        const CommaInThousands2 = () => {
+           let pNumber = document.getElementById('inputId2').value.toString()
+           if (numberMatch(pNumber)) {
+            pNumber = pNumber.split(".")
+            const pattern = /(-?\d+)(\d{3})/;
+            while (pattern.test(pNumber[0]))
             {
-                if(pNumber[i] != ',')
-                  {pNumber.splice(i,0,',')}
+                pNumber[0] = pNumber[0].replace(pattern, "$1,$2")
+            }
+            document.getElementById('pId').innerHTML='(提示)你的年薪为：' + pNumber.join(".")
+        }
+        }
+
+        //利用正则表达式（如果小数点后有超过3位数字的话，会在不需要的地方添加逗号。需以'.'分隔,再聚合
+        const CommaInThousands3 = () => {
+            let pNumber = document.getElementById('inputId3').value.toString()
+            if (numberMatch(pNumber)) {
+            pNumber = pNumber.split(".")
+            pNumber[0] = pNumber[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            document.getElementById('pId').innerHTML='(提示)你的年薪为：' + pNumber.join(".")
             }
         }
-        document.getElementById('pId').innerHTML='(提示)你的年薪为：' + pNumber.reverse().join('')
-    }
+        return {CommaInThousands1,CommaInThousands2,CommaInThousands3}
+    } 
+    const x = CommaInThousandsP();
 </script>
+
+    <!--
+总结：
+    正则表达式中：
+    · \B 非单词边界，即匹配任何非数字和数字之间的位置
+    · \d 匹配数字 n{x} 匹配包含x个n的序列的字符串
+            (\d{3})+ 意味着匹配至少一个或多个三个数字的组
+    · (?=(\d{3})+：前瞻断言，用于检查后面是否有至少一个由三个数字组成的序列
+    · (?!\d)：负向前瞻断言，用来确保在找到三个数字之后，后面不是数字。这确保了在每三个数字后添加逗号，但不在最后一个三位数后面添加。
+    · \g全局搜索
+    · (-?)：这部分是一个可选的捕获组，用于匹配一个可选的负号 -。负号前面的问号 ? 表示这个负号是可选的
+    ·(\d{3})：这部分也是一个捕获组，用于匹配恰好三个数字。与之前的捕获组一样，这部分也会被捕获，以便后续使用
+    ·test() 正则表达式对象的一个方法，用于检测一个字符串是否与正则表达式匹配。当字符串中存在与正则表达式匹配的子串时，test() 方法返回 true；否则，返回 false。
+    
+    · 正向断言（Positive Lookahead）：
+            格式为 (?=...)
+            它检查当前位置之后的文本是否匹配括号内的模式，如果匹配，则断言成功，但不会实际消耗任何字符。
+            例如，(?=\d) 用于检查当前位置之后是否有数字，但不会将该数字视为已匹配。
+    · 负向断言（Negative Lookahead）：
+            格式为 (?!...)
+            它检查当前位置之后的文本是否不匹配括号内的模式，如果不匹配，则断言成功。
+            例如，(?!abc) 用于检查当前位置之后是否没有 "abc" 这个模式。
+    · 例如，在在正则表达式中提取电子邮件地址时：
+            需要用到\b,单词边界，表示邮件地址是一个整体，不是作为其他单词的一部分；也要用做地址的结束
+            需要一个或多个字母，数字，点，下划线百分号加减等作为本地部分；
+            再@，这是本地部分和域名部分之间的分隔符；
+            匹配一个或多个字母、数字、点或减号，代表了域名部分；
+            \.：匹配一个点，用于分隔域名和顶级域；
+            [A-Z|a-z]{2,}：匹配两个或更多的字母，代表顶级域，如 .com、.org 等
+        \b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b
+
+    String对象中：
+    · spilt() string.split(separator,limit)  limit 可选，返回数组的最大长度
+        无separator时，默认以空格，回车符等分隔；"" 则以每个字符
+    · slice() string.slice(start,end) 把一个字符串分割成数组
+    Array对象中：
+    · join() array.join(separator) 把数组的所有元素放入一个字符串 括号内省略分隔符，默认','
+ -->
 </body>
 </html>

@@ -158,7 +158,7 @@
     courses.forEach((course, index) => {
         const currentCheckbox = $('.conflict-checkbox').eq(index)
         //是否存在冲突，这段也检查了已选择的课程之间是否存在时间冲突，
-        //避免两个互不影响的课程，有同一个冲突课程，其中一个取消，但是冲突课程也取消的情况(代替了计数器)
+        //避免两个互不影响的课程，有同一个冲突课程，其中一个取消，但是冲突课程也取消的情况(代替了计数器的功能)
         if (selectedCourses.some(selectedCourse => { //callback返回一个布尔值
             return (//对于任何元素返回 true，some 方法就会立即停止遍历
                 (course.day === selectedCourse.day) &&//同一天
