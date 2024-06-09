@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Course selection</title>
     <style>
         *{
         padding: 0;
@@ -75,7 +75,7 @@
             startWeek:1,
             endWeek:10,
             day:1,
-            section:[1,2],
+            section:12,
             teacher:'刘丹'
         },
         {
@@ -85,7 +85,7 @@
             startWeek:1,
             endWeek:8,
             day:1,
-            section:[3,4],
+            section:34,
             teacher:'王波'
         },
         {
@@ -95,7 +95,7 @@
             startWeek:1,
             endWeek:5,
             day:1,
-            section:[1,2],
+            section:12,
             teacher:'李景阳'
         },
         {
@@ -105,7 +105,7 @@
             startWeek:3,
             endWeek:10,
             day:1,
-            section:[3,4],
+            section:34,
             teacher:'龙超越'
         },
         {
@@ -115,7 +115,7 @@
             startWeek:10,
             endWeek:17,
             day:1,
-            section:[1,2],         
+            section:12,         
             teacher:'王子阳'
         },
         {
@@ -125,57 +125,98 @@
             startWeek:6,
             endWeek:10,
             day:1,
-            section:[1,2],         
+            section:12,       
             teacher:'谷志新'
         }
     ]
-    $('table tbody').empty() 
-    //将数组写入HTML中      
-    courses.forEach(course => {
-        const row = $('<tr>')
-        row.append(`<td>${course.id}</td>`)
-        row.append(`<td>${course.name}</td>`)
-        row.append(`<td>${course.credit}</td>`)
-        row.append(`<td>${course.startWeek} - ${course.endWeek}</td>`)
-        row.append(`<td>周${course.day} / ${course.section[0]}${course.section[1]}</td>`)
-        row.append(`<td>${course.teacher}</td>`)       
-        row.append(`<td><input type="checkbox" class="conflict-checkbox" name="courses" value="${courses.id}"></td>`)
-        $('table tbody').append(row)
+    //将数组写入HTML中 模板字符串     
+    const rows = courses.map((course,index) => 
+    `<tr data-row-index="${index + 1}">
+            <td>${course.id}</td>
+            <td>${course.name}</td>
+            <td>${course.credit}</td>
+            <td>${course.startWeek} - ${course.endWeek}</td>
+            <td>周${course.day} / ${course.section}节</td>
+            <td>${course.teacher}</td>
+            <td><input type="checkbox" class="mayConflict-checkbox" name="courses" value="${course.id}"></td>
+        </tr>
+    `)
+    $('table tbody').html(rows.join(''));//生成的所有行连接成一个大的字符串，以便一次性插入到tbody中
+   
+    const checkedCourse = [] //课程是否被点过的数组
+    $('.mayConflict-checkbox').click(function(event) { 
+        const courseId = $(this).val()
+        if(!checkedCourse.includes(courseId))  //检查当前对象是否点击过
+        {
+        checkedCourse.push(courseId)
+        console.log(checkedCourse)
+        ConflictCourse(courseId)
+    }
+    counter(courseId,event)
     })
-    $('.conflict-checkbox').on('change', function() {//click也可以
-        checkConflicts();//检查函数
-    });
-    const checkConflicts = () => {
-        const selectedCourses = [];
-        $('.conflict-checkbox:checked').each(function() {
-            const courseIndex = $(this).closest('tr').index();
-            //在 jQuery 中，closest() 方法用于从当前元素开始向上查找直到文档根元素，寻找第一个匹配给定的选择器的祖先元素。
-            selectedCourses.push(courses[courseIndex]);
-        });//把已选的先放在一个数组里
 
-    $('.conflict-checkbox').prop('disabled', false)// 首先全部启用可选
-    
-    courses.forEach((course, index) => {
-        const currentCheckbox = $('.conflict-checkbox').eq(index)
-        //是否存在冲突，这段也检查了已选择的课程之间是否存在时间冲突，
-        //避免两个互不影响的课程，有同一个冲突课程，其中一个取消，但是冲突课程也取消的情况(代替了计数器的功能)
-        if (selectedCourses.some(selectedCourse => { //callback返回一个布尔值
-            return (//对于任何元素返回 true，some 方法就会立即停止遍历
-                (course.day === selectedCourse.day) &&//同一天
-                ((course.startWeek <= selectedCourse.endWeek) && (course.endWeek >= selectedCourse.startWeek) ||//周数有重合或者包含
-                (course.startWeek <= selectedCourse.startWeek) && (course.endWeek >= selectedCourse.endWeek)||
-                (course.startWeek >= selectedCourse.startWeek)&&(course.endWeek <= selectedCourse.endWeek)) &&
-                ((course.section[0] >= selectedCourse.section[0] && course.section[0] <= selectedCourse.section[1]) ||//准备选的课上课在第几节是不是在已选的之间
-                (course.section[1] >= selectedCourse.section[0] && course.section[1] <= selectedCourse.section[1])) &&
-                 selectedCourses.indexOf(course) === -1);// 如果课程已经被选中，则不视为冲突,为了可以取消已选的课程
-            })) 
-            {currentCheckbox.prop('disabled', true)} //if(true)，即冲突时执行
-        
-    });
+    let conflictCourse = new Map()//储存点击之后各个课程冲突的课程 键为id值，为冲突数组，数组里有冲突的课程id和行数
+    const ConflictCourse = (cId) => {
+        const course = courses.find(c => c.id===cId)
+        const conflictingCourse = courses
+        .filter(c => c.id !== course.id)
+        .filter(c => {
+            const weekConflict = (c.startWeek <= course.endWeek && c.endWeek >= course.startWeek) ||
+                                (c.startWeek <= course.startWeek && c.endWeek >= course.endWeek) ||
+                                (c.startWeek >= course.startWeek && c.endWeek <= course.endWeek);
+            return weekConflict && c.day === course.day && c.section === course.section})
+        .map(c =>{
+            const $row = $(`tr[data-row-index='${c.id}']`).data('row-index')
+            return{ courseId: c.id, row : $row } // 返回一个对象，包含课程ID和行位置
+        })
+        //console.log(conflictingCourse);
+        conflictCourse.set(course.id,conflictingCourse)
+    }
+    console.log(conflictCourse)
+
+    //分析：应该把计数器放哪？如果放在点击数组里，则找不到冲突课程，无法对已冲突的课程+1/-1
+    //如果放在map集合里，每门课对应的冲突课固定，点击时可以取到这些课，但是对每门冲突课进行计数加减，需要整合这些课的计数，而且一直改
+    //放在课程数组的属性上，一旦有冲突课程，直接对属性值进行增减
+    //放在一个新数组中，索引+1为冲突课程的行号，数组中数值增减
+    let counterCount = new Array(courses.length+1).fill(0) //第0位不用
+    const counter = (cId,event) => {
+    const conflictingCourses = conflictCourse.get(cId) //Map的get,set方法
+    if (conflictingCourses) {
+        conflictingCourses.forEach(conflict => {
+            const index = conflict.row
+            //const checkbox = $(`tr[data-row-index='${index}'] input[type='checkbox']`);
+            if (event.target.checked) {//如果用checkbox.is(':checked')?
+                counterCount[index]++
+            } 
+            else{
+                counterCount[index]--
+            }
+        })
+    }
+    counterCount.forEach((count, index) => {
+        const checkbox = $(`tr[data-row-index='${index}'] input[type='checkbox']`)
+        if (count > 0) {
+            checkbox.prop('disabled', true)
+        } else {
+            checkbox.prop('disabled', false)
+        }
+    })
 }
 })
-
-   
 </script>
+<!-- 
+总结：
+    ·tr[data-row-index='${c.id}']是一个jQuery选择器，它选取了具有data-row-index属性等于c.id的<tr>元素。
+    .data('row-index')尝试读取这个<tr>元素上的data-row-index属性的值。
+        需要注意的是，.data()方法会自动处理类型转换。如果你存储的是一个数字，它会返回一个数字；如果是字符串，则返回字符串。
+        这使得它比使用.attr()方法更方便，因为.attr()总是返回字符串值，即使原始的data-*属性中存储的是数字或其他类型的数据。
+    ·if (event.target.checked) 直接从事件对象中读取触发事件的元素,判断当前点的多选框是否被选中时
+        如果用：checkbox.is(':checked')在取消选中时可能不会减少计数。
+        原因：if (checkbox.is(':checked'))检查的是checkbox在函数执行时的状态，而并非触发事件时的状态
+        此时函数可能在用户取消选择复选框之后才被调用
+    
+    
+    
+    -->
 </body>
 </html>
