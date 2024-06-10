@@ -129,11 +129,11 @@
     ]
 
     //将数组写入HTML中 模板字符串
-    let $tbody = $('tbody')
-    let $rows = $()    
+    let tbodyH = $('tbody')
+    let rows = $()    
     let rowsById = {}    
     courses.forEach((course,index) => {
-    let $row = $(`
+    let rowH = $(`
     <tr data-row-index="${index + 1}">
             <td>${course.id}</td>
             <td>${course.name}</td>
@@ -144,16 +144,17 @@
             <td><input type="checkbox" name="courses" value="${course.id}"></td>
         </tr>
     `)
-    $rows = $rows.add($row)
-    rowsById[course.id] = $row;
+    rows = rows.add(rowH)
+    rowsById[course.id] = rowH;
     })
-    $tbody.append($rows)
+    tbodyH.append(rows)
 
     let conflictCourse = new Map()//储存点击之后各个课程冲突的课程 键为id值，值为冲突数组，数组里有对象为冲突的课程id,checkbox和row
     $('input[name="courses"]').click(function(){ 
         const courseId =$(this).val()
         const course = courses.find(c => c.id === Number(courseId))
         //courseId是从HTML表单或者JavaScript DOM操作中获得，它可能被解析为字符串类型，而courses数组中的id属性却仍然是数字类型，这导致了类型不匹配的问题。
+        let conflictCourseArr = []
         const conflictingCourse = courses
         .filter(c => c.id !== course.id)
         .filter(c => {
@@ -161,17 +162,19 @@
                                 (c.startWeek <= course.startWeek && c.endWeek >= course.endWeek) ||
                                 (c.startWeek >= course.startWeek && c.endWeek <= course.endWeek);
             return weekConflict && c.dayOfWeek === course.dayOfWeek && c.period === course.period})
-        let conflictCourseArr = []
-        conflictingCourse.forEach(c =>{ 
-            const $row = rowsById[c.id];
-            if ($row) {
-            const rowIndex = parseInt($row.data('row-index'));//直接获取值
-            const $checkbox = $row.find("input[name='courses']");
-            //console.log($checkbox);
+        .forEach(c =>{ 
+            if(!c.hasOwnProperty('counterCount')){
+                c.counterCount = 0
+            }
+            const row = rowsById[c.id];
+            if (row) {
+            const rowIndex = parseInt(row.data('row-index'));//直接获取值
+            const checkbox = row.find("input[name='courses']");
+            //console.log(checkbox);
             conflictCourseArr.push({
                 thisConflictId: c.id,
                 row : rowIndex,
-                checkbox : $checkbox
+                checkbox : checkbox
             });
             } else{
                 console.error(`Course ID ${c.id} not found.`);
@@ -179,31 +182,29 @@
         conflictCourse.set(course.id,conflictCourseArr)
         //console.log(conflictCourse)
         const checked = $(this).prop('checked')       
-        console.log(checked);  
+        //console.log(checked);  
         counter(courseId,checked)
+
     })
     })
     
-    //计数器放在一个新数组中，索引+1为冲突课程的行号，数组中数值增减
-    let counterCount = new Array(courses.length+1).fill(0) //第0位不用
     const counter = (cId,checked) => {
     //console.log(cId);
-    const conflictingCourses = conflictCourse.get(Number(cId)) //Map的get,set方法
+    const course = courses.find(c => c.id=== Number(cId))
+    const conflictingCourses = conflictCourse.get(course.id) //Map的get,set方法
     //console.log(conflictCourse);
-    //console.log(conflictingCourses);
+    console.log(conflictingCourses);
     if (conflictingCourses) {
         conflictingCourses.forEach(conflict => {
-            const index = conflict.row
-            console.log(index);
-            const checkbox = conflict.checkbox
+        const conflictCourse = courses.find(c => c.id === conflict.thisConflictId)
             if (checked) {
-                counterCount[index]++
+                conflictCourse.counterCount++
             }
             else{
-                counterCount[index]--
+                conflictCourse.counterCount--
             }
-            console.log(counterCount[index]);
-        checkbox.prop('disabled', counterCount[index] > 0);   
+            const checkbox = rowsById[conflictCourse.id].find("input[name='courses']");
+            checkbox.prop('disabled',conflictCourse.counterCount > 0)
         }         
     )}
     }})
