@@ -28,9 +28,6 @@
         height: 3rem;
         background-color: green;
     }
-    tbody{
-
-    }
     tr{
         height: 3rem;
         transition:all 0.5s ease;
@@ -67,142 +64,150 @@
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script>
     $(function(){
-        const courses = [
+        // 模拟课程数据
+    const courses = [
         {
-            id : '1',
-            name : '数据库原理',
-            credit:3,
-            startWeek:1,
-            endWeek:10,
-            day:1,
-            section:12,
-            teacher:'刘丹'
+            id: 100,
+            name: '数据库原理',
+            point: 3.0,
+            startWeek: 1,
+            endWeek: 10,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '谭文韬'
         },
         {
-            id : '2',
-            name : 'Web开发技术',
-            credit:2.5,
-            startWeek:1,
-            endWeek:8,
-            day:1,
-            section:34,
-            teacher:'王波'
+            id: 101,
+            name: '影视赏析',
+            point: 1.5,
+            startWeek: 1,
+            endWeek: 8,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '李春泰'
         },
         {
-            id : '3',
-            name : '托福阅读',
-            credit:2,
-            startWeek:1,
-            endWeek:5,
-            day:1,
-            section:12,
-            teacher:'李景阳'
+            id: 102,
+            name: 'Web系统框架',
+            point: 2.5,
+            startWeek: 11,
+            endWeek: 17,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '王子阳'
         },
         {
-            id : '4',
-            name : '高级英语试听',
-            credit:2,
-            startWeek:3,
-            endWeek:10,
-            day:1,
-            section:34,
-            teacher:'龙超越'
+            id: 103,
+            name: '托福阅读',
+            point: 2.0,
+            startWeek: 5,
+            endWeek: 15,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '李景阳'
         },
         {
-            id : '5',
-            name : 'Web系统框架',
-            credit:2.5,
-            startWeek:10,
-            endWeek:17,
-            day:1,
-            section:12,         
-            teacher:'王子阳'
+            id: 104,
+            name: 'Web开发技术',
+            point: 2.5,
+            startWeek: 1,
+            endWeek: 8,
+            dayOfWeek: 1,
+            period: 34,
+            teacherName: '徐懿'
         },
         {
-            id : '6',
-            name : '算法设计与分析',
-            credit:2,
-            startWeek:6,
-            endWeek:10,
-            day:1,
-            section:12,       
-            teacher:'谷志新'
+            id: 105,
+            name: '高级英语视听',
+            point: 2.0,
+            startWeek: 3,
+            endWeek: 10,
+            dayOfWeek: 1,
+            period: 34,
+            teacherName: '龙超悦'
         }
     ]
-    //将数组写入HTML中 模板字符串     
-    const rows = courses.map((course,index) => 
-    `<tr data-row-index="${index + 1}">
+
+    //将数组写入HTML中 模板字符串
+    let $tbody = $('tbody')
+    let $rows = $()    
+    let rowsById = {}    
+    courses.forEach((course,index) => {
+    let $row = $(`
+    <tr data-row-index="${index + 1}">
             <td>${course.id}</td>
             <td>${course.name}</td>
-            <td>${course.credit}</td>
+            <td>${course.point}</td>
             <td>${course.startWeek} - ${course.endWeek}</td>
-            <td>周${course.day} / ${course.section}节</td>
-            <td>${course.teacher}</td>
-            <td><input type="checkbox" class="mayConflict-checkbox" name="courses" value="${course.id}"></td>
+            <td>周${course.dayOfWeek} / ${course.period}节</td>
+            <td>${course.teacherName}</td>
+            <td><input type="checkbox" name="courses" value="${course.id}"></td>
         </tr>
     `)
-    $('table tbody').html(rows.join(''));//生成的所有行连接成一个大的字符串，以便一次性插入到tbody中
-   
-    const checkedCourse = [] //课程是否被点过的数组
-    $('.mayConflict-checkbox').click(function(event) { 
-        const courseId = $(this).val()
-        if(!checkedCourse.includes(courseId))  //检查当前对象是否点击过
-        {
-        checkedCourse.push(courseId)
-        console.log(checkedCourse)
-        ConflictCourse(courseId)
-    }
-    counter(courseId,event)
+    $rows = $rows.add($row)
+    rowsById[course.id] = $row;
     })
+    $tbody.append($rows)
 
-    let conflictCourse = new Map()//储存点击之后各个课程冲突的课程 键为id值，为冲突数组，数组里有冲突的课程id和行数
-    const ConflictCourse = (cId) => {
-        const course = courses.find(c => c.id===cId)
+    let conflictCourse = new Map()//储存点击之后各个课程冲突的课程 键为id值，值为冲突数组，数组里有对象为冲突的课程id,checkbox和row
+    $('input[name="courses"]').click(function(){ 
+        const courseId =$(this).val()
+        const course = courses.find(c => c.id === Number(courseId))
+        //courseId是从HTML表单或者JavaScript DOM操作中获得，它可能被解析为字符串类型，而courses数组中的id属性却仍然是数字类型，这导致了类型不匹配的问题。
         const conflictingCourse = courses
         .filter(c => c.id !== course.id)
         .filter(c => {
             const weekConflict = (c.startWeek <= course.endWeek && c.endWeek >= course.startWeek) ||
                                 (c.startWeek <= course.startWeek && c.endWeek >= course.endWeek) ||
                                 (c.startWeek >= course.startWeek && c.endWeek <= course.endWeek);
-            return weekConflict && c.day === course.day && c.section === course.section})
-        .map(c =>{
-            const $row = $(`tr[data-row-index='${c.id}']`).data('row-index')
-            return{ courseId: c.id, row : $row } // 返回一个对象，包含课程ID和行位置
-        })
-        //console.log(conflictingCourse);
-        conflictCourse.set(course.id,conflictingCourse)
-    }
-    console.log(conflictCourse)
-
-    //分析：应该把计数器放哪？如果放在点击数组里，则找不到冲突课程，无法对已冲突的课程+1/-1
-    //如果放在map集合里，每门课对应的冲突课固定，点击时可以取到这些课，但是对每门冲突课进行计数加减，需要整合这些课的计数，而且一直改
-    //放在课程数组的属性上，一旦有冲突课程，直接对属性值进行增减
-    //放在一个新数组中，索引+1为冲突课程的行号，数组中数值增减
+            return weekConflict && c.dayOfWeek === course.dayOfWeek && c.period === course.period})
+        let conflictCourseArr = []
+        conflictingCourse.forEach(c =>{ 
+            const $row = rowsById[c.id];
+            if ($row) {
+            const rowIndex = parseInt($row.data('row-index'));//直接获取值
+            const $checkbox = $row.find("input[name='courses']");
+            //console.log($checkbox);
+            conflictCourseArr.push({
+                thisConflictId: c.id,
+                row : rowIndex,
+                checkbox : $checkbox
+            });
+            } else{
+                console.error(`Course ID ${c.id} not found.`);
+        }
+        conflictCourse.set(course.id,conflictCourseArr)
+        //console.log(conflictCourse)
+        const checked = $(this).prop('checked')       
+        console.log(checked);  
+        counter(courseId,checked)
+    })
+    })
+    
+    //计数器放在一个新数组中，索引+1为冲突课程的行号，数组中数值增减
     let counterCount = new Array(courses.length+1).fill(0) //第0位不用
-    const counter = (cId,event) => {
-    const conflictingCourses = conflictCourse.get(cId) //Map的get,set方法
+    const counter = (cId,checked) => {
+    //console.log(cId);
+    const conflictingCourses = conflictCourse.get(Number(cId)) //Map的get,set方法
+    //console.log(conflictCourse);
+    //console.log(conflictingCourses);
     if (conflictingCourses) {
         conflictingCourses.forEach(conflict => {
             const index = conflict.row
-            //const checkbox = $(`tr[data-row-index='${index}'] input[type='checkbox']`);
-            if (event.target.checked) {//如果用checkbox.is(':checked')?
+            console.log(index);
+            const checkbox = conflict.checkbox
+            if (checked) {
                 counterCount[index]++
-            } 
+            }
             else{
                 counterCount[index]--
             }
-        })
-    }
-    counterCount.forEach((count, index) => {
-        const checkbox = $(`tr[data-row-index='${index}'] input[type='checkbox']`)
-        if (count > 0) {
-            checkbox.prop('disabled', true)
-        } else {
-            checkbox.prop('disabled', false)
-        }
-    })
-}
-})
+            console.log(counterCount[index]);
+        checkbox.prop('disabled', counterCount[index] > 0);   
+        }         
+    )}
+    }})
+
 </script>
 <!-- 
 总结：
@@ -214,9 +219,8 @@
         如果用：checkbox.is(':checked')在取消选中时可能不会减少计数。
         原因：if (checkbox.is(':checked'))检查的是checkbox在函数执行时的状态，而并非触发事件时的状态
         此时函数可能在用户取消选择复选框之后才被调用
-    
-    
-    
+    ·ce.fn.init在这里实际上是指jQuery的包装对象，意味着checkbox属性是一个通过jQuery封装的DOM元素。
+        当jQuery选择器找到匹配的元素时，它会返回一个jQuery对象，可以理解为一个包含DOM元素和jQuery方法集合的对象。
     -->
 </body>
 </html>
