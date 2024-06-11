@@ -154,6 +154,11 @@
         const courseId =$(this).val()
         const course = courses.find(c => c.id === Number(courseId))
         //courseId是从HTML表单或者JavaScript DOM操作中获得，它可能被解析为字符串类型，而courses数组中的id属性却仍然是数字类型，这导致了类型不匹配的问题。
+        const checked = $(this).prop('checked')       
+        //console.log(checked);  
+        let conflictingCourses = conflictCourse.get(course.id)//Map的get,set方法
+        console.log(conflictingCourses);
+        if(!conflictingCourses){
         let conflictCourseArr = []
         const conflictingCourse = courses
         .filter(c => c.id !== course.id)
@@ -166,50 +171,36 @@
             if(!c.hasOwnProperty('counterCount')){
                 c.counterCount = 0
             }
-            const row = rowsById[c.id];
+            const row = rowsById[c.id]
+            //console.log(row);
             if (row) {
-            const rowIndex = parseInt(row.data('row-index'));//直接获取值
-            const checkbox = row.find("input[name='courses']");
-            //console.log(checkbox);
+            const checkbox = row.children('td').children('input[name="courses"]')
             conflictCourseArr.push({
-                thisConflictId: c.id,
-                row : rowIndex,
+                thisConflict : c,
+                row : row,
                 checkbox : checkbox
             });
             } else{
                 console.error(`Course ID ${c.id} not found.`);
-        }
+            }
         conflictCourse.set(course.id,conflictCourseArr)
         //console.log(conflictCourse)
-        const checked = $(this).prop('checked')       
-        //console.log(checked);  
-        counter(courseId,checked)
+        conflictingCourses = conflictCourse.get(course.id) 
+        //console.log(conflictingCourses);
+        })
+        }       
 
-    })
-    })
-    
-    const counter = (cId,checked) => {
-    //console.log(cId);
-    const course = courses.find(c => c.id=== Number(cId))
-    const conflictingCourses = conflictCourse.get(course.id) //Map的get,set方法
-    //console.log(conflictCourse);
-    console.log(conflictingCourses);
-    if (conflictingCourses) {
         conflictingCourses.forEach(conflict => {
-        const conflictCourse = courses.find(c => c.id === conflict.thisConflictId)
-            if (checked) {
-                conflictCourse.counterCount++
-            }
-            else{
-                conflictCourse.counterCount--
-            }
-            const checkbox = rowsById[conflictCourse.id].find("input[name='courses']");
-            checkbox.prop('disabled',conflictCourse.counterCount > 0)
-        }         
-    )}
-    }})
-
+        const conflictCourse = courses.find(c => c.id === conflict.thisConflict.id)
+            checked ? conflictCourse.counterCount++ : conflictCourse.counterCount--
+            conflictingCourses.forEach(c =>{
+                c.checkbox.prop('disabled',conflictCourse.counterCount > 0)
+            })           
+        })               
+    })
+})
 </script>
+
 <!-- 
 总结：
     ·tr[data-row-index='${c.id}']是一个jQuery选择器，它选取了具有data-row-index属性等于c.id的<tr>元素。
