@@ -5,7 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>06</title>
 </head>
+<style>
+    *{
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+    .container{
+        width: 100%;
+        height: 20rem;
+    }
+    .modal{
+        width: 20rem;
+        border-radius: 5px;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        cursor: pointer;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.4);
+        display: none;
+    }
+    .modal>.modal-dialog{
+    padding: 0.5rem;
+    }
+    .modal-dialog-header{
+        text-align: left;
+        padding: 0.5rem;
+        border-bottom: 0.5px #dddddd solid;
+        position: relative;
+    }
+    .modal-dialog-header>.close{
+    position: absolute;
+    background-color: white;
+    right: 0;
+    top: 0;
+    font-size: 1rem;
+    border: 0px;
+    cursor: pointer;
+
+    }
+    .modal-dialog-content{
+        padding: 0.8rem 1rem;
+        font-size: 0.6rem;
+        border-bottom: 0.5px #dddddd solid;
+    }
+    .modal-dialog-footer{
+    text-align: right;
+    padding: 0.5rem;
+    }
+    .modal-dialog-footer>button{
+        color: white;
+        padding:0.2rem 0.4rem;
+        border-radius: 5px;
+    }
+    .modal-dialog-footer .close{
+        background-color:gray;
+        border: 1px solid gray;
+    }
+    .modal-dialog-footer .save{
+        background-color:#82b0ec;
+        border: 1px solid #82b0ec;
+    }
+</style>
 <body>
-    
+<div class="container">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quod accusantium doloremque est dolorem quas magnam porro amet,
+         adipisci commodi aperiam quae facilis sint modi sequi odit laboriosam? Doloremque perspiciatis deleniti officia a distinctio,
+          at debitis consectetur voluptas, fugit nesciunt reprehenderit suscipit magnam qui dignissimos modi, ab repellendus ex facere 
+          molestiae consequatur sapiente rerum laborum ut saepe. Unde totam magnam nostrum quia illo delectus veniam distinctio dolor 
+          doloremque, et accusantium hic voluptatum veritatis. Suscipit tenetur, debitis perferendis hic blanditiis excepturi. Soluta 
+          beatae laudantium natus voluptatum quisquam atque, architecto sunt quas. Quasi, exercitationem rerum unde et fugiat perferendis 
+          pariatur dolor deleniti tempora. <br>
+          <button type="button" class="modal-trigger" data-modal-target="helloModal">打开模态框</button>
+</div>
+<div class="modal" id="helloModal">
+    <div class="modal-dialog">
+        <div class="modal-dialog-header"><h3>Hello!</h3>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        </div>
+        <div class="modal-dialog-content">Woooh~Hello!</div>
+        <div class="modal-dialog-footer">
+            <button class="close">Close</button>
+            <button class="save">Save changes</button>
+        </div>
+    </div>
+</div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function(){
+    $('[data-modal-target]').on('click', function(e){
+        e.preventDefault(); // 阻止默认行为，防止链接跳转等
+        // 获取模态框的ID
+        const modalId = $(this).data('modal-target');
+        const modalNow = $(`#${modalId}`)
+        console.log(modalId);
+        modalNow.css({
+            'display':'block'
+        })
+        $(`#${modalId} .close`).on('click', function() {
+            modalNow.css({
+                'display': 'none'
+            });
+        });
+        //放在点击button事件里
+    //     $(document).on('click', function(e){
+    //     // 检查点击目标是否是模态框或模态框的子元素
+    //     if (!$(e.target).closest('#helloModal').length) {
+    //         $('#helloModal').css({
+    //             'display': 'none'
+    //         });
+    //     }
+    // });
+    });
+})
+</script>
+
+
+
 </body>
 </html>
