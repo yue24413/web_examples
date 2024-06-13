@@ -18,75 +18,46 @@
 }
 .row{
 display: flex;
+height: 200px;
 }
-.nav-left{
+.fab{
 max-width: 180px;
 color: white;
-transition:all 1s ease;
-position: relative;
 }
-.nav-left>h2{
-    background-color: skyblue;
+.fab>h2{
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
-    cursor: pointer;
     line-height: 3rem;
+    border-radius: 50%;
+    background-color: skyblue;
+    cursor: pointer;
     position: relative;
 }
-i.transitionBefore{
-    visibility:visible;
-    transition:all 0.5s ease;
+.fab>h2>i{
+    transition : transform 0.3s ease;
 }
-i.transitionAfter{
-    visibility: hidden;
-    height: 0;
-    position: absolute;
-}
-.nav-left>h2:hover{
-    transition:all 0.3s ease;
-}
-.nav-left>ul{
+.fab ul.fab-menu{
     width: 100%;
     display: flex;
     flex-direction: column;
     list-style: none;
 }
-.nav-left>ul li{
-    display: none;
+.fab .fab-menu li{
+    display:none;
     background-color: white;
     border-radius: 50%;
     opacity: 0;
-    transition:all 0.3s ease;
+    transition : opacity 0.3s ease;
 }
-
-.nav-left:hover >ul li{
-    display: block;
-    opacity: 1;
-    transition:all 0.8s ease;
-}
-.nav-left:hover i.transitionBefore{
-    transform: rotate(90deg);
-    visibility: hidden;
-    height: 0;
-    transition:height 1s ease;
-}
-.nav-left:hover i.transitionAfter{
-    visibility: visible;
-    height: 100%;
-    transform: rotate(180deg);
-    transition:transform 0.3s ease;
-}
-.nav-left ul a{
+.fab ul.fab-menu a{
     display:block;
-    width: 100%;
     height: 3rem;
     line-height: 3rem;
     text-decoration: none;
     color: skyblue;
     font-size: 1.2rem;
 }
-.nav-left-badges{
+.fab-btn{
     display:block;
     font-family: 'Material Icons';
     width: 100%;
@@ -94,29 +65,32 @@ i.transitionAfter{
     text-align: center;
     font-style: normal;
 }
+.fab-btn.delete{
+    color: red;
+}
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="nav-left"> 
-                <h2><i class="nav-left-badges transitionBefore">person</i><i class="nav-left-badges transitionAfter">horizontal_rule</i></h2>                
-                <ul>
+            <div class="fab"> 
+                <h2><i class="fab-btn">person</i></h2>              
+                <ul class="fab-menu">
                 <li>
                     <a href="">
-                        <i class="nav-left-badges">edit</i>
+                        <i class="fab-btn">edit</i>
                         <!-- <span>edit</span> -->
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <i  class="nav-left-badges">contacts</i>
+                        <i  class="fab-btn">contacts</i>
                         <!-- <span>contacts</span> -->
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <i  class="nav-left-badges">delete</i>
+                        <i class="fab-btn delete">delete</i>
                         <!-- <span>laptop</span> -->
                     </a>
                 </li>
@@ -127,5 +101,55 @@ i.transitionAfter{
 
         </div>
     </div>
+
+    <div class="test1">hhhh</div>
+    <div class="test2">wwwww</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
+$(function(){
+    const icon = $('.fab>h2>i')
+    const iconLi =  $('.fab .fab-menu li')
+    // 鼠标移入时
+    $('.fab').on('mouseenter', function() {
+        icon.text('horizontal_rule');
+        icon.animate({},
+        function(){
+            icon.css('transform','rotate(180deg)')
+            iconLi.css({
+                    'display':'block','opacity': '1' 
+                })  
+    }
+    )
+})
+    // 鼠标移出时
+    $('.fab').on('mouseleave', function() {
+        icon.text('person');
+        icon.animate({},
+        function(){
+            icon.css(
+            'transform','rotate(0deg)',
+            iconLi.css({
+                    'display':'block','opacity': '0' 
+                })  
+        )}
+    )
+})
+});
+         
+</script>
+<!--
+总结：
+    ·$(selector).animate({params},speed,callback);
+        Jquery并不支持在animate的样式中的transform效果，通过使用animate的回调函数来实现
+        $(this).animate({},speed,callback)花括号不能去掉   
+        jQuery Animation的工作原理是通过将元素的CSS样式从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+        只有数字值可创建动画(比如⁻字符串值无法创建动画(比如“background-color:red”)。详细用法请参考jQuery 
+        效果-animate()方法和官方教程。像CSS3好多效果因为不是数值的, 所以是没有办法直接通过animate()方法实现的。
+        如translate(), rotate(), scale(), skew(),matrix()， rotateX()， rotateY()等方法，这些方法的一个特点就是它们的值是字符和数字混合在一起的。
+ 
+ 
+ 
+ -->
 </body>
 </html>
