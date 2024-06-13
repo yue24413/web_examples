@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>04-more</title>
+    <title>05</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     
     <style>
@@ -18,10 +18,8 @@
 }
 .row{
 display: flex;
-height: 200px;
 }
 .fab{
-max-width: 180px;
 color: white;
 }
 .fab>h2{
@@ -102,9 +100,6 @@ color: white;
         </div>
     </div>
 
-    <div class="test1">hhhh</div>
-    <div class="test2">wwwww</div>
-
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 $(function(){
@@ -119,23 +114,20 @@ $(function(){
             iconLi.css({
                     'display':'block','opacity': '1' 
                 })  
-    }
-    )
+    })
 })
     // 鼠标移出时
     $('.fab').on('mouseleave', function() {
         icon.text('person');
         icon.animate({},
         function(){
-            icon.css(
-            'transform','rotate(0deg)',
+            icon.css('transform','rotate(0deg)')
             iconLi.css({
-                    'display':'block','opacity': '0' 
+                    'display':'none','opacity': '0' 
                 })  
-        )}
-    )
+    })
+    })
 })
-});
          
 </script>
 <!--
