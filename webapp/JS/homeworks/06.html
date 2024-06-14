@@ -14,17 +14,20 @@
     .container{
         width: 100%;
         height: 20rem;
+        padding: 1rem;
     }
     .modal{
         width: 20rem;
         border-radius: 5px;
         position: fixed;
-        top: 50%;
+        top: 10%;
         left: 50%;
-        cursor: pointer;
         transform: translate(-50%, -50%);
-        background-color: rgba(255, 255, 255, 0.4);
-        display: none;
+        visibility:hidden;
+        cursor: pointer;
+        z-index: 2;
+        background-color: rgba(255, 255, 255, 1);
+        transition:top 0.5s ease;
     }
     .modal>.modal-dialog{
     padding: 0.5rem;
@@ -37,13 +40,12 @@
     }
     .modal-dialog-header>.close{
     position: absolute;
-    background-color: white;
+    background-color: rgba(255, 255, 255,0);
     right: 0;
     top: 0;
     font-size: 1rem;
     border: 0px;
     cursor: pointer;
-
     }
     .modal-dialog-content{
         padding: 0.8rem 1rem;
@@ -67,6 +69,19 @@
         background-color:#82b0ec;
         border: 1px solid #82b0ec;
     }
+    .overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    z-index: 1;
+    visibility:hidden;
+    }
 </style>
 <body>
 <div class="container">
@@ -77,8 +92,10 @@
           doloremque, et accusantium hic voluptatum veritatis. Suscipit tenetur, debitis perferendis hic blanditiis excepturi. Soluta 
           beatae laudantium natus voluptatum quisquam atque, architecto sunt quas. Quasi, exercitationem rerum unde et fugiat perferendis 
           pariatur dolor deleniti tempora. <br>
-          <button type="button" class="modal-trigger" data-modal-target="helloModal">打开模态框</button>
-</div>
+<button type="button" class="modal-trigger" data-modal-target="helloModal">打开模态框</button>
+</div>  
+<div class="overlay"></div>     
+
 <div class="modal" id="helloModal">
     <div class="modal-dialog">
         <div class="modal-dialog-header"><h3>Hello!</h3>
@@ -99,32 +116,53 @@
 $(function(){
     $('[data-modal-target]').on('click', function(e){
         e.preventDefault(); // 阻止默认行为，防止链接跳转等
-        // 获取模态框的ID
-        const modalId = $(this).data('modal-target');
+        const modalId =  $(this).data('modal-target');
+        const closeButtonA = `#${modalId} .close`; 
         const modalNow = $(`#${modalId}`)
-        console.log(modalId);
-        modalNow.css({
-            'display':'block'
-        })
-        $(`#${modalId} .close`).on('click', function() {
-            modalNow.css({
-                'display': 'none'
-            });
-        });
-        //放在点击button事件里
-    //     $(document).on('click', function(e){
-    //     // 检查点击目标是否是模态框或模态框的子元素
-    //     if (!$(e.target).closest('#helloModal').length) {
-    //         $('#helloModal').css({
-    //             'display': 'none'
-    //         });
-    //     }
-    // });
-    });
+        const overlayHideCss = () => {$('.overlay').css('visibility','hidden')}
+        const overlayVisiteCss = () => {$('.overlay').css('visibility','visible')}
+        const modalViste = () => {
+            modalNow.animate({},
+            function(){
+                modalNow.css({
+                'top':'50%',
+                'visibility':'visible'
+                })
+                overlayVisiteCss()
+            })
+        } 
+        const modalHide = () => {
+            modalNow.animate({},
+            function(){
+                modalNow.css({
+                'top':'10%',
+                'visibility':'hidden' 
+                })
+                overlayHideCss()
+            })
+        }
+        overlayVisiteCss()
+        modalViste()
+        $('.overlay').click(function(){
+            modalHide() 
+        })  
+        $(closeButtonA).click(function(){
+            modalHide()
+        })  
+        console.log(`#${modalId}.close`);
 })
+});
 </script>
+<!-- 
+总结：
+    · .modal-dialog-header>.close{
+        background-color: rgba(255, 255, 255,0);
+        ...
+        }
+        这里的背景透明度基于父元素算，0则和父元素的bgc相同
+    · const closeButtonA = `#${modalId} .close`; close前空格表示更深一层的选择
+        
 
-
-
+         -->
 </body>
 </html>
