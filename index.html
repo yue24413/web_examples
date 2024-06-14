@@ -11,20 +11,19 @@
     box-sizing: border-box;
 }
 
-/*整体版心剧中*/
 .wrapper{
     max-width: 1200px;   
-    margin: 0 auto;
     padding-top: 10px;
     min-height: 100vh;
     color: black;
-}
-.wrapper{
-    font-size: 1.2rem;
     padding: 2rem;
+    display: flex;
 }
-div{
-    margin: 1rem 0;
+.left{
+    flex:1;
+}
+.right{
+    flex:1;
 }
 li{
     padding: 0.5rem;
@@ -44,6 +43,7 @@ a:hover{
 </head>
 <body>
     <div class="wrapper">
+    <div class="left">
     <div class="course-html">
        <ul> 
         <li><a href="webapp/HTML/Course-test/input.html" target="_blank">HTML-input.html</a></li>
@@ -57,6 +57,8 @@ a:hover{
     </ul>
     </div>
     <hr>
+</div>
+<div class="right">
     <div class="homeworks">
         <ul>
             <li><a href="./webapp/JS/homeworks/01.html" target="_blank">homework01</a></li>
@@ -66,6 +68,9 @@ a:hover{
             <li><a href="./webapp/JS/homeworks/03.html" target="_blank">homework03</a></li>
             <li><a href="./webapp/JS/homeworks/04.html" target="_blank">homework04</a></li>
             <li><a href="./webapp/JS/homeworks/04-more.html" target="_blank">homework04-more</a></li>
+            <li><a href="./webapp/JS/homeworks/05.html" target="_blank">homework05</a></li>
+            <li><a href="./webapp/JS/homeworks/06.html" target="_blank">homework06</a></li>
+        
         </ul>
         </div>
         <hr>
@@ -87,7 +92,7 @@ a:hover{
    
     </div> 
     <hr> 
-</ul>
+</div>
 </div>
 </body>
 </html>

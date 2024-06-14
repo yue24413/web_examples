@@ -17,20 +17,28 @@
         padding: 1rem;
     }
     .modal{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+    display: none;
+    }
+    .modal>.modal-dialog{
         width: 20rem;
         border-radius: 5px;
         position: fixed;
         top: 10%;
         left: 50%;
         transform: translate(-50%, -50%);
-        visibility:hidden;
+        opacity: 0;
         cursor: pointer;
-        z-index: 2;
         background-color: rgba(255, 255, 255, 1);
-        transition:top 0.5s ease;
-    }
-    .modal>.modal-dialog{
-    padding: 0.5rem;
+        transition:all 0.5s ease;
     }
     .modal-dialog-header{
         text-align: left;
@@ -69,19 +77,7 @@
         background-color:#82b0ec;
         border: 1px solid #82b0ec;
     }
-    .overlay{
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(3px);
-    z-index: 1;
-    visibility:hidden;
-    }
+
 </style>
 <body>
 <div class="container">
@@ -89,15 +85,12 @@
          adipisci commodi aperiam quae facilis sint modi sequi odit laboriosam? Doloremque perspiciatis deleniti officia a distinctio,
           at debitis consectetur voluptas, fugit nesciunt reprehenderit suscipit magnam qui dignissimos modi, ab repellendus ex facere 
           molestiae consequatur sapiente rerum laborum ut saepe. Unde totam magnam nostrum quia illo delectus veniam distinctio dolor 
-          doloremque, et accusantium hic voluptatum veritatis. Suscipit tenetur, debitis perferendis hic blanditiis excepturi. Soluta 
-          beatae laudantium natus voluptatum quisquam atque, architecto sunt quas. Quasi, exercitationem rerum unde et fugiat perferendis 
-          pariatur dolor deleniti tempora. <br>
+          doloremque, et accusantium hic voluptatum veritatis. Suscipit tenetur, debitis perferendis hic blanditiis excepturi. Soluta . <br>
 <button type="button" class="modal-trigger" data-modal-target="helloModal">打开模态框</button>
-</div>  
-<div class="overlay"></div>     
+</div>
 
-<div class="modal" id="helloModal">
-    <div class="modal-dialog">
+<div class="modal">
+    <div class="modal-dialog" id="helloModal">
         <div class="modal-dialog-header"><h3>Hello!</h3>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -105,8 +98,8 @@
         </div>
         <div class="modal-dialog-content">Woooh~Hello!</div>
         <div class="modal-dialog-footer">
-            <button class="close">Close</button>
-            <button class="save">Save changes</button>
+            <button class="close" data-modal-dismiss>Close</button>
+            <button class="save" data-modal-target="Save" data-modal-dismiss>Save changes</button>
         </div>
     </div>
 </div>
@@ -114,43 +107,24 @@
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script>
 $(function(){
-    $('[data-modal-target]').on('click', function(e){
-        e.preventDefault(); // 阻止默认行为，防止链接跳转等
+    $('[data-modal-target]').on('click', function(event){
         const modalId =  $(this).data('modal-target');
-        const closeButtonA = `#${modalId} .close`; 
         const modalNow = $(`#${modalId}`)
-        const overlayHideCss = () => {$('.overlay').css('visibility','hidden')}
-        const overlayVisiteCss = () => {$('.overlay').css('visibility','visible')}
-        const modalViste = () => {
-            modalNow.animate({},
-            function(){
-                modalNow.css({
-                'top':'50%',
-                'visibility':'visible'
-                })
-                overlayVisiteCss()
-            })
-        } 
-        const modalHide = () => {
-            modalNow.animate({},
-            function(){
-                modalNow.css({
-                'top':'10%',
-                'visibility':'hidden' 
-                })
-                overlayHideCss()
-            })
-        }
-        overlayVisiteCss()
-        modalViste()
-        $('.overlay').click(function(){
-            modalHide() 
-        })  
-        $(closeButtonA).click(function(){
-            modalHide()
-        })  
-        console.log(`#${modalId}.close`);
-})
+        const dialogViste = () => {
+                modalNow.css({'top':'50%','opacity':'1'})
+                $('.modal').fadeIn(500) 
+            }
+        const dialogHide = () => {
+                modalNow.css({'top':'10%','opacity':'0' })
+                $('.modal').fadeOut(500)
+            }
+        dialogViste()
+        $('.modal').click(function(){
+            dialogHide()  
+        })
+        $('.modal-dialog').click(() => false)
+        $(`#${modalId} .close`).click(() => dialogHide())
+    })
 });
 </script>
 <!-- 
