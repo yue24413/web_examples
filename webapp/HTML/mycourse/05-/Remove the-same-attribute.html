@@ -7,15 +7,78 @@
 </head>
 <body>
     <script>
-        const objs = [{ id: 9 }, { id: 8 }, { id: 7 }, { id: 7 }, { id: 7 }, { id: 6 }]      
-        const uniqueFuntion = (objects,attribute) => {
-            const uniqueObjs = objects.filter((obj, index) => {
-                return objects.findIndex(o => o[attribute] === obj[attribute]) === index  
-        })   //Array.prototype.findIndex() 用于查找第一个符合提供的测试函数的数组元素的索引。
-        return uniqueObjs;  //返回的是filter后的新数组
+        const objs = [] 
+        for (let i=0;i<8_000_000;i++)
+        {
+            objs.push({id:Math.floor(Math.random() * 1_000) }) 
         }
-        const x = uniqueFuntion(objs,"id")        
-        console.log(x)
+        //...........     
+        const todo = () =>{
+            function removeDup(array,prop){
+                const tempObj = {}
+                const newArray = []
+                for(let index = 0; index < array.length; index++)
+                {
+                    const obj = array[index]
+                    const val = obj[prop]//从对象obj中获取由prop指定的属性值
+                    if(!tempObj.hasOwnProperty[val]){
+                        newArray.push(obj)
+                        tempObj[val] = 1
+                    }
+                }
+                return { newArray , tempObj} 
+            }
+        const start = () =>{
+            const stime = performance.now()
+            const uniqueObjs = removeDup(objs, 'id')
+            const etime = performance.now()
+            return etime - stime
+        }
+        return {start}
+    }
+    const todo2 = () =>{
+        function removeDup(array ,prop){
+            const tempObj = {}
+            const result = array.filter((item) => {
+                const propVal = item[prop]
+                return tempObj.hasOwnProperty(propVal)?false:(tempObj[propVal])
+            })
+            return { tempObj , result}
+        }
+        const start =() =>{
+            const stime = performance.now()
+            const uniqueObjs = removeDup(objs, 'id')
+            const etime = performance.now()
+            return etime - stime
+        }
+        return {start}
+    }
+//................
+    const todo3 = () =>{
+        const removeDup = (array,prop) =>{
+            const temp = new Set()
+            return array.filter((o) => !temp.has(o[prop]) && temp.add(o[prop]))
+        }
+        const start =() =>{
+            const stime = performance.now()
+            const x = removeDup(objs, 'id')
+            const etime = performance.now()
+            return etime - stime
+        }
+        return { start }
+    }
+//............
+    const count = 20
+    let temp2 = 0
+    let temp3 = 0
+    let temp1 = 0
+    for(let index = 0;index<count ; index++){
+        temp1 += todo().start()
+        temp2 += todo().start()
+        temp3 += todo().start()
+    }
+    console.log(`${temp1 / count} /${temp2 / count} /${temp3 / count}`)
+
     </script>
 </body>
 </html>

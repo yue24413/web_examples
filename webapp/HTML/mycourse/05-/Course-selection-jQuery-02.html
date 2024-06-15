@@ -127,7 +127,6 @@
             teacherName: '龙超悦'
         }
     ]
-
     //将数组写入HTML中 模板字符串
     let tbodyH = $('tbody')
     let rows = $()    
@@ -148,16 +147,13 @@
     rowsById[course.id] = rowH;
     })
     tbodyH.append(rows)
-
     let conflictCourse = new Map()//储存点击之后各个课程冲突的课程 键为id值，值为冲突数组，数组里有对象为冲突的课程id,checkbox和row
     $('input[name="courses"]').click(function(){ 
         const courseId =$(this).val()
         const course = courses.find(c => c.id === Number(courseId))
         //courseId是从HTML表单或者JavaScript DOM操作中获得，它可能被解析为字符串类型，而courses数组中的id属性却仍然是数字类型，这导致了类型不匹配的问题。
         const checked = $(this).prop('checked')       
-        //console.log(checked);  
         let conflictingCourses = conflictCourse.get(course.id)//Map的get,set方法
-        console.log(conflictingCourses);
         if(!conflictingCourses){
         let conflictCourseArr = []
         const conflictingCourse = courses
@@ -172,7 +168,6 @@
                 c.counterCount = 0
             }
             const row = rowsById[c.id]
-            //console.log(row);
             if (row) {
             const checkbox = row.children('td').children('input[name="courses"]')
             conflictCourseArr.push({
@@ -180,13 +175,9 @@
                 row : row,
                 checkbox : checkbox
             });
-            } else{
-                console.error(`Course ID ${c.id} not found.`);
             }
         conflictCourse.set(course.id,conflictCourseArr)
-        //console.log(conflictCourse)
         conflictingCourses = conflictCourse.get(course.id) 
-        //console.log(conflictingCourses);
         })
         }       
 
@@ -200,17 +191,12 @@
     })
 })
 </script>
-
 <!-- 
 总结：
     ·tr[data-row-index='${c.id}']是一个jQuery选择器，它选取了具有data-row-index属性等于c.id的<tr>元素。
     .data('row-index')尝试读取这个<tr>元素上的data-row-index属性的值。
         需要注意的是，.data()方法会自动处理类型转换。如果你存储的是一个数字，它会返回一个数字；如果是字符串，则返回字符串。
         这使得它比使用.attr()方法更方便，因为.attr()总是返回字符串值，即使原始的data-*属性中存储的是数字或其他类型的数据。
-    ·if (event.target.checked) 直接从事件对象中读取触发事件的元素,判断当前点的多选框是否被选中时
-        如果用：checkbox.is(':checked')在取消选中时可能不会减少计数。
-        原因：if (checkbox.is(':checked'))检查的是checkbox在函数执行时的状态，而并非触发事件时的状态
-        此时函数可能在用户取消选择复选框之后才被调用
     ·ce.fn.init在这里实际上是指jQuery的包装对象，意味着checkbox属性是一个通过jQuery封装的DOM元素。
         当jQuery选择器找到匹配的元素时，它会返回一个jQuery对象，可以理解为一个包含DOM元素和jQuery方法集合的对象。
     -->
