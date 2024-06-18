@@ -36,6 +36,7 @@
         }
         return {start}
     }
+    //..........todo1与2不同的是一个用for一个用过滤器
     const todo2 = () =>{
         function removeDup(array ,prop){
             const tempObj = {}
@@ -67,17 +68,59 @@
         }
         return { start }
     }
-//............
+    //......
+    const todo4 = () =>{
+        const removeDup = (array,prop) => {
+            const tempMap = new Map()
+            return array.filter((o) => !tempMap.has(o[prop]) && tempMap.set(o[prop]))
+        }
+        const start =() =>{
+            const stime = performance.now()
+            const x = removeDup(objs, 'id')
+            const etime = performance.now()
+            return etime - stime
+        }
+        return { start }
+    }
+    ///..............
+    const todo5 = () => {
+    const removeDup = (array, prop) => {
+        const seenValues = [];
+        const filteredArray = [];
+
+        for (let i = 0; i < array.length; i++) {
+            const value = array[i][prop];
+            if (!seenValues.includes(value)) {
+                filteredArray.push(array[i]);
+                seenValues.push(value);
+            }
+        }
+        return filteredArray;
+    };
+    const start = () => {
+        const stime = performance.now();
+        const uniqueObjs = removeDup(objs, 'id');
+        const etime = performance.now();
+        return etime - stime;
+    };
+
+    return { start };
+};
+    //............
     const count = 20
+    let temp1 = 0
     let temp2 = 0
     let temp3 = 0
-    let temp1 = 0
+    let temp4 = 0
+    let temp5 = 0
     for(let index = 0;index<count ; index++){
         temp1 += todo().start()
-        temp2 += todo().start()
-        temp3 += todo().start()
+        temp2 += todo2().start()
+        temp3 += todo3().start()
+        temp4 += todo4().start()
+        temp5 += todo5().start()
     }
-    console.log(`${temp1 / count} /${temp2 / count} /${temp3 / count}`)
+    console.log(`${temp1 / count} / ${temp2 / count} / ${temp3 / count} / ${temp4 / count} / ${temp5 / count}`)
 
     </script>
 </body>
