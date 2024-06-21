@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery-form</title>
+    <style>
+    *{
+        padding: 0;
+        margin: 0 auto;
+        box-sizing: border-box;
+        }
+        .contaniner{
+            width: 80%;
+            font-size: 1.5rem;
+        }
+        input[type="checkbox"]{
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        button[type="submit"]{
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="contaniner">
+        <form action="#">
+        <br>
+        <label><input type="checkbox" class="buttonAgreement">我已阅读相关说明并遵守相关法律</label><br>    
+        用户名<input type="text" name="username"> <p style="display: inline;"></p><br>
+    未来意向：
+    <label><input type="radio" name="occupation" value="java工程师"> java工程师</label>
+    <label><input type="radio" name="occupation" value="测试工程师"> 测试工程师</label>
+    <label><input type="radio" name="occupation" value="前端工程师"> 前端工程师</label>
+    <label><input type="hidden" id="selectedOption" value=""></label>
+    <br><br>
+<p>请从以下课程中选择2项最喜欢的课程：</p>
+<ul class="courses">
+
+</ul><br>
+<input type="text" id="addressInput">
+<button id="addAddressBtn">添加地址</button>
+<ul id="addressList">
+
+</ul><br>
+<button type="submit">提交</button><br>
+</form></div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script>
+$(function(){
+    const courses = [
+        {
+            id: 100,
+            name: '数据库原理',
+            point: 3.0,
+            startWeek: 1,
+            endWeek: 10,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '谭文韬'
+        },
+        {
+            id: 101,
+            name: '影视赏析',
+            point: 1.5,
+            startWeek: 1,
+            endWeek: 8,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '李春泰'
+        },
+        {
+            id: 102,
+            name: 'Web系统框架',
+            point: 2.5,
+            startWeek: 11,
+            endWeek: 17,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '王子阳'
+        },
+        {
+            id: 103,
+            name: '托福阅读',
+            point: 2.0,
+            startWeek: 5,
+            endWeek: 15,
+            dayOfWeek: 1,
+            period: 12,
+            teacherName: '李景阳'
+        },
+        {
+            id: 104,
+            name: 'Web开发技术',
+            point: 2.5,
+            startWeek: 1,
+            endWeek: 8,
+            dayOfWeek: 1,
+            period: 34,
+            teacherName: '徐懿'
+        },
+        {
+            id: 105,
+            name: '高级英语视听',
+            point: 2.0,
+            startWeek: 3,
+            endWeek: 10,
+            dayOfWeek: 1,
+            period: 34,
+            teacherName: '龙超悦'
+        }
+    ]
+    courses.forEach((course,index) => {
+        let rowH = $(`<li><label><input type="checkbox" name="selection" id="${course.id}">${course.name}</label></li>`)
+        $('ul[class="courses"]').append(rowH)
+    })
+    const inputObjs = $('form input:not([type="submit"]):not([class="buttonAgreement"])')
+    inputObjs.prop('disabled',true)
+    $('.buttonAgreement').click(function(){
+        let ischecked = $(this).prop('checked')
+        inputObjs.prop('disabled',!ischecked)
+    })
+
+    let flag1 = false 
+    let flag2 = false
+    $('input[name="username"]').blur(function(){
+       if( $(this).val().length < 6 ) {
+        alert("用户名必须大于等于6位")
+        $(this).next('p').empty()
+        $(this).next('p').append($(`<i style="color: red;" class="material-icons">close</i>`))
+        flag1 = false
+    }else{
+        $(this).next('p').empty()
+        $(this).next('p').append($(`<i style="color: green;" class="material-icons">check</i>`))
+        flag1 = true
+       }
+    })
+
+    $('input[name="occupation"]').click(function(){
+        const selectedRadioValue = $('#selectedOption')
+        const currentValue = $(this).val()
+        if (selectedRadioValue.val() === currentValue) {
+            $(this).prop('checked', false);
+            selectedRadioValue.val('');
+        } else {
+            selectedRadioValue.val(currentValue);
+        }
+    })
+
+    const selectMore = $('input[name="selection"]')
+    selectMore.click(function(){
+        let count = $('input[name="selection"]:checked').length;
+        console.log(count);
+        if(count >= 2) {
+            selectMore.not(":checked").prop('disabled',true) 
+            flag2 = true 
+        } else{
+            selectMore.prop('disabled',false)
+            flag2 = false
+        }
+    })
+
+    const addButton = $('#addAddressBtn')
+    addButton.prop('disabled',true)
+    $('#addressInput').keyup(function(){
+        $('#addressInput').val().trim() === '' ? addButton.prop('disabled',true) : addButton.prop('disabled',false) 
+    })
+    addButton.click(function() {
+    let address = $('#addressInput').val()
+    if (address.trim() !== '') {
+        const addressLi = $(`<li>${address}</li>`)
+        addressLi.hide(); 
+        $('#addressList').append(addressLi);
+        addressLi.slideDown(300);
+    }else{
+        addButton.prop('disabled',true)  //address.trim() === ''
+    }
+    })
+    const submitBut = $('button[type="submit"]')
+    $('form').click(function(){
+        (flag1&&flag2) ? submitBut.prop('disabled',false) : submitBut.prop('disabled',true)  
+    })
+})
+</script>
+</body>
+</html>
